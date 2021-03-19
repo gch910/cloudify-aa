@@ -7,4 +7,7 @@ class Comment(db.Model):
   content = db.Column(db.String(255), nullable=False)
   user_id = db.Colmun(db.Integer, nullable=False)
   song_id = db.Column(db.Integer, nullable=False)
-  
+
+  users = db.relationship('User', back_populate='comments')
+  songs = db.relationship('Song', back_populate='comments')
+
