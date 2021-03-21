@@ -4,11 +4,12 @@ def seed_genres():
 
   genre1 = Genre(name='Rap')
   genre2 = Genre(name='Rock')
-  genre3 = Genre(name='Hip-Hop')
+  genre3 = Genre(name='R&B')
   genre4 = Genre(name='Pop')
   genre5 = Genre(name='Soul')
-  genre6 = Genre(name='House')
-  genre7 = Genre(name='Celtic')
+  genre6 = Genre(name='Electronic')
+  genre7 = Genre(name='Country')
+  genre8 = Genre(name='Jazz')
 
   db.session.add(genre1)
   db.session.add(genre2)
@@ -17,4 +18,5 @@ def seed_genres():
   db.session.add(genre5)
   db.session.add(genre6)
   db.session.add(genre7)
+  db.session.add(genre8)
   db.session.commit()
