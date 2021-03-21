@@ -15,3 +15,14 @@ class Song(db.Model):
   users = db.relationship('User', back_populates='songs')
   likes = db.relationship('Like', back_populates='songs')
   comments = db.relationship('Comment', back_populates='songs')
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "title": self.title,
+      "release_date": self.release_date,
+      "song_path": self.song_path,
+      "image_path": self.image_path,
+      "user_id": self.user_id,
+      "genre_id": self.genre_id
+    }
