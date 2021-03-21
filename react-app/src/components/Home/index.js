@@ -1,20 +1,29 @@
-import React from 'react';
-import { useDispatch, useSelector } from "react-redux"
-import { useState, useEffect } from "react"
-import { getAllSongs } from "../../store/songs"
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { getAllSongs } from "../../store/songs";
 
 const Home = () => {
-    const dispatch = useDispatch();
-    const songs = useSelector(state => Object.values(state.songs))
-    const [isLoaded, setIsLoaded] = useState(false)
+  const dispatch = useDispatch();
+  const songs = useSelector((state) => Object.values(state.songs));
+  const [isLoaded, setIsLoaded] = useState(false);
 
-    useEffect(() => {
-        if(isLoaded) dispatch(getAllSongs())
-    }, [dispatch, isLoaded])
+  useEffect(() => {
+    if (songs) {
+      dispatch(getAllSongs()).then((req) => setIsLoaded(true));
+    }
+  }, [dispatch]);
 
-    return (
+  return (
+    isLoaded && (
+      <>
         <h1>My Home </h1>
+        {songs.map((song, idx) => (
+            <li key={idx}>{song.title}</li>
+        ))}
+      </>
     )
-}
+  );
+};
 
-export default Home
+export default Home;

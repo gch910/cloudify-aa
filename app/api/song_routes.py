@@ -7,6 +7,6 @@ song_routes = Blueprint('songs', __name__)
 @song_routes.route("/")
 def songs():
     songs = Song.query.all()
-    songs_json = jsonify(songs)
-    print(songs_json)
-    return songs_json
+    songsDict = {"songs": [song.to_dict() for song in songs]}
+    print(songsDict)
+    return songsDict
