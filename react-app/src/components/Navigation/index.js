@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { restoreUser } from "../../store/session";
+import sessionReducer, { restoreUser } from "../../store/session";
 import LogoutButton from "../auth/LogoutButton";
-import "./Navigation.css"
+import "./Navigation.css";
 
-const Navigation = ({setAuthenticated}) => {
+const Navigation = ({ setAuthenticated }) => {
   const sessionUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
 
-  useEffect(() => {
-    dispatch(restoreUser()).then((req) => setIsLoaded(true));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(restoreUser()).then((req) => setIsLoaded(true));
+  // }, [dispatch]);
 
   let sessionLinks;
-
   if (sessionUser.user) {
     sessionLinks = (
       <>
@@ -70,9 +69,9 @@ const Navigation = ({setAuthenticated}) => {
     );
   }
   return (
-    <div id="nav-container">
-      <nav>{isLoaded && sessionLinks}</nav>
-    </div>
+    // <div id="nav-container">
+    <nav>{isLoaded && sessionLinks}</nav>
+    // </div>
   );
 };
 

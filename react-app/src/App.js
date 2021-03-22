@@ -9,8 +9,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
+import { authenticate } from "./services/auth";
 import { restoreUser } from "./store/session";
-
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const user = await dispatch(restoreUser())
+      const user = await dispatch(restoreUser());
       if (!user.errors) {
         setAuthenticated(true);
       }

@@ -11,7 +11,6 @@ const Home = () => {
 
   useEffect(() => {
     if (songs) {
-      // dispatch(restoreUser());
       dispatch(getAllSongs()).then((req) => setIsLoaded(true));
     }
   }, [dispatch]);
