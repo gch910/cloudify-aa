@@ -18,8 +18,6 @@ export const restoreUser = () => async (dispatch) => {
   return res;
 };
 
-<<<<<<< HEAD
-=======
 export const logoutUser = () => async (dispatch) => {
   const res = await logout();
   // if(!res.ok) throw res
@@ -27,7 +25,6 @@ export const logoutUser = () => async (dispatch) => {
   return res;
 };
 
->>>>>>> main
 const initialState = {
   user: null,
 };
