@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getAllSongs } from "../../store/songs";
+import { restoreUser } from "../../store/session";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     if (songs) {
+      dispatch(restoreUser());
       dispatch(getAllSongs()).then((req) => setIsLoaded(true));
     }
   }, [dispatch]);
@@ -19,7 +21,7 @@ const Home = () => {
       <>
         <h1>My Home </h1>
         {songs.map((song, idx) => (
-            <li key={idx}>{song.title}</li>
+          <li key={idx}>{song.title}</li>
         ))}
       </>
     )
