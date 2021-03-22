@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { restoreUser } from "../../store/session";
-import LogoutButton from "../auth/LogoutButton"
+import LogoutButton from "../auth/LogoutButton";
+import "./Navigation.css"
 
 const Navigation = ({setAuthenticated}) => {
   const sessionUser = useSelector((state) => state.user);
@@ -15,7 +16,7 @@ const Navigation = ({setAuthenticated}) => {
 
   let sessionLinks;
 
-  if (sessionUser) {
+  if (sessionUser.user) {
     sessionLinks = (
       <>
         <NavLink className="nav-link" id="home-link" exact to="/">
@@ -29,7 +30,7 @@ const Navigation = ({setAuthenticated}) => {
         >
           Music
         </NavLink>
-        <h1>SearchBar</h1>
+        <p>hello</p>
         <NavLink
           className="nav-link"
           id="upload-link"

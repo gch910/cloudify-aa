@@ -70,9 +70,9 @@ function App() {
         >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+        <Route path="/" exact={true}>
           <Home />
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

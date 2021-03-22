@@ -1,4 +1,5 @@
-import { authenticate } from "../services/auth";
+import { authenticate, logout } from "../services/auth";
+
 
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -13,17 +14,17 @@ const deleteSession = () => ({
 });
 
 export const restoreUser = () => async (dispatch) => {
-  const data = await authenticate();
-  dispatch(setUser(data));
-  return data;
+  const res = await authenticate();
+  dispatch(setUser(res));
+  return res;
 };
 
-// export const restoreUser = () => async (dispatch) => {
-//   const response = await csrfFetch("/api/session");
-//   const data = await response.json();
-//   dispatch(setUser(data.user));
-//   return response;
-// };
+export const logoutUser = () => async (dispatch) => {
+  const res = await logout();
+  // if(!res.ok) throw res
+  dispatch(deleteSession())
+  return res
+}
 
 const initialState = {
   user: null,
@@ -35,6 +36,10 @@ const sessionReducer = (state = initialState, action) => {
     case SET_USER:
       newState = Object.assign({}, state);
       newState.user = action.user;
+      return newState;
+    case REMOVE_USER:
+      newState = Object.assign({}, state)
+      newState.user = null;
       return newState;
     default:
       return state;
