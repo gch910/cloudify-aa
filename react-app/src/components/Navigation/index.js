@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import sessionReducer, { restoreUser } from "../../store/session";
 import LogoutButton from "../auth/LogoutButton";
+import LoginFormModal from "../LoginFormModal";
+import SignUpFormModal from "../SignUpFormModal";
 import "./Navigation.css";
 
 const Navigation = ({ setAuthenticated }) => {
@@ -63,8 +65,8 @@ const Navigation = ({ setAuthenticated }) => {
         >
           Upload
         </NavLink>
-        <h1>Sign In</h1>
-        <h1>Create Account</h1>
+        <LoginFormModal />
+        <SignUpFormModal />
       </>
     );
   }

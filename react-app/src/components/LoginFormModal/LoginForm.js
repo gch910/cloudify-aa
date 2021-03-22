@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import { restoreUser } from "../../store/session";
+import "./LoginForm.css";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     e.preventDefault();
     const user = await login(email, password);
     if (!user.errors) {
-      setAuthenticated(true);
+      // setAuthenticated(true);
       await dispatch(restoreUser());
     } else {
       setErrors(user.errors);

@@ -1,0 +1,74 @@
+.signup-page {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". h1 h1 ."
+    ". username username ."
+    ". email email ."
+    ". password password ."
+    ". confirm confirm ."
+    ". button button ."; 
+    background-color: #DDEBE3;
+}
+
+.no-outline:focus {
+    outline: none;
+  }
+
+#signup-form-h1 {
+    grid-area: h1;
+    display: flex;
+    justify-content: center;
+
+}
+
+#signup-form-email {
+    grid-area: email;
+    height: 50px;
+    border-radius: 1.5em;
+    border: none;
+    background-repeat: no-repeat;
+
+}
+#signup-form-username {
+    grid-area: username;
+    height: 50px;
+    border-radius: 1.5em;
+    border: none;
+    background-repeat: no-repeat;
+
+}
+
+#signup-form-password {
+    grid-area: password;
+    height: 50px;
+    border-radius: 1.5em;
+    border: none;
+    background-repeat: no-repeat;
+}
+    
+#signup-form-confirm-password {
+    grid-area: confirm;
+    height: 50px;
+    border-radius: 1.5em;
+    border: none;
+    background-repeat: no-repeat;
+    
+}
+
+
+#signup-submit-button {
+    width: 200px;
+    height: 60px;
+    border-radius: 1.5em;
+    border: none;
+    margin-right: 20px;
+} 
+
+.form-button-div {
+    grid-area: button;
+    display: flex;
+    justify-content: center;
+    
+}
