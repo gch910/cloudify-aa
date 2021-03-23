@@ -3,14 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import SignUpForm from "./components/SignUpFormModal/SignUpForm";
-import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Home from "./components/Home";
 import PlayBar from "./components/PlayBar";
 import Navigation from "./components/Navigation";
-import LoginFormModal from "./components/LoginFormModal";
 import { restoreUser } from "./store/session";
 
 function App() {

@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import sessionReducer, { restoreUser } from "../../store/session";
 import LogoutButton from "../auth/LogoutButton";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
@@ -10,21 +9,15 @@ import "./Navigation.css";
 
 const Navigation = ({ setAuthenticated, navId }) => {
   const sessionUser = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+
   const [isLoaded, setIsLoaded] = useState(true);
-  
-  // const loginRedirect = () => {
-  //   if(!sessionUser.user) ref.click();
-  // }
-  // useEffect(() => {
-  //   dispatch(restoreUser()).then((req) => setIsLoaded(true));
-  // }, [dispatch]);
 
   let sessionLinks;
   if (sessionUser.user) {
     sessionLinks = (
       <>
-         <img
+        <img
+          alt="logo"
           id="nav-logo"
           src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
         ></img>
@@ -51,7 +44,12 @@ const Navigation = ({ setAuthenticated, navId }) => {
             Library
           </NavLink>
         </div>
-        <input id="search-bar" className="no-outline" type="text" placeholder="Search..." />
+        <input
+          id="search-bar"
+          className="no-outline"
+          type="text"
+          placeholder="Search..."
+        />
         <NavLink
           className="nav-link"
           id="upload-link"
@@ -68,6 +66,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
     sessionLinks = (
       <>
         <img
+          alt="logo"
           id="nav-logo"
           src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
         ></img>
@@ -94,7 +93,12 @@ const Navigation = ({ setAuthenticated, navId }) => {
             Library
           </NavLink>
         </div>
-        <input id="search-bar"  className="no-outline"  type="text" placeholder="Search..." />
+        <input
+          id="search-bar"
+          className="no-outline"
+          type="text"
+          placeholder="Search..."
+        />
         <LoginFormModal />
         <SignUpFormModal />
         <NavLink
@@ -109,7 +113,9 @@ const Navigation = ({ setAuthenticated, navId }) => {
   }
   return (
     // <div id="nav-container">
-    <nav id={navId} className="nav-bar">{isLoaded && sessionLinks}</nav>
+    <nav id={navId} className="nav-bar">
+      {isLoaded && sessionLinks}
+    </nav>
     // </div>
   );
 };
