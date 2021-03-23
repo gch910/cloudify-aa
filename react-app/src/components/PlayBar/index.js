@@ -10,28 +10,22 @@ const PlayBar = () => {
   const play = () => {
     audio.play();
     isPlaying(true)
-    console.log(playing)
   }
 
   const pause = () => {
     audio.pause();
     isPlaying(false)
-    console.log(playing)
   }
-
-  console.log(playing)
 
   return (
     <div className='PlayBar'>
       <audio
         className='song'
-        // controls
         src="songs/test_song.mp3"
         type="audio/mpeg"
       />
-      <div>Audio Controls
-        <button onClick={isPlaying ? pause : play}>{isPlaying ? 'Pause' : 'Play'}</button>
-        {/* <button onClick={pause}>Pause</button> */}
+      <div>
+        <button onClick={playing ? pause : play}>{playing ? 'Pause' : 'Play'}</button>
       </div>
       <div>Progress Bar</div>
       <div>Artist Info</div>
