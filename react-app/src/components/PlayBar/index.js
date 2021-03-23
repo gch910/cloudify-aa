@@ -24,10 +24,12 @@ const PlayBar = () => {
         src="songs/test_song.mp3"
         type="audio/mpeg"
       />
-      <div>
+      <div className='AudioControls'>
         <button onClick={playing ? pause : play}>{playing ? 'Pause' : 'Play'}</button>
       </div>
-      <div>Progress Bar</div>
+      <div className='ProgressBar'>
+        <input type='range' />
+      </div>
       <div>Artist Info</div>
 
     </div>
