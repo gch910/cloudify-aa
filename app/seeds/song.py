@@ -7,7 +7,7 @@ def seed_songs():
   demo1 = Song(
     title='Your Eyez Only',
     release_date = date(2016, 12, 9),
-    song_path = "songs/test_song.mp3",
+    song_path = "https://cloudify.s3.amazonaws.com/c16a1bd8d0134eeb86210771fd6cd7e0.mp3",
     image_path = 'https://edm.com/.image/t_share/MTU5NDY5Nzk2NTUzOTI1OTA1/soundcloud.png',
     user_id = 1,
     genre_id = 1,

@@ -11,7 +11,6 @@ import Home from "./components/Home";
 import PlayBar from "./components/PlayBar";
 import Navigation from "./components/Navigation";
 import LoginFormModal from "./components/LoginFormModal";
-import { authenticate } from "./services/auth";
 import { restoreUser } from "./store/session";
 
 function App() {
