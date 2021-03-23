@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import sessionReducer, { restoreUser } from "../../store/session";
@@ -12,7 +12,10 @@ const Navigation = ({ setAuthenticated, navId }) => {
   const sessionUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(true);
-
+  
+  // const loginRedirect = () => {
+  //   if(!sessionUser.user) ref.click();
+  // }
   // useEffect(() => {
   //   dispatch(restoreUser()).then((req) => setIsLoaded(true));
   // }, [dispatch]);

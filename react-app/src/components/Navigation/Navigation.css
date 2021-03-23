@@ -26,7 +26,7 @@
   width: 69px;
   height:46px;
   margin-left: 60px;
-  z-index: 2;
+  background-color: white;
 }
 
 #search-bar{
@@ -35,7 +35,7 @@
   border-radius: 0.4em;
   border-style: none;
   background-color: #e5e5e5;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .nav-link:hover {

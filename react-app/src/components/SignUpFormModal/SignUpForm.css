@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@200&display=swap');
 
-.login-page {
+.signup-page {
     /* display: grid;
     grid-template-columns: 3fr 1fr 1fr 3fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -22,15 +22,25 @@
     outline: none;
   }
 
-#login-form-h1 {
+#signup-form-h1 {
     display: flex;
     justify-content: center;
     font-family: "Overpass", sans-serif;
     margin: 30px;
 }
 
+#signup-form-username {
+    height: 30px;
+    border-radius: 0.2em;
+    border: 1px solid black;
+    background-repeat: no-repeat;
+    background-color: white;
+    width: 300px;
+    margin-bottom: 30px;
+}
 
-#login-form-email {
+
+#signup-form-email {
     height: 30px;
     border-radius: 0.2em;
     border: 1px solid black;
@@ -43,7 +53,15 @@
 
 
 
-#login-form-password {
+#signup-form-password {
+    height: 30px;
+    border-radius: 0.2em;
+    border: 1px solid black;
+    background-repeat: no-repeat;
+    width: 300px;
+    margin-bottom: 30px;
+}
+#signup-form-confirm-password {
     height: 30px;
     border-radius: 0.2em;
     border: 1px solid black;
@@ -55,11 +73,10 @@
 
 
 
-#login-submit-button {
+#signup-submit-button {
     width: 300px;
     height: 30px;
     border-radius: 0.2em;
     border: none;
     background-color: #FF5D00;
 } 
-
