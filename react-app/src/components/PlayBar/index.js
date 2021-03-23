@@ -11,17 +11,15 @@ const PlayBar = () => {
     audio.play();
     isPlaying(true)
     console.log(playing)
-    status = 'Pause'
   }
 
-  // const pause = () => {
-  //   audio.pause();
-  //   isPlaying(false)
-  //   console.log(playing)
-  // }
+  const pause = () => {
+    audio.pause();
+    isPlaying(false)
+    console.log(playing)
+  }
 
   console.log(playing)
-  console.log(status)
 
   return (
     <div className='PlayBar'>
