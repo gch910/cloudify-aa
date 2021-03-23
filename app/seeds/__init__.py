@@ -14,7 +14,7 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
-    # Add other seed functions here
+    # # Add other seed functions here
     seed_genres()
     seed_songs()
     seed_likes()

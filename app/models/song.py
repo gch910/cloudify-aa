@@ -26,3 +26,4 @@ class Song(db.Model):
       "user_id": self.user_id,
       "genre_id": self.genre_id
     }
+
