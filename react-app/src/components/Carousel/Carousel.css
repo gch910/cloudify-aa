@@ -29,7 +29,7 @@
 .BrainhubCarousel__arrows {
   position: relative;
   padding: 15px;
-  border: 1px solid white;
+  border: 1px solid rgb(230, 230, 230);
   overflow: hidden;
   outline: 0;
   font-size: 0;
@@ -52,7 +52,6 @@
 }
 .BrainhubCarousel__arrows:hover:enabled span {
   border-color: orange;
-  margin: 0;
 }
 .BrainhubCarousel__arrows:disabled {
   background-color: #ccc;
