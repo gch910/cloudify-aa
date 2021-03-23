@@ -35,7 +35,7 @@ function App() {
 
   let navId;
 
-  if (sessionUser) {
+  if (sessionUser.user) {
     navId = "logged-in-nav";
   } else {
     navId = "logged-out-nav";
@@ -43,7 +43,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navigation setAuthenticated={setAuthenticated} />
+      <Navigation setAuthenticated={setAuthenticated} navId={navId}/>
       <Switch>
         {/* <Route path="/login" exact={true}>
           <LoginForm
