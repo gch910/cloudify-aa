@@ -1,0 +1,16 @@
+.PlayBar {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  background-color: #F0F0F0;
+  font-size: 12px;
+  justify-content: space-evenly;
+  border: 1px solid #797979;
+  border-bottom: none;
+  width: 100vw;
+  left: 0;
+}
+
+.song {
+  width: 100%;
+}
