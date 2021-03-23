@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
+import LoginForm from "./components/LoginFormModal/LoginForm";
+import SignUpForm from "./components/SignUpFormModal/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
+import LoginFormModal from "./components/LoginFormModal";
 import { authenticate } from "./services/auth";
 import { restoreUser } from "./store/session";
 
@@ -34,7 +35,7 @@ function App() {
 
   let navId;
 
-  if (sessionUser) {
+  if (sessionUser.user) {
     navId = "logged-in-nav";
   } else {
     navId = "logged-out-nav";
@@ -42,14 +43,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navigation setAuthenticated={setAuthenticated} />
+      <Navigation setAuthenticated={setAuthenticated} navId={navId}/>
       <Switch>
-        <Route path="/login" exact={true}>
+        {/* <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
-        </Route>
+        </Route> */}
         <Route path="/sign-up" exact={true}>
           <SignUpForm
             authenticated={authenticated}
