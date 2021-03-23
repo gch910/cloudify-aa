@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import './PlayBar.css'
+import React, { useState } from "react";
+import "./PlayBar.css";
 
 const PlayBar = () => {
-
-  const [audio] = useState(new Audio("songs/test_song.mp3"))
-  const [playing, isPlaying] = useState(false)
-
+  const [audio] = useState(new Audio("songs/test_song.mp3"));
+  const [playing, isPlaying] = useState(false);
 
   const play = () => {
     audio.play();
@@ -31,9 +29,8 @@ const PlayBar = () => {
         <input type='range' />
       </div>
       <div>Artist Info</div>
-
     </div>
-  )
-}
+  );
+};
 
-export default PlayBar
+export default PlayBar;

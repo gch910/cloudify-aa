@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getAllSongs } from "../../store/songs";
-import { restoreUser } from "../../store/session";
 import CarouselSongs from "../Carousel";
 
 const Home = () => {
