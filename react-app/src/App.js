@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import PlayBar from "./components/PlayBar";
 import Navigation from "./components/Navigation";
 import LoginFormModal from "./components/LoginFormModal";
+import LoginForm from "./components/LoginFormModal/LoginForm"
 import { authenticate } from "./services/auth";
 import { restoreUser } from "./store/session";
 
@@ -53,8 +54,8 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route> */}
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm
+        <Route path="/login" exact={true}>
+          <LoginForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />

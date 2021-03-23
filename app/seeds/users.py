@@ -15,6 +15,8 @@ def seed_users():
 
     demo4 = User(username='Demo4', email='demo4@aa.io',
                 password='password')
+    
+    gabeArtists = ["Alabama Shakes", "Radiohead", "Gary Clark Jr.","Miles Davis", "Thelonious Monk", "John Scofield", ]
 
     db.session.add(demo1)
     db.session.add(demo2)
