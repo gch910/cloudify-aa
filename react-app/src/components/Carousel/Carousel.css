@@ -146,6 +146,8 @@
   }
 }
 
-img {
-  width: 100%;
+.carousel-div {
+  max-width: 850px;
+  max-height: 185px;
+  display: flex;
 }

@@ -12,9 +12,9 @@ const CarouselSongs = () => {
   ];
 
   return (
-    <div style={{ maxWidth: "850px", maxHeight: "185px" }}>
+    <div className="carousel-div">
       <Carousel
-        style={{ height: "100%" }}
+        style={{ height: "100%", width: "100%" }}
         offset="20"
         plugins={[
           "arrows",

@@ -1,9 +1,10 @@
 import React from "react";
+import "./index.css";
 
 const Track = ({ source, hyperlink }) => {
   return (
     <a href={hyperlink}>
-      <img src={source} />
+      <img alt="Album cover" src={source} />
     </a>
   );
 };
