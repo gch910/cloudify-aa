@@ -1,0 +1,37 @@
+jevonart = ['Daft Punk', 'Rustie', 'Deadmaus', 'SZA', 'Jhene Aiko', 'Blxst']
+
+# Genre 3 RB 6 Elect
+
+for x in jevonart:
+  username = x
+email = f'{x}@cloudify.com'
+password = 'password'
+db.session.add()
+
+
+song = Song(
+  title = '',
+  release_date = date(2013, 5, 17),
+  song_path = "https://www.youtube.com/watch?v=zhl-Cs1-sG4",
+  image_path = 'http://is5.mzstatic.com/image/thumb/Music124/v4/36/e1/59/36e15965-3282-e2e3-b865-b34745d5c2c3/source/100000x100000-999.jpg',
+  user_id = 7,
+  genre_id = 6,
+)
+
+song1 = Song(
+  title = 'Giorgio by Moroder',
+  release_date = date(2013, 5, 17),
+  song_path = "https://www.youtube.com/watch?v=zhl-Cs1-sG4",
+  image_path = 'http://is5.mzstatic.com/image/thumb/Music124/v4/36/e1/59/36e15965-3282-e2e3-b865-b34745d5c2c3/source/100000x100000-999.jpg',
+  user_id = 7,
+  genre_id = 6,
+)
+song2 = Song(
+  title = '',
+  release_date = date(),
+  song_path = "",
+  image_path = 'https://is4-ssl.mzstatic.com/image/thumb/Music124/v4/19/8b/31/198b31f0-fd0e-b921-6e1e-6338c1f24fbf/source/600x600bb.jpg',
+  user_id = ,
+  genre_id = ,
+)
+
