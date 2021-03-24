@@ -18,6 +18,7 @@ def song_upload():
         return {'errors': 'song required'}, 400
     
     song = request.files['song']
+    image = request.files['image']
     
     if not allowed_file(song.filename):
         return {'errors': 'file type not permitted'}, 400
