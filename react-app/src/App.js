@@ -9,6 +9,7 @@ import User from "./components/User";
 import Home from "./components/Home";
 import PlayBar from "./components/PlayBar";
 import Navigation from "./components/Navigation";
+import ProfilePage from "./components/ProfilePage"
 import { restoreUser } from "./store/session";
 
 function App() {
@@ -73,6 +74,13 @@ function App() {
         <Route path="/" exact={true}>
           <Home />
         </Route>
+        <ProtectedRoute
+          path={'/profile/:userId'}
+          exact={true}
+          authenticated={authenticated}
+        >
+          <ProfilePage />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
