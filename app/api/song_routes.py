@@ -9,20 +9,21 @@ song_routes = Blueprint('songs', __name__)
 def songs():
     songs = Song.query.all()
     songsDict = {"songs": [song.to_dict() for song in songs]}
-    print(songsDict)
     return songsDict
 
 @song_routes.route('/upload', methods=['POST'])
 def song_upload():
-    print(request.get_json()
+    print(request.files['song'])
+    # print(request.files['image'])
+    # defaultImage = False
     # if 'song' not in request.files:
     #     return {'errors': 'song required'}, 400
     # if 'image' not in request.files:
-    #     return {'errors': 'image required'}, 400
+    #     defaultImage= = True
+    # print(defaultImage)
     
     # song = request.files['song']
     # image = request.files['image']
-    # defaultImage = False
     # if image == '':
     #     defaultImage=True
     

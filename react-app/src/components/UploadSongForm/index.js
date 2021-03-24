@@ -12,7 +12,7 @@ const UploadSongForm = () => {
   const [image, setImage] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState("2021-03-24");
 
   useEffect(() => {
     fetch("/api/songs/genres")
@@ -22,24 +22,26 @@ const UploadSongForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("release_date", date);
-    formData.append("user_id", user.id);
-    formData.append("genre_id", genre);
-    formData.append("song", song);
-    formData.append("image", image);
-    console.log(formData);
+    const song_path = new FormData();
+    song_path.append("song", song);
+    song_path.append("image", image);
+
+    // const newSong = {
+    //   title,
+    //   release_date: date,
+    //   user_id: user.id,
+    //   genre_id: genre,
+    // };
 
     /* aws uploads can be a bit slow—displaying
     some sort of loading message is a good idea*/
     // setSongLoading(true);
     // setImageLoading(true);
 
-    // const res = await fetch("/api/songs/upload", {
-    //   method: "POST",
-    //   body: formData,
-    // });
+    const res = await fetch("/api/songs/upload", {
+      method: "POST",
+      body: song_path,
+    });
     // if (res.ok) {
     //   await res.json();
     //   setSongLoading(false);
