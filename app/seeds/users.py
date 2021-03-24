@@ -3,6 +3,7 @@ from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+    joshUsers = ['JID', 'J. Cole', 'Logic', 'Ariana Grande', 'Dua Lipa', 'The Weeknd']
 
     demo1 = User(username='Demo', email='demo@aa.io',
                 password='password')
