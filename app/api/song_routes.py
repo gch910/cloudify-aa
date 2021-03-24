@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Song
+from app.models import Song, Genre
 from app.aws import upload_file_to_s3, allowed_file, get_unique_filename
 
 song_routes = Blueprint('songs', __name__)
@@ -35,3 +35,9 @@ def song_upload():
     url = upload['url']
     print(url)
     return
+
+@song_routes.route('/genres')
+def song_genre():
+    genres = Genre.query.all()
+    genresDict = {"genres": [genre.to_dict() for genre in genres]}
+    return genresDict
