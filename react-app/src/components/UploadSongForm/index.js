@@ -1,52 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 const UploadSongForm = () => {
   const history = useHistory();
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [selectgenres, setSelectGenres] = useState([]);
+  const [genre, setGenre] = useState("");
   const [song, setSong] = useState(null);
   const [songLoading, setSongLoading] = useState(false);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState(Date());
-  // const [image, setImage] = useState(null);
-  // const [imageLoading, setImageLoading] = useState(false);
-  const genres = async () => {
-    const res = await fetch("/api/songs/genres");
-    const data = res.json();
-    if (!data.ok) throw data;
-    return data;
-  };
+  const [date, setDate] = useState(null);
 
   useEffect(() => {
-    genres().then(setIsLoaded(true));
-  });
+    fetch("/api/songs/genres")
+      .then((response) => response.json())
+      .then((data) => setSelectGenres(data.genres));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("song", song);
+    formData.append("image", image);
 
-    // // aws uploads can be a bit slow—displaying
-    // // some sort of loading message is a good idea
-    // setSongLoading(true);
+    /* aws uploads can be a bit slow—displaying
+    some sort of loading message is a good idea*/
+    setSongLoading(true);
+    setImageLoading(true);
 
-    // const res = await fetch("/api/songs/upload", {
-    //   method: "POST",
-    //   body: formData,
-    // });
-    // if (res.ok) {
-    //   await res.json();
-    //   setSongLoading(false);
-    //   history.push("/");
-    // } else {
-    //   setSongLoading(false);
-    //   // a real app would probably use more advanced
-    //   // error handling
-    //   console.log("error");
-    // }
+    const res = await fetch("/api/songs/upload", {
+      method: "POST",
+      body: formData,
+    });
+    if (res.ok) {
+      await res.json();
+      setSongLoading(false);
+      setImageLoading(false);
+      history.push("/");
+    } else {
+      setSongLoading(false);
+      setImageLoading(false);
+      /* a real app would probably use more advanced
+       error handling*/
+    }
   };
 
   const updateSong = (e) => {
@@ -58,7 +55,7 @@ const UploadSongForm = () => {
     setImage(file);
   };
   return (
-    isLoaded && (
+    selectgenres.length && (
       <form onSubmit={handleSubmit}>
         <div>
           <label>Song Title</label>
@@ -66,6 +63,7 @@ const UploadSongForm = () => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -73,21 +71,37 @@ const UploadSongForm = () => {
           <input
             type="date"
             value={date}
-            onChange={(e) => setDate(e.target.value)}
+            onChange={(e) => {
+              setDate(e.target.value);
+            }}
+            required
           />
         </div>
         <div>
-          <select></select>
+          <label>Select a genre</label>
+          <select
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
+            required
+          >
+            {selectgenres.map((el, idx) => {
+              return (
+                <option key={idx} value={el.id}>
+                  {el.name}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div>
           <label>Upload a song file</label>
-          <input type="file" accept="audio/*" onChange={updateSong} />
+          <input type="file" accept="audio/*" onChange={updateSong} required />
           {songLoading && <p>Loading...</p>}
         </div>
         <div>
           <label>Upload an album image</label>
           <input type="file" accept="image/*" onChange={updateImage} />
-          {songLoading && <p>Loading...</p>}
+          {imageLoading && <p>Loading...</p>}
         </div>
         <button type="submit">Submit</button>
       </form>
