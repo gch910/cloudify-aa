@@ -1,4 +1,5 @@
-import { authenticate, logout } from "../services/auth";
+import { authenticate, logout, login } from "../services/auth";
+import { setAuthErrors } from "./errors";
 
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -11,6 +12,15 @@ const setUser = (user) => ({
 const deleteSession = () => ({
   type: REMOVE_USER,
 });
+
+export const loginUser = (email, password) => async (dispatch) => {
+  const res = await login(email, password);
+  if (res.errors) {
+    dispatch(setAuthErrors(res.errors));
+  } else {
+    dispatch(setUser(res));
+  }
+};
 
 export const restoreUser = () => async (dispatch) => {
   const res = await authenticate();

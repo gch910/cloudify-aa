@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Song, Genre
-from app.aws import upload_file_to_s3, allowed_file, get_unique_filename
+from app.aws import upload_file_to_s3, allowed_audio_file, get_unique_filename
 
 song_routes = Blueprint('songs', __name__)
 
@@ -14,28 +14,38 @@ def songs():
 
 @song_routes.route('/upload', methods=['POST'])
 def song_upload():
-    if 'song' not in request.files:
-        return {'errors': 'song required'}, 400
+    print(request.get_json()
+    # if 'song' not in request.files:
+    #     return {'errors': 'song required'}, 400
+    # if 'image' not in request.files:
+    #     return {'errors': 'image required'}, 400
     
-    song = request.files['song']
-    image = request.files['image']
+    # song = request.files['song']
+    # image = request.files['image']
+    # defaultImage = False
+    # if image == '':
+    #     defaultImage=True
     
-    if not allowed_file(song.filename):
-        return {'errors': 'file type not permitted'}, 400
+    
+    # if not allowed_audio_file(song.filename):
+    #     return {'errors': 'file type not permitted'}, 400
 
-    song.filename = get_unique_filename(song.filename)
+    # song.filename = get_unique_filename(song.filename)
 
-    upload = upload_file_to_s3(song)
+    # song_upload = upload_file_to_s3(song)
 
-    if "url" not in upload:
-        ##if the dictionary doesn't have a url key
-        ##it means that there was an error when we tried to upload
-        ##so we send back that error message
-        return upload, 400
+    # if "url" not in song_upload:
+    #     ##if the dictionary doesn't have a url key
+    #     ##it means that there was an error when we tried to song_upload
+    #     ##so we send back that error message
+    #     return song_upload, 400
 
-    url = upload['url']
-    print(url)
-    return
+    # song_url = song_upload['url']
+    # print(song_url)
+    # newSong = Song(
+    #     title = 
+    # )
+    return {'ok':'hello'}, 200
 
 @song_routes.route('/genres')
 def song_genre():

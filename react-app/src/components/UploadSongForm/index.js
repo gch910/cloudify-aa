@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const UploadSongForm = () => {
   const history = useHistory();
+  const user = useSelector((state) => state.user.user);
   const [selectgenres, setSelectGenres] = useState([]);
   const [genre, setGenre] = useState("");
   const [song, setSong] = useState(null);
@@ -21,29 +23,34 @@ const UploadSongForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("title", title);
+    formData.append("release_date", date);
+    formData.append("user_id", user.id);
+    formData.append("genre_id", genre);
     formData.append("song", song);
     formData.append("image", image);
+    console.log(formData);
 
     /* aws uploads can be a bit slow—displaying
     some sort of loading message is a good idea*/
-    setSongLoading(true);
-    setImageLoading(true);
+    // setSongLoading(true);
+    // setImageLoading(true);
 
-    const res = await fetch("/api/songs/upload", {
-      method: "POST",
-      body: formData,
-    });
-    if (res.ok) {
-      await res.json();
-      setSongLoading(false);
-      setImageLoading(false);
-      history.push("/");
-    } else {
-      setSongLoading(false);
-      setImageLoading(false);
-      /* a real app would probably use more advanced
+    // const res = await fetch("/api/songs/upload", {
+    //   method: "POST",
+    //   body: formData,
+    // });
+    // if (res.ok) {
+    //   await res.json();
+    //   setSongLoading(false);
+    //   setImageLoading(false);
+    //   history.push("/");
+    // } else {
+    //   setSongLoading(false);
+    //   setImageLoading(false);
+    /* a real app would probably use more advanced
        error handling*/
-    }
+    // }
   };
 
   const updateSong = (e) => {

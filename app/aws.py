@@ -15,7 +15,11 @@ s3 = boto3.client(
 )
 
 
-def allowed_file(filename):
+def allowed_audio_file(filename):
+    return "." in filename and \
+           filename.rsplit(".", 1)[1].lower() in ALLOWED_AUDIO_EXTENSIONS
+
+def allowed_image_file(filename):
     return "." in filename and \
            filename.rsplit(".", 1)[1].lower() in ALLOWED_AUDIO_EXTENSIONS
 
