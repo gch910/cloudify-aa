@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { loginUser } from "../../store/session";
+import { useDispatch } from "react-redux";
+import { Redirect, useHistory } from "react-router-dom";
+import SignUpFormModal from "../SignUpFormModal";
 import "./LoginForm.css";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -9,6 +9,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const errors = useSelector((state) => state.errors.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <>
+    <div id="login-div">
       <form className="login-page" onSubmit={onLogin}>
         <div>
           {errors.map((error) => (
@@ -61,8 +63,14 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         <button id="login-submit-button" type="submit">
           Login
         </button>
+<<<<<<< HEAD
+=======
+        <div id="signup-modal-div">
+          <SignUpFormModal />
+        </div>
+>>>>>>> main
       </form>
-    </>
+    </div>
   );
 };
 
