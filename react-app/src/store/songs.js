@@ -1,5 +1,6 @@
 const ALL_SONGS = "/songs/allSongs" 
 const USER_SONGS = "/songs/userSongs";
+const SONG = "/songs/song";
 
 
 
@@ -15,6 +16,12 @@ const userSongs = (songs) => {
         songs: songs,
     }
 }
+const song = (song) => {
+    return {
+        type: SONG,
+        song: song,
+    }
+}
 
 export const getAllSongs = () => async (dispatch) => {
     const res = await fetch("/api/songs")
@@ -28,12 +35,21 @@ export const getAllSongs = () => async (dispatch) => {
     return data
 }
 export const getUserSongs = (userId) => async (dispatch) => {
-    console.log("inside get user thunk")
     const res = await fetch(`/api/users/songs/${userId}`)
     
     const data = await res.json();
     console.log("data from thunk", data)
     dispatch(userSongs(data.songs))
+
+    return data
+}
+export const getSong = (songId) => async (dispatch) => {
+    console.log("inside get user thunk")
+    const res = await fetch(`/api/songs/${songId}`)
+    console.log(res)
+    const data = await res.json();
+    console.log("data from thunk", data)
+    dispatch(song(data.song))
 
     return data
 }
@@ -58,6 +74,13 @@ const songsReducer = (state=initialState, action) => {
       songs.forEach(song => newObj[song.id] = song)
       // newState.user_songs = {...action.songs}
       newState.user_songs = newObj;
+      return newState;
+    }
+    case SONG: {
+      newState = {...state}
+      // const userSongs = newState.user_songs = {}
+      const song = action.song
+      newState.currentSong = song;
       return newState;
     }
     default:
