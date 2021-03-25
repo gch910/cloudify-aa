@@ -22,28 +22,29 @@
     padding: 0px;
     display: grid;
     grid-template-rows: 380px;
-    grid-template-columns: 400px 450px 1fr;
+    grid-template-columns: 70px 400px 370px 400px;
     grid-template-areas:
-    "title genre image"
+    "play title genre image"
 
 }
 
 #song-image-div {
     grid-area: image;
-    justify-self: center;
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 300px;
-    height: 80%;
+    height: 100%;
     margin-left: 25px;
     margin-right: 30px;
 }
 
 #song-image {
-    /* margin-left: 30px; */
+    /* margin-right: 50px; */
 }
 
 #song-headers {
-    margin-left: 60px;
+    padding: 0px;
 }
 
 #song-title {
@@ -89,6 +90,18 @@
     width: max-content;
     height: max-content;
     margin-top: 70px
+}
+
+#play-icon-div {
+    grid-area: play;
+}
+
+#play-icon {
+    background-color: #a2b8af;
+    width: 60px;
+    height: 60px;
+    margin-left: 30px;
+    margin-top: 30px;
 }
 
 .no-outline:focus {
