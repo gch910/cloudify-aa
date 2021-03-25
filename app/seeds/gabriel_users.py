@@ -1,1 +1,0 @@
-gabeArtists = ["Alabama Shakes", "Radiohead", "Gary Clark Jr.","Miles Davis", "Thelonious Monk", "John Scofield", ]
