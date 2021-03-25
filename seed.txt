@@ -11,24 +11,24 @@ db.session.add()
 song1 = Song(
   title = 'Giorgio by Moroder',
   release_date = date(2013, 5, 17),
-  song_path = "https://www.youtube.com/watch?v=zhl-Cs1-sG4",
-  image_path = 'http://is5.mzstatic.com/image/thumb/Music124/v4/36/e1/59/36e15965-3282-e2e3-b865-b34745d5c2c3/source/100000x100000-999.jpg',
+  song_path = "https://cloudify.s3.amazonaws.com/2fdafe094f7141458cba93cbf1654597.mp3",
+  image_path = 'https://cloudify.s3.amazonaws.com/a46c9ba24824419fab120653abfdc2ef.jpg',
   user_id = 7,
   genre_id = 6,
 )
 song2 = Song(
   title = "Doin' It Right",
   release_date = date(2013, 5, 17),
-  song_path = "https://www.youtube.com/watch?v=LL-gyhZVvx0",
-  image_path = 'http://is5.mzstatic.com/image/thumb/Music124/v4/36/e1/59/36e15965-3282-e2e3-b865-b34745d5c2c3/source/100000x100000-999.jpg',
+  song_path = "https://cloudify.s3.amazonaws.com/2ef37c13d6fc439eb2beb243fb7fa4cf.mp3",
+  image_path = 'https://cloudify.s3.amazonaws.com/a46c9ba24824419fab120653abfdc2ef.jpg',
   user_id = 7,
   genre_id = 6,
 )
 song3 = Song(
   title = 'Beyond',
   release_date = date(2013, 5, 17),
-  song_path = "https://www.youtube.com/watch?v=3T0NqvdUiWI",
-  image_path = 'http://is5.mzstatic.com/image/thumb/Music124/v4/36/e1/59/36e15965-3282-e2e3-b865-b34745d5c2c3/source/100000x100000-999.jpg',
+  song_path = "https://cloudify.s3.amazonaws.com/197c1b4b1aba4431aa03b3f3d77057b3.mp3",
+  image_path = 'https://cloudify.s3.amazonaws.com/a46c9ba24824419fab120653abfdc2ef.jpg',
   user_id = 7,
   genre_id = 6,
 )
@@ -36,48 +36,48 @@ song3 = Song(
 song4 = Song(
   title = 'Surph',
   release_date = date(2011, 10, 10),
-  song_path = "https://www.youtube.com/watch?v=NUEU8nMy5mA",
-  image_path = 'http://is5.mzstatic.com/image/thumb/Music/v4/9f/46/4a/9f464a1c-69e5-6603-c776-f026bcf66228/source/100000x100000-999.jpg',
+  song_path = "https://cloudify.s3.amazonaws.com/b4052293b1674da68137ac5887c5cfc7.mp3",
+  image_path = 'https://cloudify.s3.amazonaws.com/ab816606cf4b4ca399337913057468c0.jpg',
   user_id = 8,
   genre_id = 6
 )
 song5 = Song(
   title = 'Ultra Thizz',
   release_date = date(2011, 10, 10),
-  song_path = "https://www.youtube.com/watch?v=s4AqCrR_nAU",
-  image_path = 'http://is5.mzstatic.com/image/thumb/Music/v4/9f/46/4a/9f464a1c-69e5-6603-c776-f026bcf66228/source/100000x100000-999.jpg',
+  song_path = "https://cloudify.s3.amazonaws.com/330431feed0c4abb9c32fbc25b870292.mp3",
+  image_path = 'https://cloudify.s3.amazonaws.com/ab816606cf4b4ca399337913057468c0.jpg',
   user_id = 8,
   genre_id = 6
 )
 song6 = Song(
   title = 'Globes',
   release_date = date(2011, 10, 10),
-  song_path = "https://www.youtube.com/watch?v=tUFuMJ0DB5g",
-  image_path = 'http://is5.mzstatic.com/image/thumb/Music/v4/9f/46/4a/9f464a1c-69e5-6603-c776-f026bcf66228/source/100000x100000-999.jpg',
+  song_path = "https://cloudify.s3.amazonaws.com/90e9784c0b6644fc98c9afb7f75db71a.mp3",
+  image_path = 'https://cloudify.s3.amazonaws.com/ab816606cf4b4ca399337913057468c0.jpg',
   user_id = 8,
   genre_id = 6
 )
 song7 = Song(
   title = 'Soma',
   release_date = date(2009, 9, 22),
-  song_path = "https://www.youtube.com/watch?v=r5K7fZsQMpY",
-  image_path = 'http://is5.mzstatic.com/image/thumb/Music124/v4/f9/8a/90/f98a90b6-6b82-5ce3-76b3-2be2782079be/source/100000x100000-999.jpg',
+  song_path = "https://cloudify.s3.amazonaws.com/ce42021fbbe84371831110e46249fa2d.mp3",
+  image_path = 'https://cloudify.s3.amazonaws.com/6b98c454f8814d639255f46f8a44c7f1.jpg',
   user_id = 9,
   genre_id = 6
 )
 song8 = Song(
   title = "Ghosts 'n' Stuff",
   release_date = date(2009, 9, 22),
-  song_path = "https://www.youtube.com/watch?v=pb-EwykPTv8",
-  image_path = 'http://is5.mzstatic.com/image/thumb/Music124/v4/f9/8a/90/f98a90b6-6b82-5ce3-76b3-2be2782079be/source/100000x100000-999.jpg',
+  song_path = "https://cloudify.s3.amazonaws.com/cfc3c5c599d44c72b01fb39818ed0f44.mp3",
+  image_path = 'https://cloudify.s3.amazonaws.com/6b98c454f8814d639255f46f8a44c7f1.jpg',
   user_id = 9,
   genre_id = 6
 )
 song9 = Song(
   title = 'Strobe',
   release_date = date(2009, 9, 22),
-  song_path = "https://www.youtube.com/watch?v=tKi9Z-f6qX4",
-  image_path = 'http://is5.mzstatic.com/image/thumb/Music124/v4/f9/8a/90/f98a90b6-6b82-5ce3-76b3-2be2782079be/source/100000x100000-999.jpg',
+  song_path = "https://cloudify.s3.amazonaws.com/a0ccc627f21141619bbb370dd3ae3e7a.mp3",
+  image_path = 'https://cloudify.s3.amazonaws.com/6b98c454f8814d639255f46f8a44c7f1.jpg',
   user_id = 9,
   genre_id = 6
 )
