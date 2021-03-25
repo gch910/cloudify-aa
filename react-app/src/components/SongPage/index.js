@@ -27,6 +27,7 @@ const SongPage = () => {
               <h1 id="song-title">{song.title}</h1>
               <h3 id="song-username">{sessionUser.user.username}</h3>
             </div>
+            <h3>{song.genre_name}</h3>
           </div>
         </div>
       </div>
