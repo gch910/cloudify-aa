@@ -221,6 +221,223 @@ jazz9 = Song(
     user_id=6,
     genre_id=5,
 )
+rnb1 = Song(
+    title='Pretty Little Birds',
+    release_date=date(2017, 6, 9),
+    song_path="https://cloudify.s3.amazonaws.com/710f1a8f61994a0eb6692a5c8c230491.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/48e56a1a681a4eeea2eb01834308cd5e.jpg',
+    user_id=10,
+    genre_id=3
+)
+rnb2 = Song(
+    title='Supermodel',
+    release_date=date(2017, 6, 9),
+    song_path="https://cloudify.s3.amazonaws.com/8c408abf10a241d2adffd158f04a2778.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/48e56a1a681a4eeea2eb01834308cd5e.jpg',
+    user_id=10,
+    genre_id=3
+)
+rnb3 = Song(
+    title='20 Something',
+    release_date=date(2017, 6, 9),
+    song_path="https://cloudify.s3.amazonaws.com/5ad0b2e561aa40a2a9289b8d256b8157.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/48e56a1a681a4eeea2eb01834308cd5e.jpg',
+    user_id=10,
+    genre_id=3
+)
+rnb4 = Song(
+    title='Wading',
+    release_date=date(2014, 9, 9),
+    song_path="https://cloudify.s3.amazonaws.com/fb91c781809749fdb3e6c81d8def0598.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/6e15691c3b8646ec9be9263594a523ef.jpg',
+    user_id=11,
+    genre_id=3
+)
+rnb5 = Song(
+    title="It's Cool",
+    release_date=date(2014, 9, 9),
+    song_path="https://cloudify.s3.amazonaws.com/6b5d20d627e34c6b9ad4c06dd96b3bce.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/6e15691c3b8646ec9be9263594a523ef.jpg',
+    user_id=11,
+    genre_id=3
+)
+rnb6 = Song(
+    title='Pretty Bird',
+    release_date=date(2014, 9, 9),
+    song_path="https://cloudify.s3.amazonaws.com/20f50988edeb4e8ab3ed0465410af2dc.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/6e15691c3b8646ec9be9263594a523ef.jpg',
+    user_id=11,
+    genre_id=3
+)
+rnb7 = Song(
+    title='Overrated',
+    release_date=date(2020, 9, 4),
+    song_path="https://cloudify.s3.amazonaws.com/9a2b721975a14061a62e8643148692b8.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/a41b5a7124d941f5832282b9806d366a.jpg',
+    user_id=12,
+    genre_id=3
+)
+rnb8 = Song(
+    title='No Love Lost',
+    release_date=date(2020, 9, 4),
+    song_path="https://cloudify.s3.amazonaws.com/b4920375b0c2424794c085cedbd1d769.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/a41b5a7124d941f5832282b9806d366a.jpg',
+    user_id=12,
+    genre_id=3
+)
+rnb9 = Song(
+    title='Be Alone',
+    release_date=date(2020, 9, 4),
+    song_path="https://cloudify.s3.amazonaws.com/7d8cca99b82b4ed295c912a8439791d4.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/a41b5a7124d941f5832282b9806d366a.jpg',
+    user_id=12,
+    genre_id=3
+)
+rap1 = Song(
+    title='Never',
+    release_date=date(2017, 3, 10),
+    song_path='https://cloudify.s3.amazonaws.com/0a93593e3d434ebc8eaaf081be48f3d7.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/6f25696902e74a36b3b28c0aee8e2b57.jpg',
+    user_id=13,
+    genre_id=1,
+)
+rap2 = Song(
+    title='Working Out',
+    release_date=date(2018, 10, 3),
+    song_path='https://cloudify.s3.amazonaws.com/a6f8bc5835bf4a95ad8a2d3a7f42aaf0.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/a54b5d3c7227418fae3ba830deb2ec22.jpg',
+    user_id=13,
+    genre_id=1,
+)
+rap3 = Song(
+    title='Slick Talk',
+    release_date=date(2018, 12, 5),
+    song_path='https://cloudify.s3.amazonaws.com/f32008c50b7e4017b8520ab93ac97279.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/d2cdf1f392864bf6956528cc63f3e5bb.jpg',
+    user_id=13,
+    genre_id=1,
+)
+rap4 = Song(
+    title='Caged Bird',
+    release_date=date(2015, 12, 7),
+    song_path='https://cloudify.s3.amazonaws.com/0d56a32bf84a4b45b87319bb07a74166.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/31dfc6f6467c4800a5b40422b138e0d2.jpeg',
+    user_id=14,
+    genre_id=1,
+)
+rap5 = Song(
+    title='Apparently',
+    release_date=date(2014, 12, 9),
+    song_path='https://cloudify.s3.amazonaws.com/8cf3ed6c4f6c4a9ebb84679f184e5d0f.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/38752b9560c243bfae674b391955dc31.jpg',
+    user_id=14,
+    genre_id=1,
+)
+rap6 = Song(
+    title='Crooked Smile',
+    release_date=date(2013, 6, 4),
+    song_path='https://cloudify.s3.amazonaws.com/eac51f79f9994ab4a760a680a549500e.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/c07cceb5696542318dbe6d0568e0acff.jpg',
+    user_id=14,
+    genre_id=1,
+)
+rap7 = Song(
+    title='Metropolis',
+    release_date=date(2014, 10, 21),
+    song_path='https://cloudify.s3.amazonaws.com/7c2ec85eeace4d2a946dad8706331b94.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/edd887dbfe844216873aec0327416e7b.jpg',
+    user_id=15,
+    genre_id=1,
+)
+rap8 = Song(
+    title='Fade Away',
+    release_date=date(2015, 11, 5),
+    song_path='https://cloudify.s3.amazonaws.com/bc5f1f3feac745bbbb00cb4a25e14c3d.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/0588f4ecd8e7499e93c3210310fbb999.jpg',
+    user_id=15,
+    genre_id=1,
+)
+rap9 = Song(
+    title='Young Sinatra III',
+    release_date=date(2011, 9, 19),
+    song_path='https://cloudify.s3.amazonaws.com/7a6326b181204d2ba990bd589ccb538d.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/cc65cc73339a43b08dedb385df6c3b87.jpg',
+    user_id=15,
+    genre_id=1,
+)
+
+pop1 = Song(
+    title='Stuck with U(with Justin Bieber)',
+    release_date=date(2020, 5, 8),
+    song_path='https://cloudify.s3.amazonaws.com/4b1e10f903ac4cb4887c9b40dd39379c.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/7d7bfbce1f6c48a69f05c4037562133c.png',
+    user_id=16,
+    genre_id=4,
+)
+pop2 = Song(
+    title='7 Rings',
+    release_date=date(2019, 1, 18),
+    song_path='https://cloudify.s3.amazonaws.com/1083d06d6d614a0e9b5f521a826dc187.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/eb07b647871946bea6319a8ffd624b86.png',
+    user_id=16,
+    genre_id=4,
+)
+pop3 = Song(
+    title='34+35',
+    release_date=date(2020, 10, 30),
+    song_path='https://cloudify.s3.amazonaws.com/75f654fb266d40b5974ff34b00bba9fc.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/3fb34c9436cd433db3f71e43f9b923fb.png',
+    user_id=16,
+    genre_id=4,
+)
+pop4 = Song(
+    title="Don't Start Now",
+    release_date=date(2019, 10, 30),
+    song_path='https://cloudify.s3.amazonaws.com/a77a7b089e0b421fbe585968a0cfcd8a.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/1a0adf82120d42d3a84f18c86aab2475.png',
+    user_id=17,
+    genre_id=4,
+)
+pop5 = Song(
+    title='New Rules',
+    release_date=date(2017, 7, 15),
+    song_path='https://cloudify.s3.amazonaws.com/1d0995d690dc49e98bf8e92b0d4afbb1.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/833288a7f00046eb96a78070742d6e9f.png',
+    user_id=17,
+    genre_id=4,
+)
+pop6 = Song(
+    title="We're Good",
+    release_date=date(2021, 2, 11),
+    song_path='https://cloudify.s3.amazonaws.com/d265168c427642e98b9355562d8aaf83.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/9afd7bad736042998fbac4ff997aba60.png',
+    user_id=17,
+    genre_id=4,
+)
+pop7 = Song(
+    title='Blinding Lights',
+    release_date=date(2019, 11, 29),
+    song_path='https://cloudify.s3.amazonaws.com/cffdad8c9ecf498bb31e688b485fc81a.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/68a0c4b386884021a94c8844588db2fe.png',
+    user_id=18,
+    genre_id=4,
+)
+pop8 = Song(
+    title='Starboy',
+    release_date=date(2016, 11, 26),
+    song_path='https://cloudify.s3.amazonaws.com/b71a17f6051f4cf9912c31369a97e423.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/ba8c60e6f1c4478fab270e3ab2e45f05.png',
+    user_id=18,
+    genre_id=4,
+)
+pop9 = Song(
+    title='The Hills',
+    release_date=date(2015, 5, 27),
+    song_path='https://cloudify.s3.amazonaws.com/7e0acf4011b94456bf17847df2576f7a.mp3',
+    image_path='https://cloudify.s3.amazonaws.com/85ff809e61a74588a966ac397143af47.jpg',
+    user_id=18,
+    genre_id=4,
+)
 
 electronicSongs = [electronic1, electronic2, electronic3, electronic4,
                    electronic5, electronic6, electronic7,
@@ -234,4 +451,17 @@ rockSongs = [rock1, rock2, rock3, rock4,
              rock5, rock6, rock7,
              rock8, rock9]
 
-allSongs = electronicSongs + jazzSongs + rockSongs
+rnbSongs = [rnb1, rnb2, rnb3, rnb4,
+            rnb5, rnb6, rnb7,
+            rnb8, rnb9]
+
+rapSongs = [rap1, rap2, rap3, rap4,
+            rap5, rap6, rap7,
+            rap8, rap9]
+
+popSongs = [pop1, pop2, pop3, pop4,
+            pop5, pop6, pop7,
+            pop8, pop9]
+
+allSongs = electronicSongs + jazzSongs + \
+    rockSongs + rnbSongs + rapSongs + popSongs
