@@ -33,11 +33,19 @@ const PlayBar = () => {
         <button onClick={playing ? pause : play}>{playing ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>}</button>
       </div>
       <div className='ProgressBar'>
+        <div className='ProgressBarCover'></div>
+        <div className='ProgressBarThumb'></div>
         <span>{timeFormat(audio.currentTime)}</span>
-        <input type='range' />
+        <input className='Bar' type='range' step='0.01' />
         <span>{timeFormat(audio.duration)}</span>
       </div>
-      <div className='ArtistInfo'>Artist Info</div>
+      <div className='ArtistInfo'>
+        <img src='http://is5.mzstatic.com/image/thumb/Music128/v4/9e/db/51/9edb5133-7595-700f-9038-b7cf5ddc69f5/source/100000x100000-999.jpg' />
+        <div className='SongDetails'>
+          <div>Artist</div>
+          <div>Title</div>
+        </div>
+      </div>
     </div>
   );
 };
