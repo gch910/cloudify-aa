@@ -10,3 +10,8 @@ def songs():
     songsDict = {"songs": [song.to_dict() for song in songs]}
     return songsDict
 
+# @song_routes.route('/<int:id>')
+# def song(id):
+#     song = Song.query.filter_by(song_id=id).all()
+#     print(song)
+#     return song
