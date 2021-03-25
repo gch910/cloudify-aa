@@ -27,8 +27,8 @@ const CarouselSongs = () => {
           },
         ]}
       >
-        {albums.map((el) => (
-          <Track source={el} hyperlink="/" />
+        {albums.map((el, idx) => (
+          <Track key={idx} source={el} hyperlink="/" />
         ))}
       </Carousel>
     </div>

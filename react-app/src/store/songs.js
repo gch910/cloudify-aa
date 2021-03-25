@@ -1,68 +1,64 @@
-const ALL_SONGS = "/songs/allSongs" 
+const ALL_SONGS = "/songs/allSongs";
 const USER_SONGS = "/songs/userSongs";
 
-
-
 const allSongs = (songs) => {
-    return {
-        type: ALL_SONGS,
-        songs: songs,
-    }
-}
+  return {
+    type: ALL_SONGS,
+    songs: songs,
+  };
+};
 const userSongs = (songs) => {
-    return {
-        type: USER_SONGS,
-        songs: songs,
-    }
-}
+  return {
+    type: USER_SONGS,
+    songs: songs,
+  };
+};
 
 export const getAllSongs = () => async (dispatch) => {
-    const res = await fetch("/api/songs")
+  const res = await fetch("/api/songs");
 
-    console.log(res)
-    const data = await res.json();
+  const data = await res.json();
 
-    console.log("data before dispatch", data)
-    dispatch(allSongs(data.songs))
+  dispatch(allSongs(data.songs));
 
-    return data
-}
+  return data;
+};
 export const getUserSongs = (userId) => async (dispatch) => {
-    console.log("inside get user thunk")
-    const res = await fetch(`/api/users/songs/${userId}`)
-    
-    const data = await res.json();
-    console.log("data from thunk", data)
-    dispatch(userSongs(data.songs))
+  console.log("inside get user thunk");
+  const res = await fetch(`/api/users/songs/${userId}`);
 
-    return data
-}
+  const data = await res.json();
+  console.log("data from thunk", data);
+  dispatch(userSongs(data.songs));
 
-const initialState = {}
+  return data;
+};
 
-const songsReducer = (state=initialState, action) => {
+const initialState = {};
+
+const songsReducer = (state = initialState, action) => {
   let newState;
-  switch(action.type) {
+  switch (action.type) {
     case ALL_SONGS: {
-      const allSongs = {}
-      const songs = action.songs
-      console.log(songs)
-      songs.forEach(song => allSongs[song.id] = song);
-      return allSongs
+      const allSongs = {};
+      const songs = action.songs;
+      console.log(songs);
+      songs.forEach((song) => (allSongs[song.id] = song));
+      return allSongs;
     }
     case USER_SONGS: {
-      newState = {...state}
+      newState = { ...state };
       // const userSongs = newState.user_songs = {}
-      const songs = action.songs
-      const newObj = {}
-      songs.forEach(song => newObj[song.id] = song)
+      const songs = action.songs;
+      const newObj = {};
+      songs.forEach((song) => (newObj[song.id] = song));
       // newState.user_songs = {...action.songs}
       newState.user_songs = newObj;
       return newState;
     }
     default:
-      return state
-  }  
-}
+      return state;
+  }
+};
 
 export default songsReducer;
