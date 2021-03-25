@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import SignUpFormModal from "../SignUpFormModal";
+import { loginUser } from "../../store/session";
 import "./LoginForm.css";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -63,12 +64,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         <button id="login-submit-button" type="submit">
           Login
         </button>
-<<<<<<< HEAD
-=======
         <div id="signup-modal-div">
           <SignUpFormModal />
         </div>
->>>>>>> main
       </form>
     </div>
   );
