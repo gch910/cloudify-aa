@@ -8,14 +8,20 @@ const PlayBar = () => {
   const [playing, setIsPlaying] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const [timeElapsed, setTimeElapsed] = useState(0)
+  const [progress, setProgress] = useState(0)
 
-
+  let playingInterval
   const play = () => {
     audio.play();
     setIsPlaying(true)
+    playingInterval = setInterval(() => {
+      setTimeElapsed(timeFormat(audio.currentTime))
+      setProgress(audio.currentTime)
+    }, 1000);
   }
   const pause = () => {
     audio.pause();
+    clearInterval(playingInterval)
     setIsPlaying(false)
   }
   const timeFormat = (time) => {
@@ -24,22 +30,11 @@ const PlayBar = () => {
     let seconds = remainder % 60 < 10 ? `0${remainder % 60}` : `${remainder % 60}`
     return `${minute}:${seconds}`
   }
-  // console.log(timeElapsed)
 
   const showProgress = (e) => {
     audio.currentTime = e.target.value
+    setTimeElapsed(e.target.value)
   }
-
-  useEffect(() => {
-    if (!audio.paused) {
-      setInterval(() => {
-        setTimeElapsed(timeFormat(audio.currentTime))
-        console.log(timeElapsed)
-      }, 1000);
-    }
-  }, [timeElapsed])
-
-
 
 
   return (
@@ -55,7 +50,8 @@ const PlayBar = () => {
           step='0.01'
           min='0'
           defaultValue='0'
-          max={audio ? audio.duration : '0:00'}
+          value={progress}
+          max={audio.duration}
           onInput={showProgress} />
         <span>{timeFormat(audio.duration)}</span>
       </div>
