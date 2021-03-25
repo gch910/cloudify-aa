@@ -10,8 +10,8 @@
 #profile-page-contents {
     width: 1200px;
     height: 100vh;
-    background-color: blue;
     padding-top: 0px;
+    background-color: white;
     
 }
 
@@ -29,12 +29,54 @@
     width: 180px;
     height: 180px;
     border-radius: 60%;
+    margin-left: 25px;
+}
+
+#profile-username {
+    margin-left: 30px;
+    color: white;
+    background-color: #333333;
+    padding: 5px;
+    margin-bottom: 170px;
 }
 
 #profile-nav {
     display: grid;
     grid-template-rows: 40px;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: white;
+    grid-template-columns: 1fr 1fr 6fr;
     align-items: center;
+    border-bottom: 1px solid rgb(128, 128, 128, 0.2);
+    background-color: white;
 }
+
+#profile-song-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 200px;
+}
+
+#profile-song-image {
+    width: 150px;
+    height: 150px;
+}
+
+.profile-nav-link {
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #FF5D00;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    /* padding-bottom: 20px; */
+    color: #FF5D00;
+    background-color: white;
+}
+
+#profile-display {
+    background-color: white;
+}
+
+.no-outline:focus {
+    outline: none;
+  }

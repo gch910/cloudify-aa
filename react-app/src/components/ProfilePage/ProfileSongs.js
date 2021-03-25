@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserSongs, getAllSongs } from "../../store/songs";
 import { useParams } from "react-router-dom";
+import ProfileSongInfo from "./ProfileSongInfo";
 
 const ProfileSongs = () => {
     const { userId } = useParams();
@@ -26,9 +27,10 @@ const ProfileSongs = () => {
 
     
     return isLoaded && (
-        <div>
+        <div id="profile-songs">
            {userSongsValues.map((song, idx) => (
-               <div>{song.title}</div>
+            //    <div>{song.title}</div>
+            <ProfileSongInfo song={song}/>
            ))}
         </div>
     )
