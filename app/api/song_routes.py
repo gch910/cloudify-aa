@@ -1,9 +1,20 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Song, Genre
+from app.models import db, Song, Genre
 from app.aws import allowed_image_file, upload_file_to_s3, allowed_audio_file, get_unique_filename
-
+from app.forms.song_form import SongForm
 song_routes = Blueprint('songs', __name__)
+
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f"{field} : {error}")
+    return errorMessages
 
 
 @song_routes.route("/")
@@ -15,7 +26,6 @@ def songs():
 
 @song_routes.route('/upload', methods=['POST'])
 def song_upload():
-    print(request)
     defaultImage = False
     if 'song' not in request.files:
         return {'errors': 'song required'}, 400
@@ -62,7 +72,28 @@ def song_upload():
     else:
         image_url = 'https://cloudify.s3-us-west-2.amazonaws.com/3e29a4568cc911eb8dcd0242ac130003.png'
 
-    return {'image_url': image_url, 'song_url', song_url}, 200
+    return {'image_url': image_url, 'song_path': song_url}, 200
+
+
+@song_routes.route('/newsong', methods=['POST'])
+def new_song():
+    form = SongForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        song = Song(
+            title=form.data['title'],
+            release_date=form.data['release_date'],
+            song_path=form.data['song_path'],
+            image_path=form.data['image_path'],
+            user_id=form.data['user_id'],
+            genre_id=form.data['genre_id']
+        )
+        print(song)
+        db.session.add(song)
+        db.session.commit()
+        return song.to_dict()
+    print(form.errors)
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 @song_routes.route('/genres')

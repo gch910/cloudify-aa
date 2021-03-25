@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { newUpload } from "../../store/upload";
 
 const UploadSongForm = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const [selectgenres, setSelectGenres] = useState([]);
-  const [genre, setGenre] = useState("");
+  const [genre, setGenre] = useState(1);
   const [song, setSong] = useState(null);
   const [songLoading, setSongLoading] = useState(false);
   const [image, setImage] = useState("");
@@ -25,34 +27,29 @@ const UploadSongForm = () => {
     const song_path = new FormData();
     song_path.append("song", song);
     song_path.append("image", image);
-
-    // const newSong = {
-    //   title,
-    //   release_date: date,
-    //   user_id: user.id,
-    //   genre_id: genre,
-    // };
-
+    const songAttributes = {
+      title,
+      release_date: date,
+      user_id: user.id,
+      genre_id: genre,
+    };
+    setSongLoading(true);
+    setImageLoading(true);
+    const res = await dispatch(newUpload(song_path, songAttributes));
     /* aws uploads can be a bit slow—displaying
     some sort of loading message is a good idea*/
-    // setSongLoading(true);
-    // setImageLoading(true);
 
-    const res = await fetch("/api/songs/upload", {
-      method: "POST",
-      body: song_path,
-    });
-    // if (res.ok) {
-    //   await res.json();
-    //   setSongLoading(false);
-    //   setImageLoading(false);
-    //   history.push("/");
-    // } else {
-    //   setSongLoading(false);
-    //   setImageLoading(false);
-    /* a real app would probably use more advanced
+    if (res.ok) {
+      await res.json();
+      setSongLoading(false);
+      setImageLoading(false);
+      history.push("/");
+    } else {
+      setSongLoading(false);
+      setImageLoading(false);
+      /* a real app would probably use more advanced
        error handling*/
-    // }
+    }
   };
 
   const updateSong = (e) => {
