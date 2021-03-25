@@ -15,13 +15,12 @@ def songs():
 
 @song_routes.route('/upload', methods=['POST'])
 def song_upload():
-    print(request.files['song'])
+    print(request)
     defaultImage = False
     if 'song' not in request.files:
         return {'errors': 'song required'}, 400
     if 'image' not in request.files:
         defaultImage = True
-    # print(defaultImage)
 
     song = request.files['song']
     image = ''
@@ -63,11 +62,7 @@ def song_upload():
     else:
         image_url = 'https://cloudify.s3-us-west-2.amazonaws.com/3e29a4568cc911eb8dcd0242ac130003.png'
 
-    print(song_url)
-    print(image_url)
-    newSong = Song(
-        title=)
-    return {'ok': 'hello'}, 200
+    return {'image_url': image_url, 'song_url', song_url}, 200
 
 
 @song_routes.route('/genres')
