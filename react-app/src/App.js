@@ -9,14 +9,15 @@ import User from "./components/User";
 import Home from "./components/Home";
 import PlayBar from "./components/PlayBar";
 import Navigation from "./components/Navigation";
-import ProfilePage from "./components/ProfilePage"
+import ProfilePage from "./components/ProfilePage";
+import SongPage from "./components/SongPage";
 import { restoreUser } from "./store/session";
 
 function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.user);
   const [authenticated, setAuthenticated] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -75,12 +76,15 @@ function App() {
           <Home />
         </Route>
         <ProtectedRoute
-          path={'/profile/:userId'}
+          path={"/profile/:userId"}
           exact={true}
           authenticated={authenticated}
         >
           <ProfilePage />
         </ProtectedRoute>
+        <Route path={"/song/:songId"}>
+          <SongPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
