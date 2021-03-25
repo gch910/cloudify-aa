@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Song
 
@@ -8,5 +8,5 @@ song_routes = Blueprint('songs', __name__)
 def songs():
     songs = Song.query.all()
     songsDict = {"songs": [song.to_dict() for song in songs]}
-    print(songsDict)
     return songsDict
+
