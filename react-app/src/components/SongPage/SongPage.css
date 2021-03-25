@@ -1,0 +1,77 @@
+#song-page-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: #F2F2F2
+}
+
+#song-page-contents {
+    width: 1200px;
+    height: 100vh;
+    padding-top: 0px;
+    background-color: white;
+    
+}
+
+#song-header {
+    background-color: #a2b8af;
+    width: 100%;
+    /* height: 380px; */
+    padding: 0px;
+    display: grid;
+    grid-template-rows: 380px;
+    grid-template-columns: 400px 1fr 3fr;
+    grid-template-areas:
+    "title artist image"
+
+}
+
+#song-image {
+    grid-area: image;
+    justify-self: right;
+    align-self: center;
+    width: 300px;
+    height: 80%;
+    margin-left: 25px;
+    margin-right: 30px;
+
+}
+
+#song-headers {
+    margin-left: 60px;
+}
+
+#song-title {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    color: white;
+    background-color: #333333;
+    padding: 5px;
+    height: 60px;
+    width: max-content;
+}
+
+#song-username {
+    margin-left: 30px;
+    color: white;
+    background-color: #333333;
+    padding: 5px;
+    width: max-content;
+}
+
+
+#song-song-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 200px;
+}
+
+
+
+.no-outline:focus {
+    outline: none;
+  }
