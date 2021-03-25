@@ -54,7 +54,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
           className="nav-link"
           id="upload-link"
           exact
-          to={`/${sessionUser.id}/upload`}
+          to={sessionUser.user ? `/upload/${sessionUser.user.id}` : "/login"}
         >
           Upload
         </NavLink>
@@ -106,7 +106,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
         <NavLink
           className="nav-link"
           id="upload-link"
-          to={`/${sessionUser.id}/upload`}
+          to={sessionUser.user ? `/upload/${sessionUser.user.id}` : "/login"}
         >
           Upload
         </NavLink>
