@@ -8,24 +8,19 @@ const allSongs = (songs) => {
     songs: songs,
   };
 };
+
 const userSongs = (songs) => {
-    return {
-        type: USER_SONGS,
-        songs: songs,
-    }
-}
-const song = (song) => {
-    return {
-        type: SONG,
-        song: song,
-    }
-}
   return {
     type: USER_SONGS,
     songs: songs,
   };
 };
-
+const song = (song) => {
+  return {
+    type: SONG,
+    song: song,
+  };
+};
 
 export const getAllSongs = () => async (dispatch) => {
   const res = await fetch("/api/songs");
@@ -37,20 +32,20 @@ export const getAllSongs = () => async (dispatch) => {
   return data;
 };
 export const getUserSongs = (userId) => async (dispatch) => {
-    const res = await fetch(`/api/users/songs/${userId}`)
-    
-    const data = await res.json();
-    console.log("data from thunk", data)
-    dispatch(userSongs(data.songs))
+  const res = await fetch(`/api/users/songs/${userId}`);
 
-    return data
-}
+  const data = await res.json();
+  console.log("data from thunk", data);
+  dispatch(userSongs(data.songs));
+
+  return data;
+};
 export const getSong = (songId) => async (dispatch) => {
-    const res = await fetch(`/api/songs/${songId}`)
-    const data = await res.json();
-    dispatch(song(data.song))
+  const res = await fetch(`/api/songs/${songId}`);
+  const data = await res.json();
+  dispatch(song(data.song));
 
-    return data
+  return data;
 };
 
 const initialState = {};
@@ -76,9 +71,9 @@ const songsReducer = (state = initialState, action) => {
       return newState;
     }
     case SONG: {
-      newState = {...state}
+      newState = { ...state };
       // const userSongs = newState.user_songs = {}
-      const song = action.song
+      const song = action.song;
       newState.currentSong = song;
       return newState;
     }
