@@ -221,6 +221,78 @@ jazz9 = Song(
     user_id=6,
     genre_id=5,
 )
+rnb1 = Song(
+    title='Pretty Little Birds',
+    release_date=date(2017, 6, 9),
+    song_path="https://cloudify.s3.amazonaws.com/710f1a8f61994a0eb6692a5c8c230491.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/48e56a1a681a4eeea2eb01834308cd5e.jpg',
+    user_id=10,
+    genre_id=3
+)
+rnb2 = Song(
+    title='Supermodel',
+    release_date=date(2017, 6, 9),
+    song_path="https://cloudify.s3.amazonaws.com/8c408abf10a241d2adffd158f04a2778.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/48e56a1a681a4eeea2eb01834308cd5e.jpg',
+    user_id=10,
+    genre_id=3
+)
+rnb3 = Song(
+    title='20 Something',
+    release_date=date(2017, 6, 9),
+    song_path="https://cloudify.s3.amazonaws.com/5ad0b2e561aa40a2a9289b8d256b8157.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/48e56a1a681a4eeea2eb01834308cd5e.jpg',
+    user_id=10,
+    genre_id=3
+)
+rnb4 = Song(
+    title='Wading',
+    release_date=date(2014, 9, 9),
+    song_path="https://cloudify.s3.amazonaws.com/fb91c781809749fdb3e6c81d8def0598.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/6e15691c3b8646ec9be9263594a523ef.jpg',
+    user_id=11,
+    genre_id=3
+)
+rnb5 = Song(
+    title="It's Cool",
+    release_date=date(2014, 9, 9),
+    song_path="https://cloudify.s3.amazonaws.com/6b5d20d627e34c6b9ad4c06dd96b3bce.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/6e15691c3b8646ec9be9263594a523ef.jpg',
+    user_id=11,
+    genre_id=3
+)
+rnb6 = Song(
+    title='Pretty Bird',
+    release_date=date(2014, 9, 9),
+    song_path="https://cloudify.s3.amazonaws.com/20f50988edeb4e8ab3ed0465410af2dc.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/6e15691c3b8646ec9be9263594a523ef.jpg',
+    user_id=11,
+    genre_id=3
+)
+rnb7 = Song(
+    title='Overrated',
+    release_date=date(2020, 9, 4),
+    song_path="https://cloudify.s3.amazonaws.com/9a2b721975a14061a62e8643148692b8.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/a41b5a7124d941f5832282b9806d366a.jpg',
+    user_id=12,
+    genre_id=3
+)
+rnb8 = Song(
+    title='No Love Lost',
+    release_date=date(2020, 9, 4),
+    song_path="https://cloudify.s3.amazonaws.com/b4920375b0c2424794c085cedbd1d769.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/a41b5a7124d941f5832282b9806d366a.jpg',
+    user_id=12,
+    genre_id=3
+)
+rnb9 = Song(
+    title='Be Alone',
+    release_date=date(2020, 9, 4),
+    song_path="https://cloudify.s3.amazonaws.com/7d8cca99b82b4ed295c912a8439791d4.mp3",
+    image_path='https://cloudify.s3.amazonaws.com/a41b5a7124d941f5832282b9806d366a.jpg',
+    user_id=12,
+    genre_id=3
+)
 
 electronicSongs = [electronic1, electronic2, electronic3, electronic4,
                    electronic5, electronic6, electronic7,
@@ -234,4 +306,8 @@ rockSongs = [rock1, rock2, rock3, rock4,
              rock5, rock6, rock7,
              rock8, rock9]
 
-allSongs = electronicSongs + jazzSongs + rockSongs
+rnbSongs = [rnb1, rnb2, rnb3, rnb4,
+            rnb5, rnb6, rnb7,
+            rnb8, rnb9]
+
+allSongs = electronicSongs + jazzSongs + rockSongs + rnbSongs
