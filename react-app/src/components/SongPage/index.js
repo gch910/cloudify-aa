@@ -13,21 +13,31 @@ const SongPage = () => {
 
   useEffect(() => {
     dispatch(getSong(songId)).then(() => setIsLoaded(true));
-  }, []);
-
-  console.log(song);
+  }, [dispatch]);
 
   return (
     isLoaded && (
       <div id="song-page-container">
         <div id="song-page-contents">
           <div id="song-header">
-            <img id="song-image" src={song.image_path} alt="song picture" />
+            <div id="song-image-div">
+              <img id="song-image" src={song.image_path} alt="song picture" />
+            </div>
+            <div id="play-icon-div">
+              <img
+                id="play-icon"
+                src="https://alohajarren.github.io/webpage-mockup/images/songplay.png"
+              ></img>
+            </div>
             <div id="song-headers">
               <h1 id="song-title">{song.title}</h1>
-              <h3 id="song-username">{sessionUser.user.username}</h3>
+              <h3 id="song-username">
+                {sessionUser ? sessionUser.user.username : ""}
+              </h3>
             </div>
-            <h3>{song.genre_name}</h3>
+            <div id="song-genre-div">
+              <h3 id="song-genre"># {song.genre_name}</h3>
+            </div>
           </div>
         </div>
       </div>
