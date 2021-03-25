@@ -37,7 +37,7 @@ const ProfileButton = () => {
           <div id="profile-dropdown-div">
             <ul style={{ listStyle: "none" }}>
               <Link
-                to={`/purchase-history/${user.user.id}`}
+                to={`/profile/${user.user.id}`}
                 className="profile-li"
               >
                 {user.user.username}

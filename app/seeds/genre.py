@@ -6,10 +6,8 @@ def seed_genres():
   genre2 = Genre(name='Rock')
   genre3 = Genre(name='R&B')
   genre4 = Genre(name='Pop')
-  genre5 = Genre(name='Soul')
-  genre6 = Genre(name='Electronic')
-  genre7 = Genre(name='Country')
-  genre8 = Genre(name='Jazz')
+  genre5 = Genre(name='Electronic')
+  genre6 = Genre(name='Jazz')
 
   db.session.add(genre1)
   db.session.add(genre2)

@@ -30,7 +30,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
           <NavLink
             className="nav-link"
             id="music-link"
-            to={`/${sessionUser.id}/music`}
+            to={sessionUser.user ? `/music/${sessionUser.user.id}` : "/login"}
           >
             Music
           </NavLink>
@@ -39,7 +39,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
           <NavLink
             className="nav-link"
             id="library-link"
-            to={`/${sessionUser.id}/library`}
+            to={sessionUser.user ? `/library/${sessionUser.user.id}` : "/login"}
           >
             Library
           </NavLink>
@@ -79,7 +79,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
           <NavLink
             className="nav-link"
             id="music-link"
-            to={`/${sessionUser.id}/music`}
+            to={sessionUser.user ? `/music/${sessionUser.user.id}` : "/login"}
           >
             Music
           </NavLink>
@@ -88,7 +88,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
           <NavLink
             className="nav-link"
             id="library-link"
-            to={`/${sessionUser.id}/library`}
+            to={sessionUser.user ? `/library/${sessionUser.user.id}` : "/login"}
           >
             Library
           </NavLink>
@@ -99,7 +99,9 @@ const Navigation = ({ setAuthenticated, navId }) => {
           type="text"
           placeholder="Search..."
         />
-        <LoginFormModal />
+        <div id="login-button-div">
+          <LoginFormModal />
+        </div>
         <SignUpFormModal />
         <NavLink
           className="nav-link"

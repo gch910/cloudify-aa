@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import { useDispatch } from "react-redux"
 import { restoreUser } from "../../store/session";
@@ -12,12 +12,15 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
+  const history = useHistory();
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const user = await signUp(username, email, password);
       if (!user.errors) {
         await dispatch(restoreUser());
+        history.push("/")
         // setAuthenticated(true);
       }
     }
