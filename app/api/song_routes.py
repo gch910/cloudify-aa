@@ -123,18 +123,22 @@ def song_genre():
     return genresDict
 
 
-@song_routes.route('/<int:id>/comment', methods=['POST'])
-def song_comment(id):
-    form = commentForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        comment = Comment(
-            content=form.data["content"],
-            user_id=form.data["user_id"],
-            song_id=form.data["song_id"]
-        )
-        
-        print(comment)
-        return comment
+# @song_routes.route('/<int:id>/comment', methods=['POST'])
+# def song_comment(id):
+    # form = CommentForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    # if form.validate_on_submit():
+    #     comment = Comment(
+    #         content=form.data["content"],
+    #         user_id=form.data["user_id"],
+    #         song_id=id
+    #     )
+    #     db.session.add(comment)
+    #     db.session.commit()
+
+    # comment = {
+    #     "content": jsonify(request.data)
+    # }
+    # return comment
 
 

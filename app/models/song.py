@@ -27,7 +27,7 @@ class Song(db.Model):
             "song_path": self.song_path,
             "image_path": self.image_path,
             "user_id": self.user_id,
-            # "genre_id": self.genre_id
+            "genre_id": self.genre_id,
             "genre": self.genre.to_dict(),
             "comments": [comment.to_dict() for comment in self.comments]
         }

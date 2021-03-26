@@ -22,13 +22,14 @@ const Home = () => {
       dispatch(getAllSongs()).then((req) => setIsLoaded(true));
     }
   }, [dispatch]);
-
+  console.log(rap)
   return (
     isLoaded && (
       <div className="center">
         <div>
           <h1>My Home </h1>
           {/* <UploadSongForm /> */}
+          
           <CarouselSongs songs={rap} />
           <CarouselSongs songs={pop} />
           <CarouselSongs songs={electronic} />

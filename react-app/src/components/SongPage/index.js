@@ -57,9 +57,9 @@ const SongPage = () => {
               <h3 id="song-genre"># {song.genre.name}</h3>
             </div>
           </div>
-          <div id="comments-deiv">
+          <div id="comments-div">
             {song.comments.map(comment => (
-              <div>{comment.content}</div>
+              <div id="comment-div">{comment.content}</div>
             ))}
           </div>
         </div>
