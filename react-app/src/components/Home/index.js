@@ -22,22 +22,23 @@ const Home = () => {
       dispatch(getAllSongs()).then((req) => setIsLoaded(true));
     }
   }, [dispatch]);
-  console.log(rap)
+  console.log(rap);
   return (
     isLoaded && (
       <div className="center">
         <div>
           <h1>My Home </h1>
-          {/* <UploadSongForm /> */}
-          
-          <CarouselSongs songs={rap} />
-          <CarouselSongs songs={pop} />
-          <CarouselSongs songs={electronic} />
-          <CarouselSongs songs={rnb} />
-          <CarouselSongs songs={jazz} />
-          <CarouselSongs songs={rock} />
+          <CarouselSongs key="rap" songs={rap} title={"Rap"} />
+          <CarouselSongs key="pop" songs={pop} title={"Pop"} />
+          <CarouselSongs
+            key="electronic"
+            songs={electronic}
+            title={"Electronic"}
+          />
+          <CarouselSongs key="rnb" songs={rnb} title={"R&B"} />
+          <CarouselSongs key="jazz" songs={jazz} title={"Jazz"} />
+          <CarouselSongs key="rock" songs={rock} title={"Rock"} />
         </div>
-        {/* <div className="right-side">wall</div> */}
       </div>
     )
   );
