@@ -78,7 +78,8 @@ export const postUserComment = (comment, songId) => async dispatch => {
   })
 
   const data = await res.json()
-  dispatch(postComment(data.comment))
+  console.log(data);
+  dispatch(postComment(data))
 
   return data
 }
@@ -110,6 +111,13 @@ const songsReducer = (state = initialState, action) => {
       // const userSongs = newState.user_songs = {}
       const song = action.song;
       newState.currentSong = song;
+      return newState;
+    }
+    case POST_COMMENT: {
+      newState = { ...state };
+      // const userSongs = newState.user_songs = {}
+      const comment = action.comment;
+      newState.comment = comment;
       return newState;
     }
     default:
