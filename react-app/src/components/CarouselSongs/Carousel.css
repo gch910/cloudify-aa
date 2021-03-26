@@ -151,3 +151,8 @@
   max-height: 200px;
   display: flex;
 }
+
+.carousel-container {
+  border-bottom: 1px solid grey;
+  padding: 3px;
+}

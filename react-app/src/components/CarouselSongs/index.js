@@ -5,29 +5,35 @@ import Track from "../Track";
 
 const CarouselSongs = ({ songs }) => {
   return (
-    <div className="carousel-div">
-      <Carousel
-        style={{ height: "100%", width: "100%" }}
-        plugins={[
-          "arrows",
-          "infinite",
-          {
-            resolve: slidesToShowPlugin,
-            options: {
-              numberOfSlides: 4,
+    <div className="carousel-container">
+      <div>
+        <div>Title</div>
+        <div>subtitle</div>
+      </div>
+      <div className="carousel-div">
+        <Carousel
+          style={{ height: "100%", width: "100%" }}
+          plugins={[
+            "arrows",
+            "infinite",
+            {
+              resolve: slidesToShowPlugin,
+              options: {
+                numberOfSlides: 4,
+              },
             },
-          },
-        ]}
-      >
-        {songs.map((el, idx) => (
-          <Track
-            key={idx}
-            source={el.image_path}
-            hyperlink={el.song_path}
-            title={el.title}
-          />
-        ))}
-      </Carousel>
+          ]}
+        >
+          {songs.map((el, idx) => (
+            <Track
+              key={idx}
+              source={el.image_path}
+              hyperlink={el.song_path}
+              title={el.title}
+            />
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 };
