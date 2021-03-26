@@ -18,7 +18,7 @@ const artist = (artist) => {
 };
 
 export const getAllUsers = () => async (dispatch) => {
-  const res = await fetch("/api/users");
+  const res = await fetch("/api/users/");
   const data = await res.json();
   //   if (data.errors) {
   //     dispatch(setAuthErrors(res.errors));

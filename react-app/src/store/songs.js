@@ -30,7 +30,7 @@ const song = (song) => {
 // }
 
 export const getAllSongs = () => async (dispatch) => {
-  const res = await fetch("/api/songs");
+  const res = await fetch("/api/songs/");
 
   const data = await res.json();
 
