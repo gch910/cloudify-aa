@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import SignUpFormModal from "../SignUpFormModal";
 import { loginUser } from "../../store/session";
 import "./LoginForm.css";
@@ -10,8 +10,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const errors = useSelector((state) => state.errors.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();

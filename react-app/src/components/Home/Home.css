@@ -1,0 +1,15 @@
+.center {
+  margin-left: 17%;
+  margin-right: 17%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+.right-side {
+  width: 150px;
+  height: 100%;
+  background-color: black;
+}

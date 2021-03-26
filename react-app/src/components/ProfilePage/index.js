@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ProfileSongs from "./ProfileSongs";
 import { getArtist } from "../../store/users";
 import "./ProfilePage.css";
@@ -18,7 +17,7 @@ const ProfilePage = () => {
     dispatch(getArtist(userId)).then(() => setIsLoaded(true))
   }, [dispatch, userId]);
 
-  console.log("artist", artist)
+
 
   const displaySongs = () => {
     setSongsClicked(true);
@@ -37,7 +36,7 @@ const ProfilePage = () => {
             <img
               id="profile-image"
               src="https://i.stack.imgur.com/l60Hf.png"
-              alt="profile picture"
+              alt="profile"
             />
             <h1 id="profile-username">{artist.username}</h1>
           </div>

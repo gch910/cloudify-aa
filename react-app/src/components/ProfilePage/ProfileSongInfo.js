@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const ProfileSongInfo = ({song}) => {
     const releaseDate = song.release_date.split(" ").slice(0, 4).join(" ")
@@ -13,5 +13,6 @@ const ProfileSongInfo = ({song}) => {
         </div>
     )
 }
+
 
 export default ProfileSongInfo;
