@@ -10,7 +10,9 @@ import PlayBar from "./components/PlayBar";
 import Navigation from "./components/Navigation";
 import ProfilePage from "./components/ProfilePage";
 import SongPage from "./components/SongPage";
+import ArtistsPage from "./components/ArtistsPage";
 import { restoreUser } from "./store/session";
+import UploadSongForm from "./components/UploadSongForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -74,16 +76,22 @@ function App() {
         <Route path="/" exact={true}>
           <Home />
         </Route>
-        <ProtectedRoute
-          path={"/profile/:userId"}
-          exact={true}
-          authenticated={authenticated}
-        >
+        <Route path={"/profile/:userId"} exact={true}>
           <ProfilePage />
-        </ProtectedRoute>
+        </Route>
+        <Route path="/artists">
+          <ArtistsPage />
+        </Route>
         <Route path={"/song/:songId"}>
           <SongPage />
         </Route>
+        <ProtectedRoute
+          path="/upload/:userId"
+          exact={true}
+          authenticated={authenticated}
+        >
+          <UploadSongForm />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

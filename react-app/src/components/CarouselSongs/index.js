@@ -1,34 +1,36 @@
 import React from "react";
-import Carousel, { slidesToShowPlugin } from "@brainhubeu/react-carousel";
-import "./Carousel.css";
 import Track from "../Track";
+import "./Carousel.css";
+import Slider from "react-slick";
 
-const CarouselSongs = ({ songs }) => {
+const CarouselSongs = ({ songs, title }) => {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+  };
   return (
-    <div className="carousel-div">
-      <Carousel
-        style={{ height: "100%", width: "100%" }}
-        plugins={[
-          "arrows",
-          "infinite",
-          {
-            resolve: slidesToShowPlugin,
-            options: {
-              numberOfSlides: 4,
-            },
-          },
-        ]}
-      >
-        {songs.map((el, idx) => (
-          <Track
-            key={idx}
-            source={el.image_path}
-            hyperlink={el.song_path}
-            title={el.title}
-          />
-        ))}
-      </Carousel>
-    </div>
+    songs && (
+      <div className="carousel-container">
+        <div>
+          <div>{title}</div>
+        </div>
+        <Slider style={{ maxHeight: "100%", maxWidth: "100%" }} {...settings}>
+          {songs.map((el, idx) => (
+            <div>
+              <Track
+                key={idx}
+                source={el.image_path}
+                hyperlink={el.song_path}
+                title={el.title}
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+    )
   );
 };
 

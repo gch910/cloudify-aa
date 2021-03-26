@@ -43,9 +43,9 @@ const Navigation = ({ setAuthenticated, navId }) => {
           <NavLink
             className="nav-link"
             id="library-link"
-            to={sessionUser.user ? `/library/${sessionUser.user.id}` : "/login"}
+            to="/artists"
           >
-            Library
+            Artists
           </NavLink>
         </div>
         <input
@@ -92,9 +92,9 @@ const Navigation = ({ setAuthenticated, navId }) => {
           <NavLink
             className="nav-link"
             id="library-link"
-            to={sessionUser.user ? `/library/${sessionUser.user.id}` : "/login"}
+            to="/artists"
           >
-            Library
+            Artists
           </NavLink>
         </div>
         <input
