@@ -31,14 +31,14 @@ def songs():
 def song_by_id(id):
     song = Song.query.get(id)
     songDict = {"song": song.to_dict()}
-    genre_id = songDict["song"]["genre_id"]
+    # genre_id = songDict["song"]["genre_id"]
 
-    genre = Genre.query.get(genre_id).to_dict()
-    comments = Comment.query.filter_by(song_id=id).all()
-    commentsDict = {"comments": [comment.to_dict() for comment in comments]}
+    # genre = Genre.query.get(genre_id).to_dict()
+    # comments = Comment.query.filter_by(song_id=id).all()
+    # commentsDict = {"comments": [comment.to_dict() for comment in comments]}
 
-    songDict["song"]["genre_name"] = genre["name"]
-    songDict["song"]["comments"] = commentsDict["comments"]
+    # songDict["song"]["genre_name"] = genre["name"]
+    # songDict["song"]["comments"] = commentsDict["comments"]
    
     print(songDict)
     return songDict
