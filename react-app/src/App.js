@@ -10,6 +10,7 @@ import PlayBar from "./components/PlayBar";
 import Navigation from "./components/Navigation";
 import ProfilePage from "./components/ProfilePage";
 import SongPage from "./components/SongPage";
+import ArtistsPage from "./components/ArtistsPage";
 import { restoreUser } from "./store/session";
 
 function App() {
@@ -74,13 +75,15 @@ function App() {
         <Route path="/" exact={true}>
           <Home />
         </Route>
-        <ProtectedRoute
+        <Route
           path={"/profile/:userId"}
           exact={true}
-          authenticated={authenticated}
         >
           <ProfilePage />
-        </ProtectedRoute>
+        </Route>
+        <Route path="/artists">
+          <ArtistsPage />
+        </Route>
         <Route path={"/song/:songId"}>
           <SongPage />
         </Route>
