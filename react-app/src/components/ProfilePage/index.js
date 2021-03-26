@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileSongs from "./ProfileSongs";
+import { getArtist } from "../../store/users";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
+  const { userId } = useParams()
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.user);
+  const artist = useSelector(state => state.users.artist);
   const [isLoaded, setIsLoaded] = useState(false);
   const [songsClicked, setSongsClicked] = useState(true);
   const [popularClicked, setPopularClicked] = useState(false);
   useEffect(() => {
-    if (sessionUser.user) setIsLoaded(true);
-  }, []);
+    // if (sessionUser.user) setIsLoaded(true);
+    dispatch(getArtist(userId)).then(() => setIsLoaded(true))
+  }, [dispatch, userId]);
+
+  console.log("artist", artist)
 
   const displaySongs = () => {
     setSongsClicked(true);
@@ -32,7 +39,7 @@ const ProfilePage = () => {
               src="https://i.stack.imgur.com/l60Hf.png"
               alt="profile picture"
             />
-            <h1 id="profile-username">{sessionUser.user.username}</h1>
+            <h1 id="profile-username">{artist.username}</h1>
           </div>
           <nav id="profile-nav">
             <button

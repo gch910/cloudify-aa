@@ -6,8 +6,8 @@ const ProfileSongInfo = ({song}) => {
     console.log("song path",song.song_path)
     return (
         <div id="profile-song-info">
-            <Link to={`/song/${song.id}`}>{song.title}</Link>
-            <audio controls src={song.song_path}></audio>
+            <Link id="profile-song-link" to={`/song/${song.id}`}>{song.title}</Link>
+            <audio className="no-outline" controls src={song.song_path}></audio>
             <img id="profile-song-image" src={song.image_path} alt="song image" />
             <h3>Release Date: {releaseDate}</h3>
         </div>
