@@ -28,15 +28,13 @@ const Home = () => {
       <div className="center">
         <div>
           <h1>My Home </h1>
-          {/* <UploadSongForm /> */}
-          <CarouselSongs songs={rap} />
-          <CarouselSongs songs={pop} />
-          <CarouselSongs songs={electronic} />
-          <CarouselSongs songs={rnb} />
-          <CarouselSongs songs={jazz} />
-          <CarouselSongs songs={rock} />
+          <CarouselSongs songs={rap} title={"Rap"} />
+          <CarouselSongs songs={pop} title={"Pop"} />
+          <CarouselSongs songs={electronic} title={"Electronic"} />
+          <CarouselSongs songs={rnb} title={"R&B"} />
+          <CarouselSongs songs={jazz} title={"Jazz"} />
+          <CarouselSongs songs={rock} title={"Rock"} />
         </div>
-        {/* <div className="right-side">wall</div> */}
       </div>
     )
   );
