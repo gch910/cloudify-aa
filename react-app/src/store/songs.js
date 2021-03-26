@@ -1,6 +1,7 @@
 const ALL_SONGS = "/songs/allSongs";
 const USER_SONGS = "/songs/userSongs";
 const SONG = "/songs/song";
+const POST_COMMENT = "/songs/postComment";
 
 const allSongs = (songs) => {
   return {
@@ -21,6 +22,13 @@ const song = (song) => {
     song: song,
   };
 };
+
+const postComment = (comment) => {
+  return {
+    type: POST_COMMENT,
+    comment: comment
+  }
+}
 
 // const oneSong = (song) => {
 //   return {
@@ -54,6 +62,26 @@ export const getSong = (songId) => async (dispatch) => {
 
   return data;
 };
+
+export const postUserComment = (comment, songId) => async dispatch => {
+  const { content, user_id } = comment
+  const res = await fetch(`/api/songs/${songId}/comment`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      content,
+      user_id,
+      song_id: songId
+    }),
+  })
+
+  const data = await res.json()
+  dispatch(postComment(data.comment))
+
+  return data
+}
 
 const initialState = {};
 

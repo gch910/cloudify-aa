@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSong } from "../../store/songs";
 import { getArtist } from "../../store/users";
+import CommentForm from "./CommentForm";
 import "./SongPage.css";
 
 const SongPage = () => {
@@ -56,6 +57,9 @@ const SongPage = () => {
             <div id="song-genre-div">
               <h3 id="song-genre"># {song.genre.name}</h3>
             </div>
+          </div>
+          <div id="comment-form-div">
+            <CommentForm />
           </div>
           <div id="comments-div">
             {song.comments.map(comment => (

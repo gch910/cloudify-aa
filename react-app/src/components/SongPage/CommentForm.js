@@ -7,8 +7,8 @@ const CommentForm = () => {
 
   const commentSubmit = () => {
     const userComment = {
-      user_id: sessionUserUser.user.id,
-      content,
+      user_id: sessionUser.user.id,
+      content: comment
     };
   };
   return (
@@ -25,3 +25,5 @@ const CommentForm = () => {
     </form>
   );
 };
+
+export default CommentForm;
