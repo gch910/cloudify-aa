@@ -13,7 +13,7 @@ const SongPage = () => {
 
   useEffect(() => {
     dispatch(getSong(songId)).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, songId]);
 
   return (
     isLoaded && (
@@ -27,6 +27,7 @@ const SongPage = () => {
               <img
                 id="play-icon"
                 src="https://alohajarren.github.io/webpage-mockup/images/songplay.png"
+                alt="icon"
               ></img>
             </div>
             <div id="song-headers">
