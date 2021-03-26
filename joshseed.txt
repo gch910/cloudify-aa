@@ -1,147 +1,147 @@
 joshUsers = ['JID', 'J. Cole', 'Logic', 'Ariana Grande', 'Dua Lipa', 'The Weeknd']
 
-josh1 = Song(
+rap1 = Song(
     title='Never'
     release_date = date(2017, 3, 10),
-    song_path = 'https://www.youtube.com/watch?v=6eFcSesrP6A&ab_channel=JIDVEVO',
-    image_path = 'https://images.genius.com/a466c251e0e8fe6f511db44a3512a554.1000x1000x1.jpg', 
-    user_id = 'JID',
-    genre_id = 0,
+    song_path = 'https://cloudify.s3.amazonaws.com/0a93593e3d434ebc8eaaf081be48f3d7.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/6f25696902e74a36b3b28c0aee8e2b57.jpg', 
+    user_id = 13,
+    genre_id = 1,
   )
-  josh2 = Song(
+  rap2 = Song(
     title='Working Out'
     release_date = date(2018, 10, 3),
-    song_path = 'https://www.youtube.com/watch?v=FzpJl-i7ZRg&ab_channel=COLORS',
-    image_path = 'https://i1.sndcdn.com/artworks-000464716785-nkulfo-t500x500.jpg', 
-    user_id = 'JID',
-    genre_id = 0,
+    song_path = 'https://cloudify.s3.amazonaws.com/a6f8bc5835bf4a95ad8a2d3a7f42aaf0.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/a54b5d3c7227418fae3ba830deb2ec22.jpg', 
+    user_id = 13,
+    genre_id = 1,
   )
-  josh3 = Song(
+  rap3 = Song(
     title='Slick Talk'
     release_date = date(2018, 12, 5),
-    song_path = 'https://www.youtube.com/watch?v=XZ4vKF6ueS8&ab_channel=JID',
-    image_path = 'https://images-na.ssl-images-amazon.com/images/I/81MCQY5wKwL._AC_UL600_SR600,600_.jpg', 
-    user_id = 'JID',
-    genre_id = 0,
+    song_path = 'https://cloudify.s3.amazonaws.com/f32008c50b7e4017b8520ab93ac97279.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/d2cdf1f392864bf6956528cc63f3e5bb.jpg', 
+    user_id = 13,
+    genre_id = 1,
   )
-  josh4 = Song(
+  rap4 = Song(
     title='Caged Bird'
     release_date = date(2015, 12, 7),
-    song_path = 'https://www.youtube.com/watch?v=ukTKLdpITVU&ab_channel=J.Cole-Topic',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/3/3f/DreamvilleROTD2.jpeg', 
-    user_id = 'J.Cole',
-    genre_id = 0,
+    song_path = 'https://cloudify.s3.amazonaws.com/0d56a32bf84a4b45b87319bb07a74166.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/31dfc6f6467c4800a5b40422b138e0d2.jpeg', 
+    user_id = 14,
+    genre_id = 1,
   )
-  josh5 = Song(
+  rap5 = Song(
     title='Apparently'
     release_date = date(2014, 12, 9),
-    song_path = 'https://www.youtube.com/watch?v=Hz72aS64RJE&ab_channel=J.Cole-Topic',
-    image_path = 'https://images-na.ssl-images-amazon.com/images/I/71iQcMbTpWL._SL1500_.jpg', 
-    user_id = 'J.Cole',
-    genre_id = 0,
+    song_path = 'https://cloudify.s3.amazonaws.com/8cf3ed6c4f6c4a9ebb84679f184e5d0f.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/38752b9560c243bfae674b391955dc31.jpg', 
+    user_id = 14,
+    genre_id = 1,
   )
-  josh6 = Song(
+  rap6 = Song(
     title='Crooked Smile'
     release_date = date(2013, 6, 4),
-    song_path = 'https://www.youtube.com/watch?v=fzzMOMkjm8A&ab_channel=JColeVEVO',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CrookedSmileJCole.jpg/220px-CrookedSmileJCole.jpg', 
-    user_id = 'J.Cole',
-    genre_id = 0,
+    song_path = 'https://cloudify.s3.amazonaws.com/eac51f79f9994ab4a760a680a549500e.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/c07cceb5696542318dbe6d0568e0acff.jpg', 
+    user_id = 14,
+    genre_id = 1,
   )
-  josh7 = Song(
+  rap7 = Song(
     title='Metropolis'
     release_date = date(2014, 10, 21),
-    song_path = 'https://www.youtube.com/watch?v=4bdMtenCBjc&ab_channel=VisionaryMusicGroup',
-    image_path = 'https://images-na.ssl-images-amazon.com/images/I/81ch1Foa-dL._SL1500_.jpg', 
-    user_id = 'Logic',
-    genre_id = 0,
+    song_path = 'https://cloudify.s3.amazonaws.com/7c2ec85eeace4d2a946dad8706331b94.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/edd887dbfe844216873aec0327416e7b.jpg', 
+    user_id = 15,
+    genre_id = 1,
   )
-  josh8 = Song(
+  rap8 = Song(
     title='Fade Away'
     release_date = date(2015, 11, 5),
-    song_path = 'https://www.youtube.com/watch?v=b4qyMIOIDd4&ab_channel=Logic-Topic',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/e/ea/TheIncredibleTrueStory.jpg', 
-    user_id = 'Logic',
-    genre_id = 0,
+    song_path = 'https://cloudify.s3.amazonaws.com/bc5f1f3feac745bbbb00cb4a25e14c3d.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/0588f4ecd8e7499e93c3210310fbb999.jpg', 
+    user_id = 15,
+    genre_id = 1,
   )
-  josh9 = Song(
+  rap9 = Song(
     title='Young Sinatra III'
-    release_date = date(),
-    song_path = 'https://www.youtube.com/watch?v=5rVf7jkzmxw&ab_channel=UndeniableMixtape',
-    image_path = 'https://t2.genius.com/unsafe/168x0/https%3A%2F%2Fimages.genius.com%2F4cb73fd1e86a44f861bc4ba694c17126.1000x1000x1.jpg', 
-    user_id = 'Logic',
-    genre_id = 0,
+    release_date = date(2011, 9, 19),
+    song_path = 'https://cloudify.s3.amazonaws.com/7a6326b181204d2ba990bd589ccb538d.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/cc65cc73339a43b08dedb385df6c3b87.jpg', 
+    user_id = 15,
+    genre_id = 1,
   )
 
-  josh10 = Song(
+  pop1 = Song(
     title='Stuck with U(with Justin Bieber)'
     release_date = date(2020, 5, 8),
-    song_path = 'https://www.youtube.com/watch?v=h2jvHynuMjI&ab_channel=JustinBieberVEVO',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/d/dc/Justin_Bieber_and_Ariana_Grande_-_Stuck_with_You.png', 
-    user_id = 'Ariana Grande',
-    genre_id = 3,
+    song_path = 'https://cloudify.s3.amazonaws.com/4b1e10f903ac4cb4887c9b40dd39379c.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/7d7bfbce1f6c48a69f05c4037562133c.png', 
+    user_id = 16,
+    genre_id = 4,
   )
-  josh11 = Song(
+  pop2 = Song(
     title='7 Rings'
     release_date = date(2019, 1, 18),
-    song_path = 'https://www.youtube.com/watch?v=InOCRXEsK3M&ab_channel=SyrebralVibes',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Ariana_Grande_-_7_rings.png/220px-Ariana_Grande_-_7_rings.png', 
-    user_id = 'Ariana Grande',
-    genre_id = 3,
+    song_path = 'https://cloudify.s3.amazonaws.com/1083d06d6d614a0e9b5f521a826dc187.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/eb07b647871946bea6319a8ffd624b86.png', 
+    user_id = 16,
+    genre_id = 4,
   )
-  josh12 = Song(
+  pop3 = Song(
     title='34+35'
     release_date = date(2020, 10, 30),
-    song_path = 'https://www.youtube.com/watch?v=cnyCcF20pRo&ab_channel=ArianaGrandeVevo',
-    image_path = 'https://images.genius.com/19f6cba5a8b80305ef20723150e5ac72.707x707x1.png', 
-    user_id = 'Ariana Grande',
-    genre_id = 3,
+    song_path = 'https://cloudify.s3.amazonaws.com/75f654fb266d40b5974ff34b00bba9fc.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/3fb34c9436cd433db3f71e43f9b923fb.png', 
+    user_id = 16,
+    genre_id = 4,
   )
-  josh13 = Song(
+  pop4 = Song(
     title="Don't Start Now"
     release_date = date(2019, 10, 30),
-    song_path = 'https://www.youtube.com/watch?v=8CLkVWB_Lj8&ab_channel=UniqueVibes',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Dua_Lipa_-_Don%27t_Start_Now.png/220px-Dua_Lipa_-_Don%27t_Start_Now.png', 
-    user_id = 'Dua Lipa',
-    genre_id = 3,
+    song_path = 'https://cloudify.s3.amazonaws.com/a77a7b089e0b421fbe585968a0cfcd8a.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/1a0adf82120d42d3a84f18c86aab2475.png', 
+    user_id = 17,
+    genre_id = 4,
   )
-  josh14 = Song(
+  pop5 = Song(
     title='New Rules'
     release_date = date(2017, 7, 15),
-    song_path = 'https://www.youtube.com/watch?v=ClhLNUPqv8Q&ab_channel=TazNetwork',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/New_Rules_%28Official_Single_Cover%29_by_Dua_Lipa.png/220px-New_Rules_%28Official_Single_Cover%29_by_Dua_Lipa.png', 
-    user_id = 'Dua Lipa',
-    genre_id = 3,
+    song_path = 'https://cloudify.s3.amazonaws.com/1d0995d690dc49e98bf8e92b0d4afbb1.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/833288a7f00046eb96a78070742d6e9f.png', 
+    user_id = 17,
+    genre_id = 4,
   )
-  josh15 = Song(
+  pop6 = Song(
     title="We're Good"
     release_date = date(2021, 2, 11),
-    song_path = 'https://www.youtube.com/watch?v=VwDTp0QTyY0&ab_channel=DuaLipa',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a8/Dua_Lipa_-_We%27re_Good_cover_art.png/220px-Dua_Lipa_-_We%27re_Good_cover_art.png', 
-    user_id = 'Dua Lipa',
-    genre_id = 3,
+    song_path = 'https://cloudify.s3.amazonaws.com/d265168c427642e98b9355562d8aaf83.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/9afd7bad736042998fbac4ff997aba60.png', 
+    user_id = 17,
+    genre_id = 4,
   )
-  josh16 = Song(
+  pop7 = Song(
     title='Blinding Lights'
     release_date = date(2019, 11, 29),
-    song_path = 'https://www.youtube.com/watch?v=fHI8X4OXluQ&ab_channel=TheWeekndVEVO',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e6/The_Weeknd_-_Blinding_Lights.png/220px-The_Weeknd_-_Blinding_Lights.png', 
-    user_id = 'The Weeknd',
-    genre_id = 3,
+    song_path = 'https://cloudify.s3.amazonaws.com/cffdad8c9ecf498bb31e688b485fc81a.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/68a0c4b386884021a94c8844588db2fe.png', 
+    user_id = 18,
+    genre_id = 4,
   )
-  josh17 = Song(
+  pop8 = Song(
     title='Starboy'
     release_date = date(2016, 11, 26),
-    song_path = 'https://www.youtube.com/watch?v=xizN47Box_Y&ab_channel=7clouds',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/39/The_Weeknd_-_Starboy.png/220px-The_Weeknd_-_Starboy.png', 
-    user_id = 'The Weeknd',
-    genre_id = 3,
+    song_path = 'https://cloudify.s3.amazonaws.com/b71a17f6051f4cf9912c31369a97e423.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/ba8c60e6f1c4478fab270e3ab2e45f05.png', 
+    user_id = 18,
+    genre_id = 4,
   )
-  josh18 = Song(
+  pop9 = Song(
     title='The Hills'
     release_date = date(2015, 5, 27),
-    song_path = 'https://www.youtube.com/watch?v=zxdSHfZFKkY&ab_channel=7clouds',
-    image_path = 'https://upload.wikimedia.org/wikipedia/en/thumb/a/af/The_Weeknd_-_The_Hills.jpg/220px-The_Weeknd_-_The_Hills.jpg', 
-    user_id = 'The Weeknd',
-    genre_id = 3,
+    song_path = 'https://cloudify.s3.amazonaws.com/7e0acf4011b94456bf17847df2576f7a.mp3',
+    image_path = 'https://cloudify.s3.amazonaws.com/85ff809e61a74588a966ac397143af47.jpg', 
+    user_id = 18,
+    genre_id = 4,
   )

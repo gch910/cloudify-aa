@@ -21,7 +21,7 @@ const Home = () => {
       <>
         <h1>My Home </h1>
         <UploadSongForm />
-        <CarouselSongs />
+        {/* <CarouselSongs /> */}
         {songs.map((song, idx) => (
           <li key={idx}>{song.title}</li>
         ))}
