@@ -22,7 +22,7 @@ const Home = () => {
       dispatch(getAllSongs()).then((req) => setIsLoaded(true));
     }
   }, [dispatch]);
-
+  console.log(rap);
   return (
     isLoaded && (
       <div className="center">

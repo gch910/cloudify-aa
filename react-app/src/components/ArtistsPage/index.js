@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../store/users";
 import { Link } from "react-router-dom";
+import "./ArtistPage.css";
 
 const ArtistsPage = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,11 @@ const ArtistsPage = () => {
       <div id="artists-page-div">
         {allUsers.map((user) => (
           <div id="artist-div">
-            <Link id="artist-username" to={`/profile/${user.id}`}>
-              {user.username}
-            </Link>
+            <div id="artist-username-div">
+              <Link id="artist-username" to={`/profile/${user.id}`}>
+                {user.username}
+              </Link>
+            </div>
           </div>
         ))}
       </div>
