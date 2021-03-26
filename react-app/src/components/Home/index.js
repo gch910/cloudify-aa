@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getAllSongs } from "../../store/songs";
 import CarouselSongs from "../CarouselSongs";
 import UploadSongForm from "../UploadSongForm";
+import PlayButton from '../PlayButton'
 import "./Home.css";
 
 const Home = () => {
@@ -35,6 +36,7 @@ const Home = () => {
           <CarouselSongs songs={rnb} />
           <CarouselSongs songs={jazz} />
           <CarouselSongs songs={rock} />
+          <PlayButton />
         </div>
         {/* <div className="right-side">wall</div> */}
       </div>
