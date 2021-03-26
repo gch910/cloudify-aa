@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState, useParams } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ProfileSongs from "./ProfileSongs";
 import { getArtist } from "../../store/users";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
-  const { userId } = useParams()
+  const { userId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.user);
-  const artist = useSelector(state => state.users.artist);
+  const artist = useSelector((state) => state.users.artist);
   const [isLoaded, setIsLoaded] = useState(false);
   const [songsClicked, setSongsClicked] = useState(true);
   const [popularClicked, setPopularClicked] = useState(false);
   useEffect(() => {
     // if (sessionUser.user) setIsLoaded(true);
-    dispatch(getArtist(userId)).then(() => setIsLoaded(true))
+    dispatch(getArtist(userId)).then(() => setIsLoaded(true));
   }, [dispatch, userId]);
-
-
 
   const displaySongs = () => {
     setSongsClicked(true);
