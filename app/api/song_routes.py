@@ -1,8 +1,11 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Song, Genre
+from app.models import db, Song, Genre, Comment
 from app.aws import allowed_image_file, upload_file_to_s3, allowed_audio_file, get_unique_filename
 from app.forms.song_form import SongForm
+from app.forms.comment_form import CommentForm
+
+
 song_routes = Blueprint('songs', __name__)
 
 
@@ -113,4 +116,15 @@ def song_genre():
     genres = Genre.query.all()
     genresDict = {"genres": [genre.to_dict() for genre in genres]}
     return genresDict
+
+
+@song_routes.route('/<int:id>/comment')
+def song_comment():
+    form = commentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        comment = Comment(
+            content = form.data["content"],
+        )
+
 

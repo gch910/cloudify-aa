@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 const CommentForm = () => {
   const [comment, setComment] = useState("");
+  const sessionUser = useSelector(state => state.user)
 
   const commentSubmit = () => {
     const userComment = {
-      comment,
+      user_id: sessionUserUser.user.id,
+      content,
     };
   };
   return (

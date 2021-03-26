@@ -1,6 +1,8 @@
 from .db import db
 
+
 class Comment(db.Model):
+
   __tablename__ = 'comments'
 
   id = db.Column(db.Integer, nullable=False, primary_key=True)
