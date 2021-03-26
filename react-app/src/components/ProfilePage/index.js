@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useParams } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import ProfileSongs from "./ProfileSongs";
 import { getArtist } from "../../store/users";
 import "./ProfilePage.css";
