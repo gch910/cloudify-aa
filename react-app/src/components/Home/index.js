@@ -28,12 +28,16 @@ const Home = () => {
       <div className="center">
         <div>
           <h1>My Home </h1>
-          <CarouselSongs songs={rap} title={"Rap"} />
-          <CarouselSongs songs={pop} title={"Pop"} />
-          <CarouselSongs songs={electronic} title={"Electronic"} />
-          <CarouselSongs songs={rnb} title={"R&B"} />
-          <CarouselSongs songs={jazz} title={"Jazz"} />
-          <CarouselSongs songs={rock} title={"Rock"} />
+          <CarouselSongs key="rap" songs={rap} title={"Rap"} />
+          <CarouselSongs key="pop" songs={pop} title={"Pop"} />
+          <CarouselSongs
+            key="electronic"
+            songs={electronic}
+            title={"Electronic"}
+          />
+          <CarouselSongs key="rnb" songs={rnb} title={"R&B"} />
+          <CarouselSongs key="jazz" songs={jazz} title={"Jazz"} />
+          <CarouselSongs key="rock" songs={rock} title={"Rock"} />
         </div>
       </div>
     )

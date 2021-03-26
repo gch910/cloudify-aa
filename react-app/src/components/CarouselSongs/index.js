@@ -17,7 +17,7 @@ const CarouselSongs = ({ songs, title }) => {
         <div>
           <div>{title}</div>
         </div>
-        <Slider {...settings}>
+        <Slider style={{ maxHeight: "100%", maxWidth: "100%" }} {...settings}>
           {songs.map((el, idx) => (
             <div>
               <Track
