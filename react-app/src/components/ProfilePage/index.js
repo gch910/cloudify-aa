@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ProfileSongs from "./ProfileSongs";
 import "./ProfilePage.css";
 
@@ -11,7 +10,7 @@ const ProfilePage = () => {
   const [popularClicked, setPopularClicked] = useState(false);
   useEffect(() => {
     if (sessionUser.user) setIsLoaded(true);
-  }, []);
+  }, [sessionUser.user]);
 
   const displaySongs = () => {
     setSongsClicked(true);
@@ -30,7 +29,7 @@ const ProfilePage = () => {
             <img
               id="profile-image"
               src="https://i.stack.imgur.com/l60Hf.png"
-              alt="profile picture"
+              alt="profile"
             />
             <h1 id="profile-username">{sessionUser.user.username}</h1>
           </div>
