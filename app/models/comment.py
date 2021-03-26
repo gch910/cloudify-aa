@@ -1,6 +1,8 @@
 from .db import db
 
+
 class Comment(db.Model):
+
   __tablename__ = 'comments'
 
   id = db.Column(db.Integer, nullable=False, primary_key=True)
@@ -10,4 +12,9 @@ class Comment(db.Model):
 
   users = db.relationship('User', back_populates='comments')
   songs = db.relationship('Song', back_populates='comments')
+
+  def to_dict(self):
+    return {
+      "content": self.content,
+        }
 

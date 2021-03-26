@@ -40,7 +40,8 @@
 }
 
 #song-image {
-    /* margin-right: 50px; */
+    height: 300px;
+    width: 300px;
 }
 
 #song-headers {

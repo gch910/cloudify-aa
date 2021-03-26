@@ -1,8 +1,11 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Song, Genre
+from app.models import db, Song, Genre, Comment
 from app.aws import allowed_image_file, upload_file_to_s3, allowed_audio_file, get_unique_filename
 from app.forms.song_form import SongForm
+from app.forms.comment_form import CommentForm
+
+
 song_routes = Blueprint('songs', __name__)
 
 
@@ -28,10 +31,15 @@ def songs():
 def song_by_id(id):
     song = Song.query.get(id)
     songDict = {"song": song.to_dict()}
-    genre_id = songDict["song"]["genre_id"]
+    # genre_id = songDict["song"]["genre_id"]
 
-    genre = Genre.query.get(genre_id).to_dict()
-    songDict["song"]["genre_name"] = genre["name"]
+    # genre = Genre.query.get(genre_id).to_dict()
+    # comments = Comment.query.filter_by(song_id=id).all()
+    # commentsDict = {"comments": [comment.to_dict() for comment in comments]}
+
+    # songDict["song"]["genre_name"] = genre["name"]
+    # songDict["song"]["comments"] = commentsDict["comments"]
+   
     print(songDict)
     return songDict
 
@@ -113,4 +121,20 @@ def song_genre():
     genres = Genre.query.all()
     genresDict = {"genres": [genre.to_dict() for genre in genres]}
     return genresDict
+
+
+@song_routes.route('/<int:id>/comment', methods=['POST'])
+def song_comment(id):
+    form = commentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        comment = Comment(
+            content=form.data["content"],
+            user_id=form.data["user_id"],
+            song_id=form.data["song_id"]
+        )
+        
+        print(comment)
+        return comment
+
 
