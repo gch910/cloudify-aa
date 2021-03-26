@@ -3,18 +3,25 @@ import "./PlayBar.css";
 
 const PlayBar = () => {
   const [audio, setAudio] = useState(new Audio("songs/test_song.mp3"));
-  const [playing, isPlaying] = useState(false);
+  const [playing, setIsPlaying] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [timeElapsed, setTimeElapsed] = useState(0)
+  const [progress, setProgress] = useState(0)
 
+  let playingInterval
   const play = () => {
     audio.play();
-    isPlaying(true);
-  };
-
+    setIsPlaying(true)
+    playingInterval = setInterval(() => {
+      setTimeElapsed(timeFormat(audio.currentTime))
+      setProgress(audio.currentTime)
+    }, 1000);
+  }
   const pause = () => {
     audio.pause();
-    isPlaying(false);
-  };
-
+    clearInterval(playingInterval)
+    setIsPlaying(false)
+  }
   const timeFormat = (time) => {
     let minute = Math.floor(time / 60);
     let remainder = Math.floor(time % 60);
@@ -23,19 +30,28 @@ const PlayBar = () => {
     return `${minute}:${seconds}`;
   };
 
+  const showProgress = (e) => {
+    audio.currentTime = e.target.value
+    setTimeElapsed(e.target.value)
+  }
+
+
   return (
-    <div className="PlayBar">
-      <audio className="song" src="songs/test_song.mp3" type="audio/mpeg" />
-      <div className="AudioControls">
-        <button onClick={playing ? pause : play}>
-          {playing ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>}
-        </button>
+    <div className='PlayBar'>
+      <div className='AudioControls'>
+        <button onClick={playing ? pause : play}>{playing ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>}</button>
       </div>
-      <div className="ProgressBar">
-        <div className="ProgressBarCover"></div>
-        <div className="ProgressBarThumb"></div>
+      <div className='ProgressBar'>
         <span>{timeFormat(audio.currentTime)}</span>
-        <input className="Bar" type="range" step="0.01" />
+        <input
+          className='Bar'
+          type='range'
+          step='0.01'
+          min='0'
+          defaultValue='0'
+          value={progress}
+          max={audio.duration}
+          onInput={showProgress} />
         <span>{timeFormat(audio.duration)}</span>
       </div>
       <div className="ArtistInfo">
@@ -49,7 +65,8 @@ const PlayBar = () => {
         </div>
       </div>
     </div>
-  );
+  )
+
 };
 
 export default PlayBar;
