@@ -34,7 +34,12 @@ def song_by_id(id):
     genre_id = songDict["song"]["genre_id"]
 
     genre = Genre.query.get(genre_id).to_dict()
+    comments = Comment.query.filter_by(song_id=id).all()
+    commentsDict = {"comments": [comment.to_dict() for comment in comments]}
+
     songDict["song"]["genre_name"] = genre["name"]
+    songDict["song"]["comments"] = commentsDict["comments"]
+   
     print(songDict)
     return songDict
 
@@ -118,13 +123,18 @@ def song_genre():
     return genresDict
 
 
-@song_routes.route('/<int:id>/comment')
-def song_comment():
+@song_routes.route('/<int:id>/comment', methods=['POST'])
+def song_comment(id):
     form = commentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment = Comment(
-            content = form.data["content"],
+            content=form.data["content"],
+            user_id=form.data["user_id"],
+            song_id=form.data["song_id"]
         )
+        
+        print(comment)
+        return comment
 
 
