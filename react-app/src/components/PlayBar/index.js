@@ -39,7 +39,10 @@ const PlayBar = () => {
         <span>{timeFormat(audio.duration)}</span>
       </div>
       <div className="ArtistInfo">
-        <img src="http://is5.mzstatic.com/image/thumb/Music128/v4/9e/db/51/9edb5133-7595-700f-9038-b7cf5ddc69f5/source/100000x100000-999.jpg" />
+        <img
+          src="http://is5.mzstatic.com/image/thumb/Music128/v4/9e/db/51/9edb5133-7595-700f-9038-b7cf5ddc69f5/source/100000x100000-999.jpg"
+          alt="artist"
+        />
         <div className="SongDetails">
           <div>Artist</div>
           <div>Title</div>

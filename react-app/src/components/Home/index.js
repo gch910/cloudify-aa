@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getAllSongs } from "../../store/songs";
 import CarouselSongs from "../Carousel";
+
 import UploadSongForm from "../UploadSongForm";
 
 const Home = () => {
@@ -21,7 +22,7 @@ const Home = () => {
       <>
         <h1>My Home </h1>
         <UploadSongForm />
-        {/* <CarouselSongs /> */}
+        <CarouselSongs songs={songs} />
         {songs.map((song, idx) => (
           <li key={idx}>{song.title}</li>
         ))}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LogoutButton from "../auth/LogoutButton";
@@ -10,7 +10,11 @@ import "./Navigation.css";
 const Navigation = ({ setAuthenticated, navId }) => {
   const sessionUser = useSelector((state) => state.user);
 
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (sessionUser) setIsLoaded(true);
+  }, [sessionUser]);
 
   let sessionLinks;
   if (sessionUser.user) {
