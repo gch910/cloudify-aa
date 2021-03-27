@@ -10,28 +10,26 @@ const SongPage = () => {
   const { songId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.user);
+  const artist = useSelector((state) => state.users)
   const song = useSelector((state) => state.songs.currentSong);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const userId = song?.user_id
-  console.log(userId)
+  console.log(song)
 
   let comments;
   let user;
 
-  console.log(comments)
 
-  useEffect(() => {
-    dispatch(getArtist(userId))
-    dispatch(getSong(songId)).then(() => setIsLoaded(true));
+  useEffect(async () => {
+    await dispatch(getSong(songId)).then(() => setIsLoaded(true));
   }, [dispatch, songId]);
 
   if(isLoaded) {
     comments = song.comments
     user = sessionUser.user
   }
-  
-  console.log(comments)
+
 
   return (
     isLoaded && (
@@ -51,7 +49,7 @@ const SongPage = () => {
             <div id="song-headers">
               <h1 id="song-title">{song.title}</h1>
               <h3 id="song-username">
-                {user.username}
+                {song.user.username}
               </h3>
             </div>
             <div id="song-genre-div">
