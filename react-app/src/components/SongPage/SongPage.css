@@ -112,8 +112,22 @@
     flex-direction: column;
 }
 
-#comment-div {
+#comment-form-div {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#comment-form {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#comment-text{
+    height: 18px;
+    width: 765px;
+    margin-right: 10px;
 }
 
 .no-outline:focus {

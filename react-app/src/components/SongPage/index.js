@@ -14,22 +14,21 @@ const SongPage = () => {
   const song = useSelector((state) => state.songs.currentSong);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const userId = song?.user_id
-  console.log(song)
 
   let comments;
-  let user;
+  let userId;
 
-
-  useEffect(async () => {
-    await dispatch(getSong(songId)).then(() => setIsLoaded(true));
-  }, [dispatch, songId]);
+  if(sessionUser.user) userId = sessionUser?.user?.id
 
   if(isLoaded) {
     comments = song.comments
-    user = sessionUser.user
   }
 
+  useEffect(async () => {
+    await dispatch(getSong(songId)).then(() => setIsLoaded(true));
+  }, [dispatch, songId, comments]);
+
+ 
 
   return (
     isLoaded && (
@@ -56,9 +55,7 @@ const SongPage = () => {
               <h3 id="song-genre"># {song.genre.name}</h3>
             </div>
           </div>
-          <div id="comment-form-div">
-            <CommentForm />
-          </div>
+            <CommentForm userId={userId} />
           <div id="comments-div">
             {song.comments.map(comment => (
               <div id="comment-div">{comment.content}</div>
