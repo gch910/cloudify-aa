@@ -28,8 +28,7 @@ const CommentForm = ({userId, newComment, setNewComment}) => {
     return setTimeout(() => {
       console.log("hello")
       setNewComment(true)
-      setNewComment(false)
-    }, 100)
+    }, 10)
   }
 
   return (

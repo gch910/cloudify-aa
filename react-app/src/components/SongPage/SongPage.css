@@ -4,7 +4,8 @@
     justify-content: center;
     margin-left: 50px;
     margin-right: 50px;
-    background-color: #F2F2F2
+    background-color: #F2F2F2;
+    
 }
 
 #song-page-contents {
@@ -12,6 +13,7 @@
     height: 100vh;
     padding-top: 0px;
     background-color: white;
+    overflow: scroll;
     
 }
 
@@ -110,6 +112,7 @@
     margin-top: 100px;
     align-items: left;
     flex-direction: column;
+    margin-bottom: 100px;
 }
 
 .comment-div {
@@ -135,6 +138,8 @@
     height: 18px;
     width: 765px;
     margin-right: 10px;
+    border-radius: 3px 3px 3px 3px;
+    resize: none;
 }
 
 #user-comment-image {
@@ -150,9 +155,14 @@
 }
 
 #song-profile-image {
-    height: 120px;
-    width: 120px;
+    height: 130px;
+    width: 130px;
     border-radius: 50%;
+    margin-left: 25px;
+}
+
+#comment-submit-buton {
+    border-radius: 3px 3px 3px 3px;
 }
 
 .no-outline:focus {

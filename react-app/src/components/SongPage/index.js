@@ -27,6 +27,8 @@ const SongPage = () => {
 
   useEffect(async () => {
     await dispatch(getSong(songId)).then(() => setIsLoaded(true));
+
+    return setNewComment(false)
   }, [dispatch, newComment]);
 
   return (
