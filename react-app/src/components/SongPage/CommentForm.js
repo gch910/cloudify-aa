@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postUserComment } from "../../store/songs";
 
-const CommentForm = ({userId}) => {
+const CommentForm = ({userId, newComment, setNewComment}) => {
   const { songId } = useParams();
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
@@ -17,7 +17,20 @@ const CommentForm = ({userId}) => {
     };
     console.log(songId, userComment);
     await dispatch(postUserComment(userComment, songId));
+   
   };
+
+  useEffect(() => {
+    setComment("")
+  }, [newComment])
+
+  const newCommentSubmit = () => {
+    return setTimeout(() => {
+      console.log("hello")
+      setNewComment(true)
+      setNewComment(false)
+    }, 100)
+  }
 
   return (
     <div id="comment-form-div">
@@ -28,7 +41,7 @@ const CommentForm = ({userId}) => {
           id="comment-text"
           placeholder="Comment"
         ></textarea>
-        <button id="comment-submit-button" type="submit">
+        <button onClick={newCommentSubmit} id="comment-submit-button" type="submit">
           Submit
         </button>
       </form>

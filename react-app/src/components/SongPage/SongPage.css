@@ -108,8 +108,15 @@
 #comments-div {
     display: flex;
     margin-top: 100px;
-    align-items: center;
+    align-items: left;
     flex-direction: column;
+}
+
+.comment-div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-left: 180px;
 }
 
 #comment-form-div {
@@ -128,6 +135,24 @@
     height: 18px;
     width: 765px;
     margin-right: 10px;
+}
+
+#user-comment-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+#song-profile-image-div {
+    width: 120px;
+    height: 120px;
+}
+
+#song-profile-image {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
 }
 
 .no-outline:focus {

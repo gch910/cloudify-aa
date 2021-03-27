@@ -10,25 +10,24 @@ const SongPage = () => {
   const { songId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.user);
-  const artist = useSelector((state) => state.users)
+  const artist = useSelector((state) => state.users);
   const song = useSelector((state) => state.songs.currentSong);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const [newComment, setNewComment] = useState(false)
 
   let comments;
   let userId;
 
-  if(sessionUser.user) userId = sessionUser?.user?.id
+  if (sessionUser.user) userId = sessionUser?.user?.id;
 
-  if(isLoaded) {
-    comments = song.comments
+  if (isLoaded) {
+    comments = song.comments;
   }
 
   useEffect(async () => {
     await dispatch(getSong(songId)).then(() => setIsLoaded(true));
-  }, [dispatch, songId, comments]);
-
- 
+  }, [dispatch, newComment]);
 
   return (
     isLoaded && (
@@ -47,18 +46,30 @@ const SongPage = () => {
             </div>
             <div id="song-headers">
               <h1 id="song-title">{song.title}</h1>
-              <h3 id="song-username">
-                {song.user.username}
-              </h3>
+              <h3 id="song-username">{song.user.username}</h3>
             </div>
             <div id="song-genre-div">
               <h3 id="song-genre"># {song.genre.name}</h3>
             </div>
           </div>
-            <CommentForm userId={userId} />
+          <CommentForm userId={userId} newComment={newComment} setNewComment={setNewComment} />
+          <div id="song-profile-image-div">
+            <img
+              id="song-profile-image"
+              src="https://i.stack.imgur.com/l60Hf.png"
+              alt="profile"
+            />
+          </div>
           <div id="comments-div">
-            {song.comments.map(comment => (
-              <div id="comment-div">{comment.content}</div>
+            {song.comments.map((comment) => (
+              <div className="comment-div">
+                <img
+                  id="user-comment-image"
+                  src="https://i.stack.imgur.com/l60Hf.png"
+                  alt="profile"
+                />
+                {comment.content}
+              </div>
             ))}
           </div>
         </div>
