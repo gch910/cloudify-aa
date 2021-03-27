@@ -108,10 +108,11 @@
 
 #comments-div {
     display: flex;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     align-items: left;
     flex-direction: column;
     margin-bottom: 100px;
+    margin-left: 10px;
 }
 
 .comment-div {

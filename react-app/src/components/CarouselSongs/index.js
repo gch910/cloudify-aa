@@ -25,6 +25,7 @@ const CarouselSongs = ({ songs, title }) => {
                 source={el.image_path}
                 hyperlink={el.song_path}
                 title={el.title}
+                id={el.id}
               />
             </div>
           ))}

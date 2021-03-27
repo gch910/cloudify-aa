@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./index.css";
 
-const Track = ({ source, hyperlink, title }) => {
+const Track = ({ source, hyperlink, title, id }) => {
   return (
     <a href={hyperlink}>
       <div className="outer-div">
@@ -9,7 +10,7 @@ const Track = ({ source, hyperlink, title }) => {
           <img alt="Album cover" src={source} />
         </div>
         <div>
-          <span>{title}</span>
+          <Link to={`/song/${id}`}><span>{title}</span></Link>
         </div>
       </div>
     </a>
