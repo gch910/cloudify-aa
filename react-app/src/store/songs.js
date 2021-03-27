@@ -1,6 +1,7 @@
 const ALL_SONGS = "/songs/allSongs";
 const USER_SONGS = "/songs/userSongs";
 const SONG = "/songs/song";
+const POST_COMMENT = "/songs/postComment";
 
 const allSongs = (songs) => {
   return {
@@ -21,6 +22,13 @@ const song = (song) => {
     song: song,
   };
 };
+
+const postComment = (comment) => {
+  return {
+    type: POST_COMMENT,
+    comment: comment
+  }
+}
 
 // const oneSong = (song) => {
 //   return {
@@ -55,6 +63,27 @@ export const getSong = (songId) => async (dispatch) => {
   return data;
 };
 
+export const postUserComment = (comment, songId) => async dispatch => {
+  const { content, user_id } = comment
+  const res = await fetch(`/api/songs/${songId}/comment`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      content,
+      user_id,
+      song_id: songId
+    }),
+  })
+
+  const data = await res.json()
+  console.log(data);
+  dispatch(postComment(data))
+
+  return data
+}
+
 const initialState = {};
 
 const songsReducer = (state = initialState, action) => {
@@ -82,6 +111,13 @@ const songsReducer = (state = initialState, action) => {
       // const userSongs = newState.user_songs = {}
       const song = action.song;
       newState.currentSong = song;
+      return newState;
+    }
+    case POST_COMMENT: {
+      newState = { ...state };
+      // const userSongs = newState.user_songs = {}
+      const comment = action.comment;
+      newState.comment = comment;
       return newState;
     }
     default:

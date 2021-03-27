@@ -33,6 +33,7 @@ export const getArtist = (artistId) => async (dispatch) => {
   const res = await fetch(`/api/artists/${artistId}`);
   const data = await res.json();
   dispatch(artist(data.artist));
+  console.log("artist data", data)
   return data;
 };
 

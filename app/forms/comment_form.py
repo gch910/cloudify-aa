@@ -5,5 +5,7 @@ from app.models import User, Genre
 
 
 class CommentForm(FlaskForm):
-    
-    comment = TextAreaField("comment", validators=[DataRequired()])
+    content = TextAreaField("content", validators=[DataRequired()])
+    user_id = IntegerField("user_id", validators=[DataRequired()])
+    song_id = IntegerField("song_id", validators=[DataRequired()])
+
