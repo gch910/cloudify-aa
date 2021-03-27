@@ -9,7 +9,7 @@
 
 #song-page-contents {
     width: 1200px;
-    height: 100%;
+    min-height: 100vh;
     padding-top: 0px;
     background-color: white;
     /* overflow: scroll; */
