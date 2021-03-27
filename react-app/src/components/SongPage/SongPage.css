@@ -5,15 +5,14 @@
     margin-left: 50px;
     margin-right: 50px;
     background-color: #F2F2F2;
-    
 }
 
 #song-page-contents {
     width: 1200px;
-    height: 100vh;
+    height: 100%;
     padding-top: 0px;
     background-color: white;
-    overflow: scroll;
+    /* overflow: scroll; */
     
 }
 
@@ -164,6 +163,7 @@
 #comment-submit-buton {
     border-radius: 3px 3px 3px 3px;
 }
+
 
 .no-outline:focus {
     outline: none;
