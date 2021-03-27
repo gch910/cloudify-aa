@@ -2,6 +2,7 @@ import React from "react";
 import Track from "../Track";
 import "./Carousel.css";
 import Slider from "react-slick";
+import CarouselButton from "./CarouselButton";
 
 const CarouselSongs = ({ songs, title }) => {
   const settings = {
@@ -10,6 +11,8 @@ const CarouselSongs = ({ songs, title }) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     swipeToSlide: true,
+    // nextArrow: <CarouselButton next={true} />,
+    // prevArrow: <CarouselButton next={false} />,
   };
   return (
     songs && (
