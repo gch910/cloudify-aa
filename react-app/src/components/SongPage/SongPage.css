@@ -168,6 +168,7 @@
 .delete-comment-button {
     position: absolute;
     right: 200px;
+    border-radius: 4px, 4px, 4px, 4px;
 }
 
 

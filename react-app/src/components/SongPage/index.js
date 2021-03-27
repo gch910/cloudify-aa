@@ -30,14 +30,15 @@ const SongPage = () => {
   }
 
   const deleteComment = (e) => {
-    // if(userId == e.target.id) {
-      dispatch(deleteUserComment(e.target.id))
-      setDeleted(true)
+    console.log()
+    if (userId == e.target.className.split(" ")[1]) {
+      dispatch(deleteUserComment(e.target.id));
+      setDeleted(true);
       setTimeout(() => {
-        setDeleted(false)
-      }, 100)
+        setDeleted(false);
+      }, 100);
     }
-  
+  };
 
   useEffect(async () => {
     await dispatch(getSong(songId)).then(() => setIsLoaded(true));
@@ -93,8 +94,15 @@ const SongPage = () => {
                   alt="profile"
                 />
                 {comment.content}
-                {deleteShown && (
-                  <button className="delete-comment-button" id={comment.id} onClick={deleteComment}>Delete</button>
+                {deleteShown && userId == comment.user_id && (
+                  <button
+                    className={`delete-comment-button ${comment.user_id}`}
+                    id={comment.id}
+                    userId={comment.user_id}
+                    onClick={deleteComment}
+                  >
+                    Delete
+                  </button>
                 )}
               </div>
             ))}
