@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import LogoutButton from "../auth/LogoutButton";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
 import ProfileButton from "./ProfileButton";
+import { getAllSongs } from "../../store/songs";
 import "./Navigation.css";
 
 const Navigation = ({ setAuthenticated, navId }) => {
+  const dispatch = useDispatch();
+  const allSongs = useSelector((state) => Object.values(state.songs));
   const sessionUser = useSelector((state) => state.user);
   const history = useHistory();
   const [isLoaded, setIsLoaded] = useState(false);
   const [search, setSearch] = useState("");
 
+  console.log(allSongs);
+
   const onSearchSubmit = (e) => {
     e.preventDefault();
+    let found = false;
     console.log(search);
-    if (e.target.value == "hello") {
-      history.push("/artists");
-    }
+    allSongs.forEach((song) => {
+      if (search == song.title.toLowerCase()) {
+        found = true;
+        return history.push(`/song/${song.id}`);
+      }
+    });
+    if(found === false) history.push("/not-found")
   };
 
   useEffect(() => {
