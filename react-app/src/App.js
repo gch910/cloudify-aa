@@ -13,6 +13,7 @@ import SongPage from "./components/SongPage";
 import ArtistsPage from "./components/ArtistsPage";
 import { restoreUser } from "./store/session";
 import UploadSongForm from "./components/UploadSongForm";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -92,6 +93,7 @@ function App() {
         >
           <UploadSongForm />
         </ProtectedRoute>
+        <NotFoundPage />
       </Switch>
     </BrowserRouter>
   );

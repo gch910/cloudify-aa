@@ -1,39 +1,62 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import LogoutButton from "../auth/LogoutButton";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
 import ProfileButton from "./ProfileButton";
+import { getAllUsers } from "../../store/users";
 import "./Navigation.css";
 
 const Navigation = ({ setAuthenticated, navId }) => {
+  const dispatch = useDispatch();
+  const allSongs = useSelector((state) => Object.values(state.songs));
   const sessionUser = useSelector((state) => state.user);
+  const users = useSelector((state) => state.users.users);
   const history = useHistory();
   const [isLoaded, setIsLoaded] = useState(false);
   const [search, setSearch] = useState("");
 
+  console.log(users);
+
   const onSearchSubmit = (e) => {
     e.preventDefault();
+    let found = false;
     console.log(search);
-    if (e.target.value == "hello") {
-      history.push("/artists");
-    }
+    allSongs.forEach((song) => {
+      if (search == song.title.toLowerCase()) {
+        found = true;
+        return history.push(`/song/${song.id}`);
+      }
+    });
+    allUsers.forEach((user) => {
+      if(search == user.username.toLowerCase()) {
+        found = true;
+        return history.push(`/profile/${user.id}`)
+      }
+    })
+    if (found === false) history.push("/not-found");
   };
 
   useEffect(() => {
-    if (sessionUser) setIsLoaded(true);
+    // if (sessionUser) setIsLoaded(true);
+    dispatch(getAllUsers()).then(() => setIsLoaded(true));
   }, [sessionUser]);
+
+  let allUsers;
+  isLoaded ? (allUsers = Object.values(users)) : (allUsers = null);
 
   let sessionLinks;
   if (sessionUser.user) {
     sessionLinks = (
       <>
-        <img
-          alt="logo"
-          id="nav-logo"
-          src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
-        ></img>
+        <NavLink id="nav-logo-link" exact to="/">
+          <img
+            alt="logo"
+            id="nav-logo"
+            src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
+          ></img>
+        </NavLink>
         <div id="home-link-container">
           <NavLink className="nav-link" id="home-link" exact to="/">
             Home
@@ -80,11 +103,13 @@ const Navigation = ({ setAuthenticated, navId }) => {
   } else {
     sessionLinks = (
       <>
-        <img
-          alt="logo"
-          id="nav-logo"
-          src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
-        ></img>
+        <NavLink id="nav-logo-link" exact to="/">
+          <img
+            alt="logo"
+            id="nav-logo"
+            src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
+          ></img>
+        </NavLink>
         <div id="home-link-container">
           <NavLink className="nav-link" id="home-link" exact to="/">
             Home
@@ -104,12 +129,16 @@ const Navigation = ({ setAuthenticated, navId }) => {
             Artists
           </NavLink>
         </div>
-        <input
-          id="search-bar"
-          className="no-outline"
-          type="text"
-          placeholder="Search..."
-        />
+        <form onSubmit={onSearchSubmit}>
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            id="search-bar"
+            className="no-outline"
+            type="text"
+            placeholder="Search..."
+          />
+        </form>
         <div id="login-button-div">
           <LoginFormModal />
         </div>
