@@ -23,7 +23,6 @@ export const getAllUsers = () => async (dispatch) => {
   //   if (data.errors) {
   //     dispatch(setAuthErrors(res.errors));
   //   } else {
-  console.log("user data thunk", data);
   dispatch(allUsers(data.users));
   return data;
   //   }

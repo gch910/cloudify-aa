@@ -5,18 +5,19 @@ import LogoutButton from "../auth/LogoutButton";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
 import ProfileButton from "./ProfileButton";
-import { getAllSongs } from "../../store/songs";
+import { getAllUsers } from "../../store/users";
 import "./Navigation.css";
 
 const Navigation = ({ setAuthenticated, navId }) => {
   const dispatch = useDispatch();
   const allSongs = useSelector((state) => Object.values(state.songs));
   const sessionUser = useSelector((state) => state.user);
+  const users = useSelector((state) => state.users.users);
   const history = useHistory();
   const [isLoaded, setIsLoaded] = useState(false);
   const [search, setSearch] = useState("");
 
-  console.log(allSongs);
+  console.log(users);
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
@@ -28,12 +29,22 @@ const Navigation = ({ setAuthenticated, navId }) => {
         return history.push(`/song/${song.id}`);
       }
     });
+    allUsers.forEach((user) => {
+      if(search == user.username.toLowerCase()) {
+        found = true;
+        return history.push(`/profile/${user.id}`)
+      }
+    })
     if (found === false) history.push("/not-found");
   };
 
   useEffect(() => {
-    if (sessionUser) setIsLoaded(true);
+    // if (sessionUser) setIsLoaded(true);
+    dispatch(getAllUsers()).then(() => setIsLoaded(true));
   }, [sessionUser]);
+
+  let allUsers;
+  isLoaded ? (allUsers = Object.values(users)) : (allUsers = null);
 
   let sessionLinks;
   if (sessionUser.user) {
