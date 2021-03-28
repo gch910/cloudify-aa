@@ -17,21 +17,29 @@ const CarouselSongs = ({ songs, title }) => {
   return (
     songs && (
       <div className="carousel-container">
-        <div>
-          <div>{title}</div>
+        <div className="headers">
+          <div>
+            <div className="title">{title}</div>
+          </div>
+          <div>
+            <div className="subtitle grey">The latest and hottest {title}</div>
+          </div>
         </div>
-        <Slider style={{ maxHeight: "100%", maxWidth: "100%" }} {...settings}>
-          {songs.map((el, idx) => (
-            <div key={idx}>
-              <Track
-                key={idx}
-                source={el.image_path}
-                hyperlink={el.song_path}
-                title={el.title}
-              />
-            </div>
-          ))}
-        </Slider>
+        <div className="carousel-div">
+          <Slider style={{ maxHeight: "100%", maxWidth: "100%" }} {...settings}>
+            {songs.map((el, idx) => (
+              <div key={idx}>
+                <Track
+                  key={idx}
+                  source={el.image_path}
+                  hyperlink={el.song_path}
+                  title={el.title}
+                  artist={el.user.username}
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
     )
   );

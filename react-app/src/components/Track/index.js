@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-const Track = ({ source, hyperlink, title }) => {
+const Track = ({ source, hyperlink, title, artist }) => {
   return (
     <a href={hyperlink}>
       <div className="outer-div">
@@ -9,7 +9,10 @@ const Track = ({ source, hyperlink, title }) => {
           <img alt="Album cover" src={source} />
         </div>
         <div>
-          <span>{title}</span>
+          <span className="">{title}</span>
+        </div>
+        <div>
+          <span className="subtitle">{artist}</span>
         </div>
       </div>
     </a>
