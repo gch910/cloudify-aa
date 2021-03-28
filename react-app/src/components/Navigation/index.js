@@ -15,11 +15,11 @@ const Navigation = ({ setAuthenticated, navId }) => {
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
-    console.log(search)
-    if(e.target.value == "hello") {
-      history.push("/artists")
+    console.log(search);
+    if (e.target.value == "hello") {
+      history.push("/artists");
     }
-  }
+  };
 
   useEffect(() => {
     if (sessionUser) setIsLoaded(true);
@@ -71,7 +71,9 @@ const Navigation = ({ setAuthenticated, navId }) => {
         >
           Upload
         </NavLink>
-        <ProfileButton />
+        <div>
+          <ProfileButton />
+        </div>
         <LogoutButton setAuthenticated={setAuthenticated} />
       </>
     );
@@ -111,7 +113,9 @@ const Navigation = ({ setAuthenticated, navId }) => {
         <div id="login-button-div">
           <LoginFormModal />
         </div>
-        <SignUpFormModal />
+        <div id="signup-button-div">
+          <SignUpFormModal />
+        </div>
         <NavLink
           className="nav-link"
           id="upload-link"
@@ -123,11 +127,11 @@ const Navigation = ({ setAuthenticated, navId }) => {
     );
   }
   return (
-    // <div id="nav-container">
-    <nav id={navId} className="nav-bar">
-      {isLoaded && sessionLinks}
-    </nav>
-    // </div>
+    <div id="nav-container">
+      <nav id={navId} className="nav-bar">
+        {isLoaded && sessionLinks}
+      </nav>
+    </div>
   );
 };
 

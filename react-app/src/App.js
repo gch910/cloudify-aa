@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginForm from "./components/LoginFormModal/LoginForm";
+import LoginFormPage from "./components/LoginFormPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -54,7 +54,7 @@ function App() {
           />
         </Route> */}
         <Route path="/login" exact={true}>
-          <LoginForm
+          <LoginFormPage
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />

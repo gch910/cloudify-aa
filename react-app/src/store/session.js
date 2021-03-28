@@ -15,8 +15,10 @@ const deleteSession = () => ({
 
 export const loginUser = (email, password) => async (dispatch) => {
   const res = await login(email, password);
+ 
   if (res.errors) {
     dispatch(setAuthErrors(res.errors));
+    return res
   } else {
     dispatch(setUser(res));
   }

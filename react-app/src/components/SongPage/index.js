@@ -73,6 +73,7 @@ const SongPage = () => {
             userId={userId}
             newComment={newComment}
             setNewComment={setNewComment}
+            sesssionUser={sessionUser}
           />
           <div id="song-profile-image-div">
             <img

@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postUserComment } from "../../store/songs";
 
-const CommentForm = ({userId, newComment, setNewComment}) => {
+const CommentForm = ({userId, newComment, setNewComment, sessionUser}) => {
   const { songId } = useParams();
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
+  const history = useHistory()
   // const sessionUser = useSelector((state) => state.user);
 
   const commentSubmit = async (e) => {
     e.preventDefault();
+
+    if(!sessionUser?.user) history.push("/login")
+
     const userComment = {
       user_id: userId,
       content: comment,
