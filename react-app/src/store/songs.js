@@ -2,6 +2,7 @@ const ALL_SONGS = "/songs/allSongs";
 const USER_SONGS = "/songs/userSongs";
 const SONG = "/songs/song";
 const POST_COMMENT = "/songs/postComment";
+const DELETE_COMMENT = "/songs/deleteComment";
 
 const allSongs = (songs) => {
   return {
@@ -27,6 +28,12 @@ const postComment = (comment) => {
   return {
     type: POST_COMMENT,
     comment: comment
+  }
+}
+
+const deleteComment = () => {
+  return {
+    type: DELETE_COMMENT,
   }
 }
 
@@ -84,6 +91,21 @@ export const postUserComment = (comment, songId) => async dispatch => {
   return data
 }
 
+export const deleteUserComment = (commentId) => async dispatch => {
+  const res = await fetch(`/api/songs/comment/${commentId}/delete`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  console.log("response", res)
+  const data = await res.json()
+
+  dispatch(deleteComment())
+
+  return data
+}
+
 const initialState = {};
 
 const songsReducer = (state = initialState, action) => {
@@ -119,6 +141,9 @@ const songsReducer = (state = initialState, action) => {
       const comment = action.comment;
       newState.comment = comment;
       return newState;
+    }
+    case DELETE_COMMENT: {
+      return state;
     }
     default:
       return state;
