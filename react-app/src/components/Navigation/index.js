@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LogoutButton from "../auth/LogoutButton";
 import LoginFormModal from "../LoginFormModal";
@@ -9,8 +9,17 @@ import "./Navigation.css";
 
 const Navigation = ({ setAuthenticated, navId }) => {
   const sessionUser = useSelector((state) => state.user);
-
+  const history = useHistory();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [search, setSearch] = useState("");
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    console.log(search)
+    if(e.target.value == "hello") {
+      history.push("/artists")
+    }
+  }
 
   useEffect(() => {
     if (sessionUser) setIsLoaded(true);
@@ -40,20 +49,20 @@ const Navigation = ({ setAuthenticated, navId }) => {
           </NavLink>
         </div>
         <div id="library-link-container">
-          <NavLink
-            className="nav-link"
-            id="library-link"
-            to="/artists"
-          >
+          <NavLink className="nav-link" id="library-link" to="/artists">
             Artists
           </NavLink>
         </div>
-        <input
-          id="search-bar"
-          className="no-outline"
-          type="text"
-          placeholder="Search..."
-        />
+        <form onSubmit={onSearchSubmit}>
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            id="search-bar"
+            className="no-outline"
+            type="text"
+            placeholder="Search..."
+          />
+        </form>
         <NavLink
           className="nav-link"
           id="upload-link"
@@ -89,11 +98,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
           </NavLink>
         </div>
         <div id="library-link-container">
-          <NavLink
-            className="nav-link"
-            id="library-link"
-            to="/artists"
-          >
+          <NavLink className="nav-link" id="library-link" to="/artists">
             Artists
           </NavLink>
         </div>
