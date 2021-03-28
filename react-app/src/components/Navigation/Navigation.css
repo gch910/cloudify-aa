@@ -3,7 +3,7 @@
 #logged-out-nav {
   display: grid;
   grid-template-rows: 46px;
-  grid-template-columns: 200px 104px 104px 104px 412px 100px 120px 1fr;
+  grid-template-columns: 394px 104px 104px 104px 450px 100px 120px 0.6fr;
   align-items: center;
 }
 nav {
@@ -14,7 +14,7 @@ nav {
 #logged-in-nav {
   display: grid;
   grid-template-rows: 46px;
-  grid-template-columns: 200px 104px 104px 104px 412px 100px 120px 1fr;
+  grid-template-columns: 394px 104px 104px 104px 450px 100px 120px 0.6fr;
   align-items: center;
 }
 
@@ -36,7 +36,7 @@ nav {
   border-radius: 0.4em;
   border-style: none;
   background-color: #e5e5e5;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .nav-link:hover {
