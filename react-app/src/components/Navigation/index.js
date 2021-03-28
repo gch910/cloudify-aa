@@ -28,7 +28,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
         return history.push(`/song/${song.id}`);
       }
     });
-    if(found === false) history.push("/not-found")
+    if (found === false) history.push("/not-found");
   };
 
   useEffect(() => {
@@ -39,11 +39,13 @@ const Navigation = ({ setAuthenticated, navId }) => {
   if (sessionUser.user) {
     sessionLinks = (
       <>
-        <img
-          alt="logo"
-          id="nav-logo"
-          src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
-        ></img>
+        <NavLink id="nav-logo-link" exact to="/">
+          <img
+            alt="logo"
+            id="nav-logo"
+            src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
+          ></img>
+        </NavLink>
         <div id="home-link-container">
           <NavLink className="nav-link" id="home-link" exact to="/">
             Home
@@ -90,11 +92,13 @@ const Navigation = ({ setAuthenticated, navId }) => {
   } else {
     sessionLinks = (
       <>
-        <img
-          alt="logo"
-          id="nav-logo"
-          src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
-        ></img>
+        <NavLink id="nav-logo-link" exact to="/">
+          <img
+            alt="logo"
+            id="nav-logo"
+            src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
+          ></img>
+        </NavLink>
         <div id="home-link-container">
           <NavLink className="nav-link" id="home-link" exact to="/">
             Home
@@ -114,12 +118,16 @@ const Navigation = ({ setAuthenticated, navId }) => {
             Artists
           </NavLink>
         </div>
-        <input
-          id="search-bar"
-          className="no-outline"
-          type="text"
-          placeholder="Search..."
-        />
+        <form onSubmit={onSearchSubmit}>
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            id="search-bar"
+            className="no-outline"
+            type="text"
+            placeholder="Search..."
+          />
+        </form>
         <div id="login-button-div">
           <LoginFormModal />
         </div>

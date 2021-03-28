@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSong } from "../../store/songs";
 import { getArtist } from "../../store/users";
@@ -63,7 +63,7 @@ const SongPage = () => {
             </div>
             <div id="song-headers">
               <h1 id="song-title">{song.title}</h1>
-              <h3 id="song-username">{song.user.username}</h3>
+              <Link to={`/profile/${song.user.id}`}><h3 id="song-username">{song.user.username}</h3></Link>
             </div>
             <div id="song-genre-div">
               <h3 id="song-genre"># {song.genre.name}</h3>
@@ -81,6 +81,7 @@ const SongPage = () => {
               src="https://i.stack.imgur.com/l60Hf.png"
               alt="profile"
             />
+            <Link to={`/profile/${song.user.id}`}><h3 id="song-profile-image-h3">{song.user.username}</h3></Link>
           </div>
           <div id="comments-div">
             {song.comments.map((comment) => (

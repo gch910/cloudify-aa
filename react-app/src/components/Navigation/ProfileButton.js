@@ -39,8 +39,9 @@ const ProfileButton = () => {
               <Link
                 to={`/profile/${user.user.id}`}
                 className="profile-li"
+                id="my-profile-link"
               >
-                {user.user.username}
+                My Profile
               </Link>
               <li className="profile-li">{user.user.email}</li>
             </ul>

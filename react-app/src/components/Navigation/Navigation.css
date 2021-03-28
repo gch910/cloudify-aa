@@ -49,6 +49,10 @@ nav {
   background-color: white;
 }
 
+#nav-logo-link {
+  height: 46px;
+}
+
 #search-bar {
   grid-area: search;
   width: 100%;
@@ -170,6 +174,12 @@ nav {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+#my-profile-link {
+  text-decoration: underline;
+  font-size: 20px;
+  color: #ff5d00;
 }
 
 .profile-li {
