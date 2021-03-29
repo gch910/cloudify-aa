@@ -32,15 +32,16 @@ const ProfileButton = () => {
   return (
     <>
       <button id="profile-button" className="no-outline" onClick={openMenu}>
-        <i className="far fa-user-circle fa-3x"></i>
+      <i class="fas fa-user-alt fa-x3"></i>
         {showMenu && (
           <div id="profile-dropdown-div">
             <ul style={{ listStyle: "none" }}>
               <Link
                 to={`/profile/${user.user.id}`}
                 className="profile-li"
+                id="my-profile-link"
               >
-                {user.user.username}
+                My Profile
               </Link>
               <li className="profile-li">{user.user.email}</li>
             </ul>

@@ -3,6 +3,8 @@ const USER_SONGS = "/songs/userSongs";
 const SONG = "/songs/song";
 const POST_COMMENT = "/songs/postComment";
 const DELETE_COMMENT = "/songs/deleteComment";
+const LIKE = "/songs/like"
+const ALL_LIKES = "/songs/allLikes"
 
 const allSongs = (songs) => {
   return {
@@ -34,6 +36,20 @@ const postComment = (comment) => {
 const deleteComment = () => {
   return {
     type: DELETE_COMMENT,
+  }
+}
+
+const like = (like) => {
+  return {
+    type: LIKE,
+    like: like
+  }
+}
+
+const allLikes = (likes) => {
+  return {
+    type: ALL_LIKES,
+    likes: likes,
   }
 }
 
@@ -106,6 +122,21 @@ export const deleteUserComment = (commentId) => async dispatch => {
   return data
 }
 
+export const userLike = (songId, userId) => async dispatch => {
+  const res = await fetch(`/api/songs/likes/${songId}/${userId}`)
+  const data = await res.json()
+  // console.log(data)
+  dispatch(like(data))
+  return data
+}
+
+export const getAllLikes = () => async dispatch => {
+  const res = await fetch('/api/songs/likes');
+  const data = await res.json();
+  dispatch(allLikes(data.likes))
+  return data
+}
+
 const initialState = {};
 
 const songsReducer = (state = initialState, action) => {
@@ -144,6 +175,18 @@ const songsReducer = (state = initialState, action) => {
     }
     case DELETE_COMMENT: {
       return state;
+    }
+    case ALL_LIKES: {
+      newState = { ...state }
+      const likes = action.likes;
+      newState.likes = likes;
+      return newState;
+    }
+    case LIKE: {
+      newState = { ...state };
+      const like = action.like;
+      newState.likes = {...state.likes, like}
+      return newState
     }
     default:
       return state;

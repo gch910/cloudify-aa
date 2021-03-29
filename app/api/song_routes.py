@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Song, Genre, Comment
+from app.models import db, Song, Genre, Comment, Like
 from app.aws import allowed_image_file, upload_file_to_s3, allowed_audio_file, get_unique_filename
 from app.forms.song_form import SongForm
 from app.forms.comment_form import CommentForm
@@ -146,4 +146,23 @@ def delete_song_comment(id):
 
     return comment
 
+@song_routes.route('/likes/<int:song_id>/<int:user_id>')
+def like_song(song_id, user_id):
+    liked_song = Like.query.filter_by(user_id=user_id).filter_by(song_id=song_id).first()
+    if liked_song:
+        return {"liked": True}
+    else: 
+        new_like = Like(
+            user_id=user_id,
+            song_id=song_id
+        )
+        db.session.add(new_like)
+        db.session.commit()
+        return new_like.to_dict()
+
+@song_routes.route('/likes')
+def all_likes():
+    likes = Like.query.all()
+    likesDict = {"likes": [like.to_dict() for like in likes]}
+    return likesDict
 
