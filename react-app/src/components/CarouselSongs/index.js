@@ -11,8 +11,9 @@ const CarouselSongs = ({ songs, title }) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     swipeToSlide: true,
-    // nextArrow: <CarouselButton next={true} />,
-    // prevArrow: <CarouselButton next={false} />,
+    centerMode: true,
+    nextArrow: <CarouselButton next={true} />,
+    prevArrow: <CarouselButton next={false} />,
   };
   return (
     songs && (
@@ -33,6 +34,7 @@ const CarouselSongs = ({ songs, title }) => {
                   key={idx}
                   source={el.image_path}
                   hyperlink={el.song_path}
+                  user_id={`profile/${el.user_id}`}
                   title={el.title}
                   artist={el.user.username}
                 />
