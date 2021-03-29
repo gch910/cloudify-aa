@@ -12,13 +12,6 @@ const PlayBar = () => {
   const currentSong = useSelector((state) => state.playing)
 
 
-  useEffect(() => {
-    if (currentSong.playing) {
-      setAudio(new Audio(currentSong.playing))
-      setIsLoaded(true)
-
-    }
-  }, [currentSong])
 
   let playingInterval
   const play = () => {
@@ -47,6 +40,17 @@ const PlayBar = () => {
     setTimeElapsed(e.target.value)
   }
 
+  useEffect(() => {
+    if (currentSong.playing) {
+      setAudio(new Audio(currentSong.playing))
+      // audio.autoplay = true
+      setIsLoaded(true)
+    }
+  }, [currentSong])
+
+  if (audio) {
+    audio.autoplay = true
+  }
 
   return (
     isLoaded && (

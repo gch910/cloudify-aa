@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   songs: songsReducer,
   user: sessionReducer,
   errors: errorReducer,
-  playing: playingReducer
+  playing: playingReducer,
   users: usersReducer,
 });
 

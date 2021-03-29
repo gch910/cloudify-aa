@@ -39,6 +39,7 @@ const Home = () => {
           <CarouselSongs key="rnb" songs={rnb} title={"R&B"} />
           <CarouselSongs key="jazz" songs={jazz} title={"Jazz"} />
           <CarouselSongs key="rock" songs={rock} title={"Rock"} />
+          <PlayButton />
         </div>
       </div>
     )
