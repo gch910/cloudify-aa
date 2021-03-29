@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
-const Track = ({ source, hyperlink, title, artist, user_id }) => {
+import PlayButton from "../PlayButton"
+
+const Track = ({ source, hyperlink, title, artist }) => {
   return (
-    <div>
+    <a href={hyperlink} >
       <div className="outer-div">
         <a href={user_id}>
           <div>
@@ -20,7 +22,8 @@ const Track = ({ source, hyperlink, title, artist, user_id }) => {
           </div>
         </a>
       </div>
-    </div>
+      {/* <PlayButton url={hyperlink} /> */}
+    </a>
   );
 };
 

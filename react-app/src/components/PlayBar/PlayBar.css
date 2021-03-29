@@ -37,11 +37,6 @@
   border-radius: 50%;
   cursor: pointer;
   background: red;
-  visibility: hidden;
-}
-
-.Bar:hover::-webkit-slider-thumb {
-  visibility: visible;
 }
 
 .AudioControls > button {
