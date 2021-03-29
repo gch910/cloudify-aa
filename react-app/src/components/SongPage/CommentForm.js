@@ -15,6 +15,10 @@ const CommentForm = ({ userId, newComment, setNewComment, sessionUser }) => {
   const likeSong = (e) => {
     e.preventDefault();
     dispatch(userLike(songId, userId));
+    return setTimeout(() => {
+      setLiked(true)
+    }, 100)
+    
   };
 
 // let variable;
@@ -41,7 +45,7 @@ const CommentForm = ({ userId, newComment, setNewComment, sessionUser }) => {
 
   useEffect(() => {
     setComment("");
-  }, [newComment]);
+  }, [newComment, liked]);
 
   const newCommentSubmit = () => {
     return setTimeout(() => {
@@ -53,8 +57,7 @@ const CommentForm = ({ userId, newComment, setNewComment, sessionUser }) => {
   return (
     <div id="comment-form-div">
       <div id="like-button-div">
-         <button onClick={likeSong} id="heart-button">Liked <i className="far fa-heart"></i></button>
-         {/* <button onClick={likeSong} id="heart-button">Like<i className="fas fa-heart"></i></button> */}
+         {liked ? <button onClick={likeSong} id="heart-button">Liked<i className="fas fa-heart"></i></button> : <button onClick={likeSong} id="heart-button">Like<i className="far fa-heart"></i></button>}
       </div>
       <form id="comment-form" onSubmit={commentSubmit}>
         <textarea

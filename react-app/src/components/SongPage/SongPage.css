@@ -133,6 +133,9 @@
     width: 60px;
     margin-right: 20px;
     margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #comment-form {
@@ -187,9 +190,6 @@
     border-radius: 4px, 4px, 4px, 4px;
 }
 
-#heart-button {
-    width: 65px;
-}
 
 
 .no-outline:focus {
