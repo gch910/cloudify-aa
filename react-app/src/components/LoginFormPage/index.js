@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import SignUpFormModal from "../SignUpFormModal";
 import { loginUser } from "../../store/session";
-import "./LoginForm.css";
+import "./LoginFormPage.css";
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginFormPage = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
   const errors = useSelector((state) => state.errors.auth);
   const [email, setEmail] = useState("");
@@ -40,7 +40,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <div id="login-div">
+    <div id="login-page-div">
       <form className="login-page" onSubmit={onLogin}>
         <div>
           {formErrors.map((error) => (
@@ -81,4 +81,4 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   );
 };
 
-export default LoginForm;
+export default LoginFormPage;

@@ -4,14 +4,15 @@
     justify-content: center;
     margin-left: 50px;
     margin-right: 50px;
-    background-color: #F2F2F2
+    background-color: #F2F2F2;
 }
 
 #song-page-contents {
     width: 1200px;
-    height: 100vh;
+    min-height: 100vh;
     padding-top: 0px;
     background-color: white;
+    /* overflow: scroll; */
     
 }
 
@@ -107,14 +108,78 @@
 
 #comments-div {
     display: flex;
-    margin-top: 100px;
-    align-items: center;
+    /* margin-top: 100px; */
+    align-items: left;
     flex-direction: column;
+    margin-bottom: 100px;
+    margin-left: 10px;
 }
 
-#comment-div {
-    margin-bottom: 30px;
+.comment-div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-left: 180px;
 }
+
+#comment-form-div {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#comment-form {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#comment-text{
+    height: 18px;
+    width: 765px;
+    margin-right: 10px;
+    border-radius: 3px 3px 3px 3px;
+    resize: none;
+}
+
+#user-comment-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+#song-profile-image-div {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#song-profile-image {
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    margin-left: 25px;
+}
+
+#song-profile-image-h3 {
+    font-size: 16px;
+    text-decoration: underline;
+    color: #333333;
+}
+
+#comment-submit-buton {
+    border-radius: 3px 3px 3px 3px;
+}
+
+.delete-comment-button {
+    position: absolute;
+    right: 200px;
+    border-radius: 4px, 4px, 4px, 4px;
+}
+
 
 .no-outline:focus {
     outline: none;

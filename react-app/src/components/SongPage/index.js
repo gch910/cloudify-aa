@@ -1,36 +1,50 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSong } from "../../store/songs";
 import { getArtist } from "../../store/users";
+import { deleteUserComment } from "../../store/songs";
+import CommentForm from "./CommentForm";
 import "./SongPage.css";
 
 const SongPage = () => {
   const { songId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.user);
+  const artist = useSelector((state) => state.users);
   const song = useSelector((state) => state.songs.currentSong);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const userId = song?.user_id
-  console.log(userId)
+  const [deleteShown, setDeleteShown] = useState(false);
+
+  const [newComment, setNewComment] = useState(false);
+  const [deleted, setDeleted] = useState(false);
 
   let comments;
-  let user;
+  let userId;
 
-  console.log(comments)
+  if (sessionUser.user) userId = sessionUser?.user?.id;
 
-  useEffect(() => {
-    dispatch(getArtist(userId))
-    dispatch(getSong(songId)).then(() => setIsLoaded(true));
-  }, [dispatch, songId]);
-
-  if(isLoaded) {
-    comments = song.comments
-    user = sessionUser.user
+  if (isLoaded) {
+    comments = song.comments;
   }
-  
-  console.log(comments)
+
+  const deleteComment = (e) => {
+    console.log()
+    if (userId == e.target.className.split(" ")[1]) {
+      dispatch(deleteUserComment(e.target.id));
+      setDeleted(true);
+      setTimeout(() => {
+        setDeleted(false);
+      }, 100);
+    }
+  };
+
+  useEffect(async () => {
+    await dispatch(getSong(songId)).then(() => setIsLoaded(true));
+
+    return setNewComment(false);
+  }, [dispatch, newComment, deleted]);
 
   return (
     isLoaded && (
@@ -49,17 +63,50 @@ const SongPage = () => {
             </div>
             <div id="song-headers">
               <h1 id="song-title">{song.title}</h1>
-              <h3 id="song-username">
-                {user.username}
-              </h3>
+              <Link to={`/profile/${song.user.id}`}><h3 id="song-username">{song.user.username}</h3></Link>
             </div>
             <div id="song-genre-div">
               <h3 id="song-genre"># {song.genre.name}</h3>
             </div>
           </div>
+          <CommentForm
+            userId={userId}
+            newComment={newComment}
+            setNewComment={setNewComment}
+            sesssionUser={sessionUser}
+          />
+          <div id="song-profile-image-div">
+            <img
+              id="song-profile-image"
+              src="https://i.stack.imgur.com/l60Hf.png"
+              alt="profile"
+            />
+            <Link to={`/profile/${song.user.id}`}><h3 id="song-profile-image-h3">{song.user.username}</h3></Link>
+          </div>
           <div id="comments-div">
-            {song.comments.map(comment => (
-              <div id="comment-div">{comment.content}</div>
+            {song.comments.map((comment) => (
+              <div
+                className="comment-div"
+                onMouseEnter={() => setDeleteShown(true)}
+                onMouseLeave={() => setDeleteShown(false)}
+              >
+                <img
+                  id="user-comment-image"
+                  src="https://i.stack.imgur.com/l60Hf.png"
+                  alt="profile"
+                />
+                {comment.content}
+                {deleteShown && userId == comment.user_id && (
+                  <button
+                    className={`delete-comment-button ${comment.user_id}`}
+                    id={comment.id}
+                    userId={comment.user_id}
+                    onClick={deleteComment}
+                  >
+                    Delete
+                  </button>
+                )}
+              </div>
             ))}
           </div>
         </div>

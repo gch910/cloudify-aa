@@ -29,5 +29,6 @@ class Song(db.Model):
             "user_id": self.user_id,
             "genre_id": self.genre_id,
             "genre": self.genre.to_dict(),
+            "user": self.users.to_dict(),
             "comments": [comment.to_dict() for comment in self.comments]
         }

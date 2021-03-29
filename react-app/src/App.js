@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginForm from "./components/LoginFormModal/LoginForm";
+import LoginFormPage from "./components/LoginFormPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -13,6 +13,7 @@ import SongPage from "./components/SongPage";
 import ArtistsPage from "./components/ArtistsPage";
 import { restoreUser } from "./store/session";
 import UploadSongForm from "./components/UploadSongForm";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ function App() {
           />
         </Route> */}
         <Route path="/login" exact={true}>
-          <LoginForm
+          <LoginFormPage
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
@@ -92,6 +93,7 @@ function App() {
         >
           <UploadSongForm />
         </ProtectedRoute>
+        <NotFoundPage />
       </Switch>
     </BrowserRouter>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { newUpload } from "../../store/upload";
+import "./UploadSongForm.css";
 
 const UploadSongForm = () => {
   const history = useHistory();
@@ -62,55 +63,76 @@ const UploadSongForm = () => {
   };
   return (
     selectgenres.length && (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Song Title</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Release Date</label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => {
-              setDate(e.target.value);
-            }}
-            required
-          />
-        </div>
-        <div>
-          <label>Select a genre</label>
-          <select
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-            required
-          >
-            {selectgenres.map((el, idx) => {
-              return (
-                <option key={idx} value={el.id}>
-                  {el.name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div>
-          <label>Upload a song file</label>
-          <input type="file" accept="audio/*" onChange={updateSong} required />
-          {songLoading && <p>Loading...</p>}
-        </div>
-        <div>
-          <label>Upload an album image</label>
-          <input type="file" accept="image/*" onChange={updateImage} />
-          {imageLoading && <p>Loading...</p>}
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      <div id="upload-form-div">
+        <form id="upload-form" onSubmit={handleSubmit}>
+          <h1 id="upload-h1">Upload a Song</h1>
+          <div>
+            <label className="upload-label">Song Title</label>
+            <input
+              className="upload-field"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label className="upload-label">Release Date</label>
+            <input
+              className="upload-field"
+              type="date"
+              value={date}
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
+              required
+            />
+          </div>
+          <div>
+            <label className="upload-label">Select a genre</label>
+            <select
+              className="upload-field"
+              value={genre}
+              onChange={(e) => setGenre(e.target.value)}
+              required
+            >
+              {selectgenres.map((el, idx) => {
+                return (
+                  <option key={idx} value={el.id}>
+                    {el.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div>
+            <label className="upload-label">Upload a song file</label>
+            <input
+              className="upload-field"
+              type="file"
+              accept="audio/*"
+              onChange={updateSong}
+              required
+            />
+            {songLoading && <p>Loading...</p>}
+          </div>
+          <div>
+            <label className="upload-label">Upload an album image</label>
+            <input
+              className="upload-field"
+              type="file"
+              accept="image/*"
+              onChange={updateImage}
+            />
+            {imageLoading && <p>Loading...</p>}
+          </div>
+          <div id="upload-submit-button-div">
+            <button id="upload-submit-button" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     )
   );
 };

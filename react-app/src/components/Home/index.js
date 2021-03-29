@@ -27,8 +27,7 @@ const Home = () => {
   return (
     isLoaded && (
       <div className="center">
-        <div>
-          <h1>My Home </h1>
+        <div id="home-inner-div">
           <CarouselSongs key="rap" songs={rap} title={"Rap"} />
           <CarouselSongs key="pop" songs={pop} title={"Pop"} />
           <CarouselSongs
