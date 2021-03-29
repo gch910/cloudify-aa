@@ -6,10 +6,9 @@ const CarouselButton = ({ className, style, onClick, next }) => {
     <div className="button-div">
       <i
         id="arrow"
-        className={className}
+        className={className, next ? "fas fa-angle-right" : "fas fa-angle-left" }
         style={{ ...style, display: "flex" }}
         onClick={onClick}
-        className={next ? "fas fa-angle-right" : "fas fa-angle-left"}
       ></i>
     </div>
   );

@@ -13,15 +13,15 @@ const ArtistsPage = () => {
 
   useEffect(() => {
     dispatch(getAllUsers()).then(() => setIsLoaded(true));
-  }, dispatch);
+  }, [dispatch]);
 
   isLoaded ? (allUsers = Object.values(users)) : (allUsers = null);
   console.log("all users", allUsers);
   return (
     isLoaded && (
       <div id="artists-page-div">
-        {allUsers.map((user) => (
-          <div id="artist-div">
+        {allUsers.map((user, idx) => (
+          <div key={idx} id="artist-div">
             <div id="artist-username-div">
               <Link id="artist-username" to={`/profile/${user.id}`}>
                 {user.username}

@@ -8,7 +8,6 @@ import "./ProfilePage.css";
 const ProfilePage = () => {
   const { userId } = useParams();
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.user);
   const artist = useSelector((state) => state.users.artist);
   const [isLoaded, setIsLoaded] = useState(false);
   const [songsClicked, setSongsClicked] = useState(true);

@@ -8,7 +8,7 @@ const ProfileSongInfo = ({song}) => {
         <div id="profile-song-info">
             <Link id="profile-song-link" to={`/song/${song.id}`}>{song.title}</Link>
             <audio className="no-outline" controls src={song.song_path}></audio>
-            <img id="profile-song-image" src={song.image_path} alt="song image" />
+            <img id="profile-song-image" src={song.image_path} alt="song" />
             <h3>Release Date: {releaseDate}</h3>
         </div>
     )

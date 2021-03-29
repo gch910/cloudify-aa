@@ -7,7 +7,6 @@ import "./LoginFormPage.css";
 
 const LoginFormPage = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
-  const errors = useSelector((state) => state.errors.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState([]);
@@ -43,8 +42,8 @@ const LoginFormPage = ({ authenticated, setAuthenticated }) => {
     <div id="login-page-div">
       <form className="login-page" onSubmit={onLogin}>
         <div>
-          {formErrors.map((error) => (
-            <div>{error}</div>
+          {formErrors.map((error, idx) => (
+            <div key={idx}>{error}</div>
           ))}
         </div>
         <div>

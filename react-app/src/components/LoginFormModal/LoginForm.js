@@ -7,12 +7,16 @@ import "./LoginForm.css";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
-  const errors = useSelector((state) => state.errors.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState([]);
 
   const history = useHistory();
+
+  const loginDemo = async (e) => {
+    e.preventDefault();
+    await dispatch(loginUser("Alabama Shakes@cloudify.com", "password"))
+  }
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -73,6 +77,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         <button id="login-submit-button" type="submit">
           Login
         </button>
+        <button onClick={loginDemo} id="signup-button" style={{marginBottom:"20px"}}>Demo</button>
         <div id="signup-modal-div">
           <SignUpFormModal />
         </div>

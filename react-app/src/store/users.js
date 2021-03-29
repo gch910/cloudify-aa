@@ -1,4 +1,4 @@
-import { setAuthErrors } from "./errors";
+// import { setAuthErrors } from "./errors";
 
 const ALL_USERS = "users/allUsers";
 const ARTIST = "users/artist";

@@ -32,7 +32,7 @@ const ProfileButton = () => {
   return (
     <>
       <button id="profile-button" className="no-outline" onClick={openMenu}>
-      <i class="fas fa-user-alt fa-x3"></i>
+      <i className="fas fa-user-alt fa-x3"></i>
         {showMenu && (
           <div id="profile-dropdown-div">
             <ul style={{ listStyle: "none" }}>
