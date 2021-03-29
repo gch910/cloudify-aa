@@ -11,9 +11,12 @@ const PlayBar = () => {
   const [progress, setProgress] = useState(0)
   const currentSong = useSelector((state) => state.playing)
 
-  // let audio = new Audio(currentSong)
-
-
+  useEffect(() => {
+    if (currentSong.playing) {
+      setAudio(new Audio(currentSong.playing))
+      setIsLoaded(true)
+    }
+  }, [currentSong])
 
   let playingInterval
   const play = () => {
@@ -32,8 +35,7 @@ const PlayBar = () => {
   const timeFormat = (time) => {
     let minute = Math.floor(time / 60);
     let remainder = Math.floor(time % 60);
-    let seconds =
-      remainder % 60 < 10 ? `0${remainder % 60}` : `${remainder % 60}`;
+    let seconds = remainder % 60 < 10 ? `0${remainder % 60}` : `${remainder % 60}`;
     return `${minute}:${seconds}`;
   };
 
@@ -42,24 +44,14 @@ const PlayBar = () => {
     setTimeElapsed(e.target.value)
   }
 
-  useEffect(() => {
-    if (currentSong.playing) {
-      setAudio(new Audio(currentSong.playing))
-      setIsLoaded(true)
-    }
-  }, [currentSong])
 
-  // if (audio) {
-  //   // audio.autoplay = true
-  //   // setIsPlaying(true)
-  // }
 
   return (
     isLoaded && (
       <div className='PlayBar'>
         <div className='AudioControls'>
-          <PlayButton />
-          {/* <button onClick={playing ? pause : play}>{playing ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>}</button> */}
+          {/* <PlayButton audioPlaying={playing} /> */}
+          <button onClick={playing ? pause : play}>{playing ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>}</button>
         </div>
         <div className='ProgressBar'>
           <span>{timeFormat(audio.currentTime)}</span>
