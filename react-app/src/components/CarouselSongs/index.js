@@ -11,8 +11,9 @@ const CarouselSongs = ({ songs, title }) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     swipeToSlide: true,
-    // nextArrow: <CarouselButton next={true} />,
-    // prevArrow: <CarouselButton next={false} />,
+    centerMode: true,
+    nextArrow: <CarouselButton next={true} />,
+    prevArrow: <CarouselButton next={false} />,
   };
   return (
     songs && (
