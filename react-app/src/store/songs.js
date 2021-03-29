@@ -39,8 +39,6 @@ const deleteComment = () => {
   }
 }
 
-<<<<<<< HEAD
-=======
 const like = (like) => {
   return {
     type: LIKE,
@@ -61,7 +59,6 @@ const allLikes = (likes) => {
 //     song
 //   }
 // }
->>>>>>> main
 
 export const getAllSongs = () => async (dispatch) => {
   const res = await fetch("/api/songs/");

@@ -24,13 +24,13 @@ const Navigation = ({ setAuthenticated, navId }) => {
     let found = false;
     console.log(search);
     allSongs.forEach((song) => {
-      if (search == song.title.toLowerCase()) {
+      if (search === song?.title?.toLowerCase()) {
         found = true;
         return history.push(`/song/${song.id}`);
       }
     });
     allUsers.forEach((user) => {
-      if(search == user.username.toLowerCase()) {
+      if(search === user?.username?.toLowerCase()) {
         found = true;
         return history.push(`/profile/${user.id}`)
       }

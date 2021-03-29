@@ -4,7 +4,7 @@ import "./index.css";
 
 import PlayButton from "../PlayButton"
 
-const Track = ({ source, hyperlink, title, artist }) => {
+const Track = ({ source, hyperlink, title, artist, user_id }) => {
   return (
     <a href={hyperlink} >
       <div className="outer-div">
