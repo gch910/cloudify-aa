@@ -37,12 +37,6 @@ const deleteComment = () => {
   }
 }
 
-// const oneSong = (song) => {
-//   return {
-//     type: GET_SONG,
-//     song
-//   }
-// }
 
 export const getAllSongs = () => async (dispatch) => {
   const res = await fetch("/api/songs/");

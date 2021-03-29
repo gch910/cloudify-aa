@@ -11,6 +11,8 @@ const PlayBar = () => {
   const [progress, setProgress] = useState(0)
   const currentSong = useSelector((state) => state.playing)
 
+  // let audio = new Audio(currentSong)
+
 
 
   let playingInterval
@@ -43,21 +45,21 @@ const PlayBar = () => {
   useEffect(() => {
     if (currentSong.playing) {
       setAudio(new Audio(currentSong.playing))
-      // audio.autoplay = true
       setIsLoaded(true)
     }
   }, [currentSong])
 
-  if (audio) {
-    audio.autoplay = true
-  }
+  // if (audio) {
+  //   // audio.autoplay = true
+  //   // setIsPlaying(true)
+  // }
 
   return (
     isLoaded && (
       <div className='PlayBar'>
         <div className='AudioControls'>
-          {/* <PlayButton playing={playing} /> */}
-          <button onClick={playing ? pause : play}>{playing ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>}</button>
+          <PlayButton />
+          {/* <button onClick={playing ? pause : play}>{playing ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>}</button> */}
         </div>
         <div className='ProgressBar'>
           <span>{timeFormat(audio.currentTime)}</span>
@@ -69,7 +71,8 @@ const PlayBar = () => {
             defaultValue='0'
             value={progress}
             max={audio.duration}
-            onInput={showProgress} />
+            onInput={showProgress}
+          />
           <span>{timeFormat(audio.duration)}</span>
         </div>
         <div className="ArtistInfo">
