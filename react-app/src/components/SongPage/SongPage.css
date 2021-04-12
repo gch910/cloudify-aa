@@ -120,6 +120,7 @@
     align-items: center;
     margin-bottom: 25px;
     margin-left: 180px;
+    
 }
 
 #comment-form-div {
@@ -180,15 +181,19 @@
     color: #333333;
 }
 
-#comment-submit-buton {
+#comment-submit-button {
     border-radius: 3px 3px 3px 3px;
 }
 
 .delete-comment-button {
-    position: absolute;
-    right: 200px;
+    position: absolute; 
+    right: 500px;
     border-radius: 4px, 4px, 4px, 4px;
 }
+
+/* #delete-comment-button-div {
+    position: relative;
+} */
 
 
 

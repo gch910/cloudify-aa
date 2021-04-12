@@ -41,8 +41,6 @@ const SongPage = () => {
     comments = song.comments;
   }
 
-
-
   const deleteComment = (e) => {
     console.log();
     if (userId == e.target.className.split(" ")[1]) {
@@ -114,16 +112,18 @@ const SongPage = () => {
                   src="https://i.stack.imgur.com/l60Hf.png"
                   alt="profile"
                 />
-                {comment.content}
+                <p>{comment.content}</p>
                 {deleteShown && userId == comment.user_id && (
-                  <button
-                    className={`delete-comment-button ${comment.user_id}`}
-                    id={comment.id}
-                    userId={comment.user_id}
-                    onClick={deleteComment}
-                  >
-                    Delete
-                  </button>
+                  <div id="delete-comment-button-div">
+                    <button
+                      className={`delete-comment-button ${comment.user_id}`}
+                      id={comment.id}
+                      userId={comment.user_id}
+                      onClick={deleteComment}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 )}
               </div>
             ))}
