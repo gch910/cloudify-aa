@@ -3,14 +3,14 @@ import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postUserComment, userLike } from "../../store/songs";
 
-const CommentForm = ({ userId, newComment, setNewComment, sessionUser }) => {
+const CommentForm = ({ userId, newComment, setNewComment }) => {
   const { songId } = useParams();
   const dispatch = useDispatch();
   const likes = useSelector((state) => state.songs.likes);
   const [comment, setComment] = useState("");
   const [liked, setLiked] = useState(false);
   const history = useHistory();
-  // const sessionUser = useSelector((state) => state.user);
+  const sessionUser = useSelector((state) => state.user);
 
   const likeSong = (e) => {
     e.preventDefault();
