@@ -25,7 +25,7 @@ const SongPage = () => {
   let userId;
 
   // const someFunction = () => {
-  //   console.log("hello", sessionUser?.user?.id)
+
   //   if (allLikes && sessionUser.user) {
   //     return allLikes?.forEach((like) => {
   //       if (sessionUser?.user?.id == like.user_id) {
@@ -41,10 +41,7 @@ const SongPage = () => {
     comments = song.comments;
   }
 
-
-
   const deleteComment = (e) => {
-    console.log();
     if (userId == e.target.className.split(" ")[1]) {
       dispatch(deleteUserComment(e.target.id));
       setDeleted(true);

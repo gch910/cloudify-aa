@@ -5,7 +5,6 @@ from app.models import User, Genre
 
 
 def user_exists(form, field):
-    print('Checking if user exists', field.data)
     user_id = field.data
     user = User.query.filter(User.id == user_id).first()
     if not user:
@@ -13,7 +12,6 @@ def user_exists(form, field):
 
 
 def genre_exists(form, field):
-    print('Checking if user exists', field.data)
     genre_id = field.data
     genre = Genre.query.filter(Genre.id == genre_id).first()
     if not genre:

@@ -9,21 +9,14 @@ const ProfileSongs = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
   const userSongs = useSelector((state) => state.songs.user_songs);
-  // const allSongs = useSelector((state) => state.songs);
 
-  // const userSongsObject = Object.values(userSongs)
-
-  // console.log("all songs:", allSongs)
-  // if(userSongs) console.log("user songs", Object.values(userSongs))
   let userSongsValues;
   isLoaded
     ? (userSongsValues = Object.values(userSongs))
     : (userSongsValues = null);
 
-  console.log("user Id", userId);
   useEffect(() => {
     dispatch(getUserSongs(userId)).then((req) => setIsLoaded(true));
-    // dispatch(getAllSongs())
   }, [dispatch, userId]);
 
   return (

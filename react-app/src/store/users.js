@@ -32,7 +32,7 @@ export const getArtist = (artistId) => async (dispatch) => {
   const res = await fetch(`/api/artists/${artistId}`);
   const data = await res.json();
   dispatch(artist(data.artist));
-  console.log("artist data", data)
+
   return data;
 };
 
@@ -50,10 +50,10 @@ const usersReducer = (state = initialState, action) => {
       return newState;
     }
     case ARTIST: {
-        newState = { ...state };
-        const artist = action.artist;
-        newState.artist = artist
-        return newState;
+      newState = { ...state };
+      const artist = action.artist;
+      newState.artist = artist;
+      return newState;
     }
     default:
       return state;

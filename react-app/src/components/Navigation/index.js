@@ -17,12 +17,9 @@ const Navigation = ({ setAuthenticated, navId }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [search, setSearch] = useState("");
 
-  console.log(users);
-
   const onSearchSubmit = (e) => {
     e.preventDefault();
     let found = false;
-    console.log(search);
     allSongs.forEach((song) => {
       if (search === song?.title?.toLowerCase()) {
         found = true;
@@ -30,18 +27,18 @@ const Navigation = ({ setAuthenticated, navId }) => {
       }
     });
     allUsers.forEach((user) => {
-      if(search === user?.username?.toLowerCase()) {
+      if (search === user?.username?.toLowerCase()) {
         found = true;
-        return history.push(`/profile/${user.id}`)
+        return history.push(`/profile/${user.id}`);
       }
-    })
+    });
     if (found === false) history.push("/not-found");
   };
 
   useEffect(() => {
     // if (sessionUser) setIsLoaded(true);
     dispatch(getAllUsers()).then(() => setIsLoaded(true));
-  }, [sessionUser]);
+  }, [sessionUser.user]);
 
   let allUsers;
   isLoaded ? (allUsers = Object.values(users)) : (allUsers = null);

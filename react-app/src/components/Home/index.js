@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getAllSongs } from "../../store/songs";
 import CarouselSongs from "../CarouselSongs";
 import UploadSongForm from "../UploadSongForm";
-import PlayButton from '../PlayButton'
+import PlayButton from "../PlayButton";
 import "./Home.css";
 
 const Home = () => {
@@ -23,7 +23,6 @@ const Home = () => {
       dispatch(getAllSongs()).then((req) => setIsLoaded(true));
     }
   }, [dispatch]);
-  console.log(rap);
   return (
     isLoaded && (
       <div className="center">

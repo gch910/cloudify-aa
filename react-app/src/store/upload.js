@@ -8,7 +8,7 @@ export const newUpload = (formFile, attributes) => async (dispatch) => {
   if (!res.errors) {
     attributes.image_path = data.image_url;
     attributes.song_path = data.song_path;
-    console.log(attributes);
+
     const res2 = await fetch("/api/songs/newsong", {
       method: "POST",
       headers: {

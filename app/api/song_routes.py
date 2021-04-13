@@ -39,8 +39,7 @@ def song_by_id(id):
 
     # songDict["song"]["genre_name"] = genre["name"]
     # songDict["song"]["comments"] = commentsDict["comments"]
-   
-    print(songDict)
+
     return songDict
 
 
@@ -108,11 +107,11 @@ def new_song():
             user_id=form.data['user_id'],
             genre_id=form.data['genre_id']
         )
-        print(song)
+
         db.session.add(song)
         db.session.commit()
         return song.to_dict()
-    print(form.errors)
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
@@ -146,12 +145,14 @@ def delete_song_comment(id):
 
     return comment
 
+
 @song_routes.route('/likes/<int:song_id>/<int:user_id>')
 def like_song(song_id, user_id):
-    liked_song = Like.query.filter_by(user_id=user_id).filter_by(song_id=song_id).first()
+    liked_song = Like.query.filter_by(
+        user_id=user_id).filter_by(song_id=song_id).first()
     if liked_song:
         return {"liked": True}
-    else: 
+    else:
         new_like = Like(
             user_id=user_id,
             song_id=song_id
@@ -160,9 +161,9 @@ def like_song(song_id, user_id):
         db.session.commit()
         return new_like.to_dict()
 
+
 @song_routes.route('/likes')
 def all_likes():
     likes = Like.query.all()
     likesDict = {"likes": [like.to_dict() for like in likes]}
     return likesDict
-

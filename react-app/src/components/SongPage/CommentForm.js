@@ -16,19 +16,17 @@ const CommentForm = ({ userId, newComment, setNewComment, sessionUser }) => {
     e.preventDefault();
     dispatch(userLike(songId, userId));
     return setTimeout(() => {
-      setLiked(true)
-    }, 100)
-    
+      setLiked(true);
+    }, 100);
   };
 
-// let variable;
-// // console.log(liked)
-// const something = likes?.forEach(like => {
-//   if(like.user_id == 1) {
-//     variable = true;
-//     return
-//   }
-// })
+  // let variable;
+  // const something = likes?.forEach(like => {
+  //   if(like.user_id == 1) {
+  //     variable = true;
+  //     return
+  //   }
+  // })
 
   const commentSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +37,6 @@ const CommentForm = ({ userId, newComment, setNewComment, sessionUser }) => {
       user_id: userId,
       content: comment,
     };
-    console.log(songId, userComment);
     await dispatch(postUserComment(userComment, songId));
   };
 
@@ -49,7 +46,6 @@ const CommentForm = ({ userId, newComment, setNewComment, sessionUser }) => {
 
   const newCommentSubmit = () => {
     return setTimeout(() => {
-      console.log("hello");
       setNewComment(true);
     }, 10);
   };
@@ -57,7 +53,15 @@ const CommentForm = ({ userId, newComment, setNewComment, sessionUser }) => {
   return (
     <div id="comment-form-div">
       <div id="like-button-div">
-         {liked ? <button onClick={likeSong} id="heart-button">Liked<i className="fas fa-heart"></i></button> : <button onClick={likeSong} id="heart-button">Like<i className="far fa-heart"></i></button>}
+        {liked ? (
+          <button onClick={likeSong} id="heart-button">
+            Liked<i className="fas fa-heart"></i>
+          </button>
+        ) : (
+          <button onClick={likeSong} id="heart-button">
+            Like<i className="far fa-heart"></i>
+          </button>
+        )}
       </div>
       <form id="comment-form" onSubmit={commentSubmit}>
         <textarea

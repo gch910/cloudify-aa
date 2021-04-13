@@ -16,7 +16,6 @@ const ArtistsPage = () => {
   }, [dispatch]);
 
   isLoaded ? (allUsers = Object.values(users)) : (allUsers = null);
-  console.log("all users", allUsers);
   return (
     isLoaded && (
       <div id="artists-page-div">
