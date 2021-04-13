@@ -5,11 +5,10 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
 <br />
 <p align="center">
   <a href="https://github.com/gch910/cloudify-aa">
-    <img src="./images/logo.png" alt="Logo" width="80" height="80">
+    <img src="favicon.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Cloudify</h3>
@@ -27,8 +26,6 @@
     <a href="https://github.com/gch910/cloudify-aa/issues">Request Feature</a>
   </p>
 </p>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -56,27 +53,26 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
+
 Coming Soon
 [![cloudify-aa][product-screenshot]](https://example.com)
 
 ### Built With
 
-* [Javascript]()
-* [React]()
-* [Redux]()
-* [Python]()
-* [Flask]()
-* [SQLAlchemy]()
-* [PostgreSQL]()
-* [CSS]()
-
-
+- [Javascript]()
+- [React]()
+- [Redux]()
+- [Python]()
+- [Flask]()
+- [SQLAlchemy]()
+- [PostgreSQL]()
+- [CSS]()
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
@@ -84,25 +80,31 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 Installations
-* npm
+
+- npm
+
   ```sh
   npm install npm@latest -g
   ```
 
-  * pipenv
-  ```sh
-  pipenv install 
-  ```
+  - pipenv
 
+  ```sh
+  pipenv install
+  ```
 
 ### Installation
 
 1. Clone the repository
+
    ```sh
    git clone https://github.com/gch910/cloudify-aa.git
 
+   ```
+
 2. Install Pipenv dependencies
-    ```sh
+
+   ```sh
    pipenv install
    ```
 
@@ -111,23 +113,20 @@ Installations
    npm install
    ```
 
-
-
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 Coming Soon
 
-
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
 See the [open issues](https://github.com/gch910/cloudify-aa/issues) for a list of proposed features (and known issues).
 
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -138,35 +137,29 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Your Name - gharris910@icloud.com
 
 Project Link: [https://github.com/gch910/cloudify-aa](https://github.com/gch910/cloudify-aa)
 
-
-
 <!-- ACKNOWLEDGEMENTS -->
+
 ## Acknowledgements
 
-* [App Academy](https://www.appacademy.io/)
-
-
-
-
+- [App Academy](https://www.appacademy.io/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/gch910/cloudify-aa.svg?style=for-the-badge
 [contributors-url]: https://github.com/gch910/cloudify-aa/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/gch910/cloudify-aa.svg?style=for-the-badge
