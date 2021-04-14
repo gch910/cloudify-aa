@@ -7,7 +7,7 @@
 
 <br />
 <p align="center">
-  <a href="https://github.com/gch910/cloudify-aa">
+  <a href="https://cloudify-aa.herokuapp.com/">
     <img src="favicon.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -57,19 +57,34 @@
 
 ## About The Project
 
-Coming Soon
-[![cloudify-aa][product-screenshot]](https://example.com)
+<a href="https://cloudify-aa.herokuapp.com/">
+  <img src="https://i.gyazo.com/26167b24155ea8ed1fc79b3587542161.png" alt="Logo" >
+</a>
+
+## Summary
+
+Cloudify is a web application inspired by SoundCloud built using Python / Flask utilizing React.js/Redux architecture. Cloudify allows users to:
+
+- Create an account / profile
+- Log in / Log out
+- Upload / share music
+- Listen to music
+- View artist profiles
+- Search for artists / music
+- View song pages and comment on songs
+- Add a like to a song
 
 ### Built With
 
-- [Javascript]()
-- [React]()
-- [Redux]()
-- [Python]()
-- [Flask]()
-- [SQLAlchemy]()
-- [PostgreSQL]()
-- [CSS]()
+- Javascript
+- React
+- Redux
+- Python
+- Flask
+- SQLAlchemy
+- PostgreSQL
+- CSS
+- [react-responsive-carousel](https://www.npmjs.com/package/react-responsive-carousel)
 
 <!-- GETTING STARTED -->
 
@@ -87,7 +102,7 @@ Installations
   npm install npm@latest -g
   ```
 
-  - pipenv
+- pipenv
 
   ```sh
   pipenv install
@@ -105,19 +120,47 @@ Installations
 2. Install Pipenv dependencies
 
    ```sh
-   pipenv install
+   pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
    ```
 
-3. Install NPM packages - cd into react-app
+3. Create a **.env** file based on the example with proper settings for your
+   development environment
+4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+
+5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+
+   ```bash
+   pipenv shell
+   ```
+
+   ```bash
+   flask db upgrade
+   ```
+
+   ```bash
+   flask seed all
+   ```
+
+   ```bash
+   flask run
+   ```
+
+6. Install NPM packages - cd into react-app
+
    ```sh
    npm install
    ```
 
-<!-- USAGE EXAMPLES -->
+7. While still in the react-app folder
+   ```sh
+   npm start
+   ```
 
-## Usage
+## Primary Components
 
-Coming Soon
+### User Authorization
+
+User authentication is handled in Python using
 
 <!-- ROADMAP -->
 
