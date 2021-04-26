@@ -1,51 +1,19 @@
-.PlayBar {
+.playbar {
+  display: flex;
+  /* margin-left: 17%;
+  margin-right: 17%; */
+  align-content: center;
+}
+
+.playbar-div {
+  display: flex;
   position: fixed;
   bottom: 0;
-  display: flex;
-  background-color: #f0f0f0;
-  font-size: 12px;
-  justify-content: space-evenly;
-  align-items: center;
-  border: 1px solid #797979;
-  border-bottom: none;
-  height: 48px;
-  width: 100vw;
-  left: 0;
-  z-index: 2;
-}
-
-.song {
+  border-top: 1px solid #cecece;
+  background-color: #f2f2f2;
+  height: 50px;
   width: 100%;
-}
-
-.Bar {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: #797979;
-  outline: none;
-  width: 600px;
-  height: 2px;
-  transition: opacity 0.2s;
-  cursor: pointer;
-}
-
-.Bar::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 7px;
-  width: 7px;
-  border-radius: 50%;
-  cursor: pointer;
-  background: red;
-}
-
-.AudioControls > button {
-  background-color: Transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
+  justify-content: center;
 }
 
 #waveform {
@@ -55,6 +23,16 @@
 
 .player-div {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.playBtn {
+  display: flex;
+  flex-flow: row;
+}
+
+.playBtn * {
+  width: 20px;
+  margin-right: 20px;
 }

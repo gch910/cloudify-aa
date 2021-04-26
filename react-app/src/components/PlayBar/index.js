@@ -4,32 +4,6 @@ import "./PlayBar.css";
 import PlayButton from "../PlayButton";
 import WaveSurfer from "wavesurfer.js";
 import Minimap from "wavesurfer.js/dist/plugin/wavesurfer.minimap.js";
-// import "../visualizer/visualizer.css";
-
-// const formWaveSurferOptions = () => ({
-//   container: "#waveform",
-//   waveColor: "#eee",
-//   progressColor: "OrangeRed",
-//   cursorColor: "OrangeRed",
-//   barWidth: 3,
-//   barRadius: 2,
-//   responsive: true,
-//   height: 150,
-
-//   // If true, normalize by the maximum peak instead of 1.0.
-//   normalize: true,
-//   // Use the PeakCache to improve rendering speed of large waveforms.
-//   partialRender: true,
-//   pixelRatio: 1,
-//   plugins: [
-//     Minimap.create({
-//       container: "#wave-minimap",
-//       waveColor: "#eee",
-//       progressColor: "OrangeRed",
-//       height: 50,
-//     }),
-//   ],
-// });
 
 const PlayBar = ({ size = 0 }) => {
   const wavesurfer = useRef(null);
@@ -92,37 +66,38 @@ const PlayBar = ({ size = 0 }) => {
   };
 
   return (
-    <div className="Playbar">
-      <div className="player-div">
-        <div className="controls">
-          <div className="player_image">
-            {/* <img src={`${selectedSong?.image_url}`}></img>  need song image to update*/}
+    <div className="playbar-div">
+      <div className="playbar">
+        <div className="player-div">
+          <div className="controls">
+            <div className="playBtn">
+              <i class="fas fa-step-backward"></i>
+              <div onClick={handlePlayPause}>
+                {!playing ? (
+                  <i class="fas fa-play"></i>
+                ) : (
+                  <i class="fas fa-pause"></i>
+                )}
+              </div>
+              <i class="fas fa-step-forward"></i>
+            </div>
           </div>
-          <div className="player_songInfo">
-            <div className="player_artist">{selectedSong?.artist}</div>
-            <div className="player_song">{selectedSong?.title}</div>
+          <div id="waveform"></div>
+          <div className="volume">
+            <input
+              type="range"
+              id="volume"
+              name="volume"
+              // waveSurfer recognize value of `0` same as `1`
+              //  so we need to set some zero-ish value for silence
+              min="0.01"
+              max="1"
+              step=".025"
+              onChange={onVolumeChange}
+              defaultValue={volume}
+            />
+            🔊
           </div>
-          <div className="playBtn">
-            <button onClick={handlePlayPause}>
-              {!playing ? "Play" : "Pause"}
-            </button>
-          </div>
-        </div>
-        <div id="waveform"></div>
-        <div className="volume">
-          <input
-            type="range"
-            id="volume"
-            name="volume"
-            // waveSurfer recognize value of `0` same as `1`
-            //  so we need to set some zero-ish value for silence
-            min="0.01"
-            max="1"
-            step=".025"
-            onChange={onVolumeChange}
-            defaultValue={volume}
-          />
-          🔊
         </div>
       </div>
     </div>
