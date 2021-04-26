@@ -4,35 +4,8 @@ import "./PlayBar.css";
 import PlayButton from "../PlayButton";
 import WaveSurfer from "wavesurfer.js";
 import Minimap from "wavesurfer.js/dist/plugin/wavesurfer.minimap.js";
-// import "../visualizer/visualizer.css";
 
-// const formWaveSurferOptions = () => ({
-//   container: "#waveform",
-//   waveColor: "#eee",
-//   progressColor: "OrangeRed",
-//   cursorColor: "OrangeRed",
-//   barWidth: 3,
-//   barRadius: 2,
-//   responsive: true,
-//   height: 150,
-
-//   // If true, normalize by the maximum peak instead of 1.0.
-//   normalize: true,
-//   // Use the PeakCache to improve rendering speed of large waveforms.
-//   partialRender: true,
-//   pixelRatio: 1,
-//   plugins: [
-//     Minimap.create({
-//       container: "#wave-minimap",
-//       waveColor: "#eee",
-//       progressColor: "OrangeRed",
-//       height: 50,
-//     }),
-//   ],
-// });
-
-const PlayBar = () => {
-  // const waveformRef = useRef(null);
+const PlayBar = ({ size = 0 }) => {
   const wavesurfer = useRef(null);
   const selectedSong =
     "https://cloudify.s3.amazonaws.com/bc5f1f3feac745bbbb00cb4a25e14c3d.mp3";
@@ -44,35 +17,42 @@ const PlayBar = () => {
   useEffect(() => {
     setPlay(false);
 
-    // const options = formWaveSurferOptions(waveformRef);
-
-    const wavesurfer = WaveSurfer.create({
+    wavesurfer.current = WaveSurfer.create({
       container: "#waveform",
-      scrollParent: true,
+      scrollParent: false,
+      waveColor: "grey",
+      progressColor: "OrangeRed",
+      height: 10,
+      barHeight: size,
+      cursorWidth: 1,
+      cursorColor: "OrangeRed",
+      hideScrollbar: true,
+      fillParent: true,
+      partialRender: true,
     });
 
-    wavesurfer.load(selectedSong, null, true);
+    wavesurfer.current.load(selectedSong, null, true);
 
-    wavesurfer.on("ready", function () {
+    wavesurfer.current.on("ready", function () {
       // https://wavesurfer-js.org/docs/methods.html
-      wavesurfer.play();
+      wavesurfer.current.play();
       setPlay(true);
 
       // make sure object stillavailable when file loaded
       if (wavesurfer) {
-        wavesurfer.setVolume(volume);
+        wavesurfer.current.setVolume(volume);
         setVolume(volume);
       }
     });
 
     // Removes events, elements and disconnects Web Audio nodes.
     // when component unmount
-    return () => wavesurfer.destroy();
+    return () => wavesurfer.current.destroy();
   }, [selectedSong]);
 
   const handlePlayPause = () => {
     setPlay(!playing);
-    wavesurfer.playPause();
+    wavesurfer.current.playPause();
   };
 
   const onVolumeChange = (e) => {
@@ -81,27 +61,28 @@ const PlayBar = () => {
 
     if (newVolume) {
       setVolume(newVolume);
-      wavesurfer.setVolume(newVolume || 1);
+      wavesurfer.current.setVolume(newVolume || 1);
     }
   };
 
   return (
-    <div className="Playbar">
-      <div id="waveform">
-        <div className="controls">
-          <div className="player_image">
-            {/* <img src={`${selectedSong?.image_url}`}></img>  need song image to update*/}
+    <div className="playbar-div">
+      <div className="playbar">
+        <div className="player-div">
+          <div className="controls">
+            <div className="playBtn">
+              <i class="fas fa-step-backward"></i>
+              <div onClick={handlePlayPause}>
+                {!playing ? (
+                  <i class="fas fa-play"></i>
+                ) : (
+                  <i class="fas fa-pause"></i>
+                )}
+              </div>
+              <i class="fas fa-step-forward"></i>
+            </div>
           </div>
-          <div className="player_songInfo">
-            <div className="player_artist">{selectedSong?.artist}</div>
-            <div className="player_song">{selectedSong?.title}</div>
-          </div>
-          <div className="playBtn">
-            <button onClick={handlePlayPause}>
-              {!playing ? "Play" : "Pause"}
-            </button>
-          </div>
-          <div id="wave-minimap" />
+          <div id="waveform"></div>
           <div className="volume">
             <input
               type="range"
