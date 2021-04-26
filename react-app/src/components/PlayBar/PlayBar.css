@@ -48,12 +48,13 @@
   outline: none;
 }
 
-.ArtistInfo img {
-  width: 30px;
-  height: 30px;
-  margin-right: 5px;
+#waveform {
+  margin-bottom: 3px;
+  width: 500px;
 }
 
-.ArtistInfo {
+.player-div {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
