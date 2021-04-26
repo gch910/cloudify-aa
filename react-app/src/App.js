@@ -46,7 +46,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation setAuthenticated={setAuthenticated} navId={navId} />
-      <PlayBar />
+
       <Switch>
         {/* <Route path="/login" exact={true}>
           <LoginForm
@@ -95,6 +95,7 @@ function App() {
         </ProtectedRoute>
         <NotFoundPage />
       </Switch>
+      <PlayBar />
     </BrowserRouter>
   );
 }
