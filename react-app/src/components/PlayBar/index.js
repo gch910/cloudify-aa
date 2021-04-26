@@ -35,8 +35,7 @@ const PlayBar = () => {
   // const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const selectedSong =
-    "https://cloudify.s3.amazonaws.com/2fdafe094f7141458cba93cbf1654597.mp3";
-  // "https://sinecloud.s3.amazonaws.com/7318f5665cb548f4be2246a902bfdef7.mp3";
+    "https://cloudify.s3.amazonaws.com/bc5f1f3feac745bbbb00cb4a25e14c3d.mp3";
 
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
@@ -87,35 +86,37 @@ const PlayBar = () => {
   };
 
   return (
-    <div id="waveform">
-      <div className="controls">
-        <div className="player_image">
-          {/* <img src={`${selectedSong?.image_url}`}></img>  need song image to update*/}
-        </div>
-        <div className="player_songInfo">
-          <div className="player_artist">{selectedSong?.artist}</div>
-          <div className="player_song">{selectedSong?.title}</div>
-        </div>
-        <div className="playBtn">
-          <button onClick={handlePlayPause}>
-            {!playing ? "Play" : "Pause"}
-          </button>
-        </div>
-        <div id="wave-minimap" />
-        <div className="volume">
-          <input
-            type="range"
-            id="volume"
-            name="volume"
-            // waveSurfer recognize value of `0` same as `1`
-            //  so we need to set some zero-ish value for silence
-            min="0.01"
-            max="1"
-            step=".025"
-            onChange={onVolumeChange}
-            defaultValue={volume}
-          />
-          🔊
+    <div className="Playbar">
+      <div id="waveform">
+        <div className="controls">
+          <div className="player_image">
+            {/* <img src={`${selectedSong?.image_url}`}></img>  need song image to update*/}
+          </div>
+          <div className="player_songInfo">
+            <div className="player_artist">{selectedSong?.artist}</div>
+            <div className="player_song">{selectedSong?.title}</div>
+          </div>
+          <div className="playBtn">
+            <button onClick={handlePlayPause}>
+              {!playing ? "Play" : "Pause"}
+            </button>
+          </div>
+          <div id="wave-minimap" />
+          <div className="volume">
+            <input
+              type="range"
+              id="volume"
+              name="volume"
+              // waveSurfer recognize value of `0` same as `1`
+              //  so we need to set some zero-ish value for silence
+              min="0.01"
+              max="1"
+              step=".025"
+              onChange={onVolumeChange}
+              defaultValue={volume}
+            />
+            🔊
+          </div>
         </div>
       </div>
     </div>
