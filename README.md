@@ -176,6 +176,12 @@ User authentication is handled in Flask using the flask_login package. The werkz
 
 ![signin]
 
+#### Home Page
+
+The Cloudify homepage features sliding carousels of songs sorted by genre.  These carousels dynamically update to include music that has been recently uploaded to the platform.  All album images are active links that immediately play the song when clicked and take you to that artist's user page.  
+
+![homepage]
+
 
 <!-- ROADMAP -->
 
@@ -221,6 +227,7 @@ Project Link: [https://cloudify-aa.herokuapp.com/](https://cloudify-aa.herokuapp
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [signin]: ./readme_images/cloudify-login.PNG
+[homepage]: ./readme_images/cloudify-homepage.PNG
 
 [contributors-shield]: https://img.shields.io/github/contributors/gch910/cloudify-aa.svg?style=for-the-badge
 [contributors-url]: https://github.com/gch910/cloudify-aa/graphs/contributors
