@@ -13,3 +13,7 @@ body {
   color: rgb(165, 165, 165);
   font-size: 14px;
 }
+
+.button {
+  cursor: pointer;
+}

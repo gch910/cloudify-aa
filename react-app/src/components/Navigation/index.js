@@ -51,7 +51,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
           <img
             alt="logo"
             id="nav-logo"
-            src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
+            src="https://a-v2.sndcdn.com/assets/images/brand-1b72dd82.svg"
           ></img>
         </NavLink>
         <div id="home-link-container">
@@ -142,11 +142,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
         <div id="signup-button-div">
           <SignUpFormModal />
         </div>
-        <NavLink
-          className="nav-link"
-          id="upload-link"
-          to={"/login"}
-        >
+        <NavLink className="nav-link" id="upload-link" to={"/login"}>
           Upload
         </NavLink>
       </>

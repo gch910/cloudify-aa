@@ -7,11 +7,10 @@ import Minimap from "wavesurfer.js/dist/plugin/wavesurfer.minimap.js";
 
 const PlayBar = ({ size = 0 }) => {
   const wavesurfer = useRef(null);
-  const selectedSong =
-    "https://cloudify.s3.amazonaws.com/bc5f1f3feac745bbbb00cb4a25e14c3d.mp3";
-
+  const selectedSong = useSelector((state) => state.playing.url);
   const [playing, setPlay] = useState(false);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(0.1);
+  const [muted, setMuted] = useState(false);
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
@@ -50,6 +49,11 @@ const PlayBar = ({ size = 0 }) => {
     return () => wavesurfer.current.destroy();
   }, [selectedSong]);
 
+  const toggleMute = () => {
+    setMuted(!muted);
+    wavesurfer.current.toggleMute();
+  };
+
   const handlePlayPause = () => {
     setPlay(!playing);
     wavesurfer.current.playPause();
@@ -58,6 +62,9 @@ const PlayBar = ({ size = 0 }) => {
   const onVolumeChange = (e) => {
     const { target } = e;
     const newVolume = +target.value;
+    if (muted) {
+      setMuted(false);
+    }
 
     if (newVolume) {
       setVolume(newVolume);
@@ -66,41 +73,53 @@ const PlayBar = ({ size = 0 }) => {
   };
 
   return (
-    <div className="playbar-div">
-      <div className="playbar">
-        <div className="player-div">
-          <div className="controls">
-            <div className="playBtn">
-              <i class="fas fa-step-backward"></i>
-              <div onClick={handlePlayPause}>
-                {!playing ? (
-                  <i class="fas fa-play"></i>
+    selectedSong && (
+      <div className="playbar-div">
+        <div className="playbar">
+          <div className="player-div">
+            <div className="controls">
+              <div className="playBtn">
+                <div className="button">
+                  <i class="fas fa-step-backward"></i>
+                </div>
+                <div className="button" onClick={handlePlayPause}>
+                  {!playing ? (
+                    <i class="fas fa-play"></i>
+                  ) : (
+                    <i class="fas fa-pause"></i>
+                  )}
+                </div>
+                <div className="button">
+                  <i class="fas fa-step-forward"></i>
+                </div>
+              </div>
+            </div>
+            <div id="waveform"></div>
+            <div className="volume">
+              <div className="button sound" onClick={toggleMute}>
+                {muted ? (
+                  <i class="fas fa-volume-mute"></i>
                 ) : (
-                  <i class="fas fa-pause"></i>
+                  <i class="fas fa-volume-up"></i>
                 )}
               </div>
-              <i class="fas fa-step-forward"></i>
+              <input
+                type="range"
+                id="volume"
+                name="volume"
+                // waveSurfer recognize value of `0` same as `1`
+                //  so we need to set some zero-ish value for silence
+                min="0.01"
+                max="1"
+                step=".025"
+                onChange={onVolumeChange}
+                defaultValue={volume}
+              />
             </div>
-          </div>
-          <div id="waveform"></div>
-          <div className="volume">
-            <input
-              type="range"
-              id="volume"
-              name="volume"
-              // waveSurfer recognize value of `0` same as `1`
-              //  so we need to set some zero-ish value for silence
-              min="0.01"
-              max="1"
-              step=".025"
-              onChange={onVolumeChange}
-              defaultValue={volume}
-            />
-            🔊
           </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 

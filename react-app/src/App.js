@@ -18,6 +18,7 @@ import NotFoundPage from "./components/NotFoundPage";
 function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.user);
+  const isPlaying = useSelector((state) => state.playing?.url);
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(true);
 
@@ -46,14 +47,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation setAuthenticated={setAuthenticated} navId={navId} />
-
       <Switch>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route> */}
         <Route path="/login" exact={true}>
           <LoginFormPage
             authenticated={authenticated}
@@ -95,7 +89,7 @@ function App() {
         </ProtectedRoute>
         <NotFoundPage />
       </Switch>
-      <PlayBar />
+      {isPlaying ? <PlayBar /> : ""}
     </BrowserRouter>
   );
 }

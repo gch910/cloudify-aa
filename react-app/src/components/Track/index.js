@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import PlayButton from "../PlayButton";
 import "./index.css";
-
-import PlayButton from "../PlayButton"
 
 const Track = ({ source, hyperlink, title, artist, user_id }) => {
   return (
-    <a href={hyperlink} >
+    <a href={hyperlink}>
       <div className="outer-div">
         <a href={user_id}>
           <div>
+            <div className="playbutton"></div>
             <img alt="Album cover" src={source} />
+            <PlayButton url={hyperlink} />
           </div>
         </a>
         <a href={user_id}>
@@ -22,7 +22,6 @@ const Track = ({ source, hyperlink, title, artist, user_id }) => {
           </div>
         </a>
       </div>
-      {/* <PlayButton url={hyperlink} /> */}
     </a>
   );
 };

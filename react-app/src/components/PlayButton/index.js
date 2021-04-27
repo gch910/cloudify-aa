@@ -12,22 +12,10 @@ const PlayButton = (url) => {
 
   const setSong = (e) => {
     e.preventDefault();
-    dispatch(setCurrentSong(url.url));
+    dispatch(setCurrentSong(url));
   };
 
-  return (
-    <>
-      <div className="PlayButton">
-        <button onClick={setSong}>
-          {playing ? (
-            <i className="fas fa-pause"></i>
-          ) : (
-            <i className="fas fa-play"></i>
-          )}
-        </button>
-      </div>
-    </>
-  );
+  return <div onClick={setSong} className="icon"></div>;
 };
 
 export default PlayButton;
