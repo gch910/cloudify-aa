@@ -89,6 +89,15 @@ Cloudify is a web application inspired by SoundCloud built using Python / Flask 
 - CSS
 - [react-responsive-carousel](https://www.npmjs.com/package/react-responsive-carousel)
 
+## Overall Structure
+
+#### Back end
+The app was built using Python / Flask on the back end with a postgreSQL database. Back end structure is RESTful and all the data requests use AJAX and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.
+
+#### Front end
+The front end is built completely in [React.js][React] and JavaScript and utilizes Redux for global state management. React's virtual DOM allows for very fast rerendering without requiring new pages to be sent from the server. Even modals appear/disappear using React rather than toggling CSS display properties.
+
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
