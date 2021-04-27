@@ -38,13 +38,24 @@ nav {
   background-color: #333333;
 }
 
-#nav-logo {
-  grid-area: logo;
-  justify-self: left;
+.logo-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 69px;
   height: 46px;
-  /* margin-left: 60px; */
-  background-color: white;
+  background: linear-gradient(#f70, #f30);
+}
+
+#nav-logo {
+  margin: 6px;
+  grid-area: logo;
+  justify-self: left;
+  height: 22px;
+  width: 48px;
+  margin-right: unset;
+  background-position-x: 12px;
+  z-index: 2;
 }
 
 #nav-logo-link {
