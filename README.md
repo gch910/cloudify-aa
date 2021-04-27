@@ -3,9 +3,9 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url-gabriel]
-[![LinkedIn][linkedin-shield]][linkedin-url-josh]
-[![LinkedIn][linkedin-shield]][linkedin-url-jevon]
+[![Gabriel's LinkedIn][linkedin-shield]][linkedin-url-gabriel]
+[![Joshua's LinkedIn][linkedin-shield]][linkedin-url-josh]
+[![Jevon's LinkedIn][linkedin-shield]][linkedin-url-jevon]
 
 <br />
 <p align="center">
@@ -186,7 +186,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the GNU License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 
