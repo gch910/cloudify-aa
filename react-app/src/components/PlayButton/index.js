@@ -16,17 +16,9 @@ const PlayButton = (url) => {
   };
 
   return (
-    <>
-      <div className="PlayButton">
-        <button onClick={setSong}>
-          {playing ? (
-            <i className="fas fa-pause"></i>
-          ) : (
-            <i className="fas fa-play"></i>
-          )}
-        </button>
-      </div>
-    </>
+    <div className="icon">
+      <div className="circle"></div>
+    </div>
   );
 };
 

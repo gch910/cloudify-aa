@@ -11,7 +11,7 @@ const PlayBar = ({ size = 0 }) => {
     "https://cloudify.s3.amazonaws.com/bc5f1f3feac745bbbb00cb4a25e14c3d.mp3";
 
   const [playing, setPlay] = useState(false);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(0.1);
   const [muted, setMuted] = useState(false);
   // create new WaveSurfer instance
   // On component mount and when url changes
@@ -94,7 +94,7 @@ const PlayBar = ({ size = 0 }) => {
           </div>
           <div id="waveform"></div>
           <div className="volume">
-            <div className="button" onClick={toggleMute}>
+            <div className="button sound" onClick={toggleMute}>
               {muted ? (
                 <i class="fas fa-volume-mute"></i>
               ) : (

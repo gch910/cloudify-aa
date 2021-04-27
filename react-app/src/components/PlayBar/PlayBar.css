@@ -46,3 +46,8 @@
 .volume * {
   margin-left: 10px;
 }
+
+.sound {
+  width: 28px;
+  height: 20px;
+}

@@ -12,3 +12,9 @@ a {
   text-decoration: none;
   color: black;
 }
+.playbutton {
+  top: 34%;
+  bottom: 34%;
+  left: 34%;
+  right: 34%;
+}
