@@ -2,10 +2,10 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![GNU License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url-gabriel]
 [![LinkedIn][linkedin-shield]][linkedin-url-josh]
 [![LinkedIn][linkedin-shield]][linkedin-url-jevon]
+[![GNU License][license-shield]][license-url]
 
 
 <br />
