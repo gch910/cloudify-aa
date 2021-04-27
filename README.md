@@ -3,7 +3,9 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][linkedin-url-gabriel]
+[![LinkedIn][linkedin-shield]][linkedin-url-josh]
+[![LinkedIn][linkedin-shield]][linkedin-url-jevon]
 
 <br />
 <p align="center">
@@ -160,7 +162,7 @@ Installations
 
 ### User Authorization
 
-User authentication is handled in Python using
+User authentication is handled in Python using the Flask Login package.
 
 <!-- ROADMAP -->
 
@@ -214,5 +216,7 @@ Project Link: [https://github.com/gch910/cloudify-aa](https://github.com/gch910/
 [license-shield]: https://img.shields.io/github/license/gch910/cloudify-aa.svg?style=for-the-badge
 [license-url]: https://github.com/gch910/cloudify-aa/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/gabriel-harris-249231208/
+[linkedin-url-gabriel]: https://www.linkedin.com/in/gabriel-harris-249231208/
+[linkedin-url-josh]: https://www.linkedin.com/in/joshua-miller-625685154/
+[linkedin-url-jevon]: https://www.linkedin.com/in/jevon-timmons/
 [product-screenshot]: images/screenshot.png
