@@ -3,9 +3,11 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-Gabriel's [![LinkedIn][linkedin-shield]][linkedin-url-gabriel]
-Joshua's [![LinkedIn][linkedin-shield]][linkedin-url-josh]
-Jevon's [![LinkedIn][linkedin-shield]][linkedin-url-jevon]
+
+
+[![LinkedIn][linkedin-shield]][linkedin-url-gabriel]
+[![LinkedIn][linkedin-shield]][linkedin-url-josh]
+[![LinkedInHello][linkedin-shield]][linkedin-url-jevon]
 
 <br />
 <p align="center">
