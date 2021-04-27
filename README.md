@@ -188,6 +188,11 @@ On navigation to the song page, if the specified song is not already present in 
 
 ![songpage]
 
+#### Artist Page
+
+Artist / User pages (they are synonymous in this app) function similarly to song pages.  The data is handled the same way, but the primary focus of this page is rendering all of the songs uploaded by this user. Album art and realease date are included for each song as well as a play button that updates the state of the global playbar when clicked.  The clicked song will become the new "playing" song and the playbar, which persists music playback and information through re-renders, will update to reflect the current audio.  The navigation bar utilizes React state to create seemless filtering of songs based on the active link.  
+
+![songpage]
 
 <!-- ROADMAP -->
 
@@ -235,6 +240,7 @@ Project Link: [https://cloudify-aa.herokuapp.com/](https://cloudify-aa.herokuapp
 [signin]: ./readme_images/cloudify-login.PNG
 [homepage]: ./readme_images/cloudify-homepage.PNG
 [songpage]: ./readme_images/cloudify-songpage.PNG
+[artistpage]: ./readme_images/cloudify-artistpage.PNG
 
 [contributors-shield]: https://img.shields.io/github/contributors/gch910/cloudify-aa.svg?style=for-the-badge
 [contributors-url]: https://github.com/gch910/cloudify-aa/graphs/contributors
