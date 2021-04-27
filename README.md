@@ -193,7 +193,8 @@ Distributed under the GNU License. See `LICENSE` for more information.
 
 ## Contact
 
-Gabriel - gharris910@icloud.com
+Gabriel - gharris910@icloud.com \
+
 Josh - joshua.miller2289@gmail.com
 
 Project Link: [https://cloudify-aa.herokuapp.com/](https://cloudify-aa.herokuapp.com/)
