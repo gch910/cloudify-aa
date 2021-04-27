@@ -8,10 +8,9 @@ const Track = ({ source, hyperlink, title, artist, user_id }) => {
       <div className="outer-div">
         <a href={user_id}>
           <div>
-            <div className="playbutton">
-              <PlayButton />
-            </div>
+            <div className="playbutton"></div>
             <img alt="Album cover" src={source} />
+            <PlayButton url={hyperlink} />
           </div>
         </a>
         <a href={user_id}>
