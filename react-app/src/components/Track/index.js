@@ -13,14 +13,16 @@ const Track = ({ source, hyperlink, title, artist, user_id, song_id }) => {
           <PlayButton url={hyperlink} />
         </div>
       </NavLink>
-      <NavLink to={`/profile/${user_id}`}>
-        <div>
-          <span className="">{title}</span>
-        </div>
-        <div>
-          <span className="subtitle">{artist}</span>
-        </div>
-      </NavLink>
+      <div className="inner-div">
+        <NavLink to={`/profile/${user_id}`}>
+          <div>
+            <span className="">{title}</span>
+          </div>
+          <div>
+            <span className="subtitle">{artist}</span>
+          </div>
+        </NavLink>
+      </div>
     </div>
   );
 };

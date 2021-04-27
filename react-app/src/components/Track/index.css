@@ -13,3 +13,7 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.inner-div {
+  margin-top: 5px;
+}
