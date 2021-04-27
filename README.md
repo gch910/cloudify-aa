@@ -1,13 +1,13 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-
-[![LinkedIn][linkedin-shield]][linkedin-url-gabriel]
-[![LinkedIn][linkedin-shield]][linkedin-url-josh]
-[![LinkedInHello][linkedin-shield]][linkedin-url-jevon]
+<div style="display:flex;align-items:center;">
+  [![Contributors][contributors-shield]][contributors-url]
+  [![Forks][forks-shield]][forks-url]
+  [![Stargazers][stars-shield]][stars-url]
+  [![Issues][issues-shield]][issues-url]
+  [![MIT License][license-shield]][license-url]
+  Gabriel's[![LinkedIn][linkedin-shield]][linkedin-url-gabriel]
+  [![LinkedIn][linkedin-shield]][linkedin-url-josh]
+  [![LinkedIn][linkedin-shield]][linkedin-url-jevon]
+</div>
 
 <br />
 <p align="center">
