@@ -12,14 +12,10 @@ const PlayButton = (url) => {
 
   const setSong = (e) => {
     e.preventDefault();
-    dispatch(setCurrentSong(url.url));
+    dispatch(setCurrentSong(url));
   };
 
-  return (
-    <div className="icon">
-      <div className="circle"></div>
-    </div>
-  );
+  return <div onClick={setSong} className="icon"></div>;
 };
 
 export default PlayButton;
