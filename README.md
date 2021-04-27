@@ -184,7 +184,7 @@ The Cloudify homepage features sliding carousels of songs sorted by genre.  Thes
 
 #### Song Page
 
-On navigation to the songpage, if the specified song is not already present in the redux store, a fetch request will be made to the backend which will respond with queried results of relevent song information.  This information, such as the song's artist, artist image, album art, genre, comments and likes will be rendered extremely quickly thanks to React's virtual DOM.  A logged in user can interact with the song page by liking it, unliking it and adding/deleting comments, with page updates happening instantly.  All of the updated song data is saved to the postgreSQL database where it can be retreived later on.
+On navigation to the song page, if the specified song is not already present in the redux store, a fetch request will be made to the backend which will respond with queried results of relevent song information.  This information, such as the song's artist, artist image, album art, genre, comments and likes will be rendered extremely quickly thanks to React's virtual DOM.  A logged in user can interact with the song page by liking it, unliking it and adding/deleting comments, with page updates happening instantly.  All of the updated song data is saved to the postgreSQL database where it can be retreived later on.
 
 ![songpage]
 
