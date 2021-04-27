@@ -12,6 +12,7 @@ const PlayBar = ({ size = 0 }) => {
 
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
+  const [muted, setMuted] = useState(false);
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
@@ -50,6 +51,11 @@ const PlayBar = ({ size = 0 }) => {
     return () => wavesurfer.current.destroy();
   }, [selectedSong]);
 
+  const toggleMute = () => {
+    setMuted(!muted);
+    wavesurfer.current.toggleMute();
+  };
+
   const handlePlayPause = () => {
     setPlay(!playing);
     wavesurfer.current.playPause();
@@ -71,19 +77,30 @@ const PlayBar = ({ size = 0 }) => {
         <div className="player-div">
           <div className="controls">
             <div className="playBtn">
-              <i class="fas fa-step-backward"></i>
-              <div onClick={handlePlayPause}>
+              <div className="button">
+                <i class="fas fa-step-backward"></i>
+              </div>
+              <div className="button" onClick={handlePlayPause}>
                 {!playing ? (
                   <i class="fas fa-play"></i>
                 ) : (
                   <i class="fas fa-pause"></i>
                 )}
               </div>
-              <i class="fas fa-step-forward"></i>
+              <div className="button">
+                <i class="fas fa-step-forward"></i>
+              </div>
             </div>
           </div>
           <div id="waveform"></div>
           <div className="volume">
+            <div className="button" onClick={toggleMute}>
+              {muted ? (
+                <i class="fas fa-volume-mute"></i>
+              ) : (
+                <i class="fas fa-volume-up"></i>
+              )}
+            </div>
             <input
               type="range"
               id="volume"
@@ -96,7 +113,6 @@ const PlayBar = ({ size = 0 }) => {
               onChange={onVolumeChange}
               defaultValue={volume}
             />
-            🔊
           </div>
         </div>
       </div>

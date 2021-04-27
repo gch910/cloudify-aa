@@ -48,12 +48,6 @@ function App() {
       <Navigation setAuthenticated={setAuthenticated} navId={navId} />
 
       <Switch>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route> */}
         <Route path="/login" exact={true}>
           <LoginFormPage
             authenticated={authenticated}

@@ -36,3 +36,13 @@
   width: 20px;
   margin-right: 20px;
 }
+
+.volume {
+  display: flex;
+  flex-flow: row;
+  margin-left: 10px;
+}
+
+.volume * {
+  margin-left: 10px;
+}
