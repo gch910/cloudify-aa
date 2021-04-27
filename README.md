@@ -195,7 +195,7 @@ Distributed under the GNU License. See `LICENSE` for more information.
 
 Your Name - gharris910@icloud.com
 
-Project Link: [https://github.com/gch910/cloudify-aa](https://github.com/gch910/cloudify-aa)
+Project Link: [https://cloudify-aa.herokuapp.com/](https://cloudify-aa.herokuapp.com/)
 
 <!-- ACKNOWLEDGEMENTS -->
 
