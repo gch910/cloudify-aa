@@ -2,7 +2,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![GNU License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url-gabriel]
 [![LinkedIn][linkedin-shield]][linkedin-url-josh]
 [![LinkedIn][linkedin-shield]][linkedin-url-jevon]
@@ -214,7 +214,7 @@ Project Link: [https://github.com/gch910/cloudify-aa](https://github.com/gch910/
 [stars-url]: https://github.com/gch910/cloudify-aa/stargazers
 [issues-shield]: https://img.shields.io/github/issues/gch910/cloudify-aa.svg?style=for-the-badge
 [issues-url]: https://github.com/gch910/cloudify-aa/issues
-[license-shield]: https://img.shields.io/github/license/gch910/cloudify-aa.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/badge/License-GPL%20v3-blue.svg
 [license-url]: https://github.com/gch910/cloudify-aa/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-gabriel]: https://www.linkedin.com/in/gabriel-harris-249231208/
