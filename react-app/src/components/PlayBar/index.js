@@ -1,89 +1,106 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import "./PlayBar.css";
 import PlayButton from "../PlayButton";
+import WaveSurfer from "wavesurfer.js";
+import Minimap from "wavesurfer.js/dist/plugin/wavesurfer.minimap.js";
 
-const PlayBar = () => {
-  const [audio, setAudio] = useState(null);
-  const [playing, setIsPlaying] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [timeElapsed, setTimeElapsed] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const currentSong = useSelector((state) => state.playing);
+const PlayBar = ({ size = 0 }) => {
+  const wavesurfer = useRef(null);
+  const selectedSong =
+    "https://cloudify.s3.amazonaws.com/bc5f1f3feac745bbbb00cb4a25e14c3d.mp3";
 
+  const [playing, setPlay] = useState(false);
+  const [volume, setVolume] = useState(0.5);
+  // create new WaveSurfer instance
+  // On component mount and when url changes
   useEffect(() => {
-    if (currentSong.playing) {
-      setAudio(new Audio(currentSong.playing));
-      setIsLoaded(true);
+    setPlay(false);
+
+    wavesurfer.current = WaveSurfer.create({
+      container: "#waveform",
+      scrollParent: false,
+      waveColor: "grey",
+      progressColor: "OrangeRed",
+      height: 10,
+      barHeight: size,
+      cursorWidth: 1,
+      cursorColor: "OrangeRed",
+      hideScrollbar: true,
+      fillParent: true,
+      partialRender: true,
+    });
+
+    wavesurfer.current.load(selectedSong, null, true);
+
+    wavesurfer.current.on("ready", function () {
+      // https://wavesurfer-js.org/docs/methods.html
+      wavesurfer.current.play();
+      setPlay(true);
+
+      // make sure object stillavailable when file loaded
+      if (wavesurfer) {
+        wavesurfer.current.setVolume(volume);
+        setVolume(volume);
+      }
+    });
+
+    // Removes events, elements and disconnects Web Audio nodes.
+    // when component unmount
+    return () => wavesurfer.current.destroy();
+  }, [selectedSong]);
+
+  const handlePlayPause = () => {
+    setPlay(!playing);
+    wavesurfer.current.playPause();
+  };
+
+  const onVolumeChange = (e) => {
+    const { target } = e;
+    const newVolume = +target.value;
+
+    if (newVolume) {
+      setVolume(newVolume);
+      wavesurfer.current.setVolume(newVolume || 1);
     }
-  }, [currentSong]);
-
-  let playingInterval;
-  const play = () => {
-    audio.play();
-    setIsPlaying(true);
-    playingInterval = setInterval(() => {
-      setTimeElapsed(timeFormat(audio.currentTime));
-      setProgress(audio.currentTime);
-    }, 1000);
-  };
-  const pause = () => {
-    audio.pause();
-    clearInterval(playingInterval);
-    setIsPlaying(false);
-  };
-  const timeFormat = (time) => {
-    let minute = Math.floor(time / 60);
-    let remainder = Math.floor(time % 60);
-    let seconds =
-      remainder % 60 < 10 ? `0${remainder % 60}` : `${remainder % 60}`;
-    return `${minute}:${seconds}`;
-  };
-
-  const showProgress = (e) => {
-    audio.currentTime = e.target.value;
-    setTimeElapsed(e.target.value);
   };
 
   return (
-    isLoaded && (
-      <div className="PlayBar">
-        <div className="AudioControls">
-          <PlayButton audioPlaying={playing} />
-          <button onClick={playing ? pause : play}>
-            {playing ? (
-              <i class="fas fa-pause"></i>
-            ) : (
-              <i class="fas fa-play"></i>
-            )}
-          </button>
-        </div>
-        <div className="ProgressBar">
-          <span>{timeFormat(audio.currentTime)}</span>
-          <input
-            className="Bar"
-            type="range"
-            step="0.01"
-            min="0"
-            defaultValue="0"
-            value={progress}
-            max={audio.duration}
-            onInput={showProgress}
-          />
-          <span>{timeFormat(audio.duration)}</span>
-        </div>
-        <div className="ArtistInfo">
-          <img
-            src="http://is5.mzstatic.com/image/thumb/Music128/v4/9e/db/51/9edb5133-7595-700f-9038-b7cf5ddc69f5/source/100000x100000-999.jpg"
-            alt="artist"
-          />
-          <div className="SongDetails">
-            <div>Artist</div>
-            <div>Title</div>
+    <div className="playbar-div">
+      <div className="playbar">
+        <div className="player-div">
+          <div className="controls">
+            <div className="playBtn">
+              <i class="fas fa-step-backward"></i>
+              <div onClick={handlePlayPause}>
+                {!playing ? (
+                  <i class="fas fa-play"></i>
+                ) : (
+                  <i class="fas fa-pause"></i>
+                )}
+              </div>
+              <i class="fas fa-step-forward"></i>
+            </div>
+          </div>
+          <div id="waveform"></div>
+          <div className="volume">
+            <input
+              type="range"
+              id="volume"
+              name="volume"
+              // waveSurfer recognize value of `0` same as `1`
+              //  so we need to set some zero-ish value for silence
+              min="0.01"
+              max="1"
+              step=".025"
+              onChange={onVolumeChange}
+              defaultValue={volume}
+            />
+            🔊
           </div>
         </div>
       </div>
-    )
+    </div>
   );
 };
 
