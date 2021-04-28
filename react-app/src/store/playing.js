@@ -1,12 +1,26 @@
 const SET_SONG = "playing/setSong";
+const SET_STATUS = "playing/setStatus";
 
 const setSong = (url) => ({
   type: SET_SONG,
   url,
 });
 
+const setStatus = (status) => ({
+  type: SET_STATUS,
+  status,
+});
+
 export const setCurrentSong = (url) => async (dispatch) => {
   dispatch(setSong(url));
+};
+
+export const setSongPlaying = () => async (dispatch) => {
+  return dispatch(setStatus("playing"));
+};
+
+export const setSongPause = () => async (dispatch) => {
+  return dispatch(setStatus("paused"));
 };
 
 let initialState = {};
@@ -16,6 +30,11 @@ const playingReducer = (state = initialState, action) => {
     case SET_SONG: {
       newState = { ...state };
       newState.url = action.url.url;
+      return newState;
+    }
+    case SET_STATUS: {
+      newState = { ...state };
+      newState.status = action.status;
       return newState;
     }
     default:

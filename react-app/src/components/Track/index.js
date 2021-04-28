@@ -3,21 +3,21 @@ import PlayButton from "../PlayButton";
 import { NavLink } from "react-router-dom";
 import "./index.css";
 
-const Track = ({ source, hyperlink, title, artist, user_id, song_id }) => {
+const Track = ({ song }) => {
   return (
     <div className="outer-div">
-      <NavLink className="album-div" to={`/song/${song_id}`}>
+      <NavLink className="album-div" to={`/song/${song.id}`}>
         <div className="playbutton"></div>
-        <img alt="Album cover" src={source} />
-        <PlayButton url={hyperlink} />
+        <img alt="Album cover" src={song.image_path} />
+        <PlayButton url={song} />
       </NavLink>
       <div className="inner-div">
-        <NavLink to={`/profile/${user_id}`}>
+        <NavLink to={`/profile/${song.user_id}`}>
           <div>
-            <span className="">{title}</span>
+            <span className="">{song.title}</span>
           </div>
           <div>
-            <span className="subtitle">{artist}</span>
+            <span className="subtitle">{song.user.username}</span>
           </div>
         </NavLink>
       </div>

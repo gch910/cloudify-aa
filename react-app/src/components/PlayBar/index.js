@@ -7,7 +7,7 @@ import Minimap from "wavesurfer.js/dist/plugin/wavesurfer.minimap.js";
 
 const PlayBar = ({ size = 0 }) => {
   const wavesurfer = useRef(null);
-  const selectedSong = useSelector((state) => state.playing.url);
+  const selectedSong = useSelector((state) => state.playing.url?.song_path);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.1);
   const [muted, setMuted] = useState(false);

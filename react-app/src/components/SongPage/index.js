@@ -6,6 +6,7 @@ import { getArtist } from "../../store/users";
 import { deleteUserComment, getAllLikes } from "../../store/songs";
 import CommentForm from "./CommentForm";
 import "./SongPage.css";
+import PlayButton from "../PlayButton";
 
 const SongPage = () => {
   const { songId } = useParams();
@@ -66,13 +67,7 @@ const SongPage = () => {
             <div id="song-image-div">
               <img id="song-image" src={song.image_path} alt="song" />
             </div>
-            <div id="play-icon-div">
-              <img
-                id="play-icon"
-                src="https://alohajarren.github.io/webpage-mockup/images/songplay.png"
-                alt="icon"
-              ></img>
-            </div>
+            <PlayButton song={song} />
             <div id="song-headers">
               <h1 id="song-title">{song.title}</h1>
               <Link to={`/profile/${song.user.id}`}>
