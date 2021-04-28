@@ -32,9 +32,10 @@ const CarouselSongs = ({ songs, title }) => {
               <div key={idx}>
                 <Track
                   key={idx}
+                  song_id={el.id}
                   source={el.image_path}
                   hyperlink={el.song_path}
-                  user_id={`profile/${el.user_id}`}
+                  user_id={el.user_id}
                   title={el.title}
                   artist={el.user.username}
                 />

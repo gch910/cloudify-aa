@@ -48,11 +48,13 @@ const Navigation = ({ setAuthenticated, navId }) => {
     sessionLinks = (
       <>
         <NavLink id="nav-logo-link" exact to="/">
-          <img
-            alt="logo"
-            id="nav-logo"
-            src="https://a-v2.sndcdn.com/assets/images/brand-1b72dd82.svg"
-          ></img>
+          <div className="logo-background">
+            <img
+              alt="logo"
+              id="nav-logo"
+              src="https://cloudify.s3-us-west-2.amazonaws.com/download.png"
+            ></img>
+          </div>
         </NavLink>
         <div id="home-link-container">
           <NavLink className="nav-link" id="home-link" exact to="/">
@@ -101,11 +103,13 @@ const Navigation = ({ setAuthenticated, navId }) => {
     sessionLinks = (
       <>
         <NavLink id="nav-logo-link" exact to="/">
-          <img
-            alt="logo"
-            id="nav-logo"
-            src="https://brandpalettes.com/wp-content/uploads/2019/03/soundcloud_logo-300x300.png"
-          ></img>
+          <div className="logo-background">
+            <img
+              alt="logo"
+              id="nav-logo"
+              src="https://cloudify.s3-us-west-2.amazonaws.com/download.png"
+            ></img>
+          </div>
         </NavLink>
         <div id="home-link-container">
           <NavLink className="nav-link" id="home-link" exact to="/">

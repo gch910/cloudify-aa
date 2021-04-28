@@ -51,3 +51,18 @@
   width: 28px;
   height: 20px;
 }
+
+.current-time,
+.duration {
+  width: 50px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+}
+
+.current-time {
+  color: #f70;
+}
+.duration {
+  flex-flow: row-reverse;
+}
