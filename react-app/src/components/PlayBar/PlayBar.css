@@ -60,6 +60,9 @@
   align-items: center;
 }
 
+.current-time {
+  color: #f70;
+}
 .duration {
   flex-flow: row-reverse;
 }

@@ -6,12 +6,10 @@ import "./index.css";
 const Track = ({ source, hyperlink, title, artist, user_id, song_id }) => {
   return (
     <div className="outer-div">
-      <NavLink to={`/song/${song_id}`}>
-        <div>
-          <div className="playbutton"></div>
-          <img alt="Album cover" src={source} />
-          <PlayButton url={hyperlink} />
-        </div>
+      <NavLink className="album-div" to={`/song/${song_id}`}>
+        <div className="playbutton"></div>
+        <img alt="Album cover" src={source} />
+        <PlayButton url={hyperlink} />
       </NavLink>
       <div className="inner-div">
         <NavLink to={`/profile/${user_id}`}>
