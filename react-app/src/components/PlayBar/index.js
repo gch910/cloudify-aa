@@ -45,7 +45,6 @@ const PlayBar = ({ size = 0 }) => {
       // make sure object stillavailable when file loaded
       if (wavesurfer) {
         wavesurfer.current.setVolume(volume);
-        setVolume(volume);
       }
     });
 

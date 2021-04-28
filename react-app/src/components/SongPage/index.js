@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSong } from "../../store/songs";
-import { getArtist } from "../../store/users";
 import { deleteUserComment, getAllLikes } from "../../store/songs";
 import CommentForm from "./CommentForm";
 import "./SongPage.css";
@@ -12,18 +11,16 @@ const SongPage = () => {
   const { songId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.user);
-  const allLikes = useSelector((state) => state.songs.likes);
-  const artist = useSelector((state) => state.users);
+  // const allLikes = useSelector((state) => state.songs.likes);
+  // const artist = useSelector((state) => state.users);
   const song = useSelector((state) => state.songs?.currentSong);
   const [isLoaded, setIsLoaded] = useState(false);
-
   const [deleteShown, setDeleteShown] = useState(false);
-
   const [newComment, setNewComment] = useState(false);
   const [deleted, setDeleted] = useState(false);
 
-  let comments;
-  let userId;
+  let comments = song?.comments;
+  let userId = sessionUser?.user?.id;
 
   // const someFunction = () => {
 
@@ -36,14 +33,8 @@ const SongPage = () => {
   //   }
   // };
 
-  if (sessionUser.user) userId = sessionUser?.user?.id;
-
-  if (isLoaded) {
-    comments = song.comments;
-  }
-
   const deleteComment = (e) => {
-    if (userId == e.target.className.split(" ")[1]) {
+    if (userId === e.target.className.split(" ")[1]) {
       dispatch(deleteUserComment(e.target.id));
       setDeleted(true);
       setTimeout(() => {
@@ -52,12 +43,12 @@ const SongPage = () => {
     }
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     dispatch(getSong(songId)).then(() => setIsLoaded(true));
     dispatch(getAllLikes());
 
     return setNewComment(false);
-  }, [dispatch, newComment, deleted]);
+  }, [dispatch, newComment, deleted, songId]);
 
   return (
     isLoaded && (
@@ -97,7 +88,7 @@ const SongPage = () => {
             </NavLink>
           </div>
           <div id="comments-div">
-            {song.comments.map((comment) => (
+            {comments.map((comment) => (
               <div
                 className="comment-div"
                 onMouseEnter={() => setDeleteShown(true)}
@@ -109,7 +100,7 @@ const SongPage = () => {
                   alt="profile"
                 />
                 <p>{comment.content}</p>
-                {deleteShown && userId == comment.user_id && (
+                {deleteShown && userId === comment.user_id && (
                   <div id="delete-comment-button-div">
                     <button
                       className={`delete-comment-button ${comment.user_id}`}
