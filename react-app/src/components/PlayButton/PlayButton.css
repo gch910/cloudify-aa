@@ -1,32 +1,20 @@
 .icon {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  z-index: 100;
+  width: 100%;
+  height: 100%;
   background-color: #f50;
   background-image: url(https://cloudify.s3-us-west-2.amazonaws.com/Soundcloud_Play.png);
   background-size: 40% 60%;
   background-position: 60%;
   background-repeat: no-repeat;
-  z-index: -4;
   border-radius: 50%;
-  top: 0;
-  margin: 52px;
 }
 
 .icon:hover {
-  visibility: visible;
-  position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
   background-color: #f30;
   background-image: url(https://cloudify.s3-us-west-2.amazonaws.com/Soundcloud_Play.png);
   background-size: 40% 60%;
   background-position: 60%;
   background-repeat: no-repeat;
-  z-index: 2;
-}
-
-.album-div:hover .icon {
-  z-index: 2;
 }

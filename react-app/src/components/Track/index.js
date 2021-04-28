@@ -9,7 +9,9 @@ const Track = ({ song }) => {
       <NavLink className="album-div" to={`/song/${song.id}`}>
         <div className="playbutton"></div>
         <img alt="Album cover" src={song.image_path} />
-        <PlayButton url={song} />
+        <div className="button-wrapper">
+          <PlayButton url={song} />
+        </div>
       </NavLink>
       <div className="inner-div">
         <NavLink to={`/profile/${song.user_id}`}>

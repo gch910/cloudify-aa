@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import "./PlayBar.css";
-import PlayButton from "../PlayButton";
 import WaveSurfer from "wavesurfer.js";
-import Minimap from "wavesurfer.js/dist/plugin/wavesurfer.minimap.js";
 
 const PlayBar = ({ size = 0 }) => {
   const wavesurfer = useRef(null);
-  const selectedSong = useSelector((state) => state.playing.url?.song_path);
+  const selectedSong = useSelector((state) => state.playing.song?.song_path);
+  console.log(selectedSong);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.1);
   const [muted, setMuted] = useState(false);

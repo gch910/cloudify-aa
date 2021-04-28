@@ -29,7 +29,7 @@ const playingReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SONG: {
       newState = { ...state };
-      newState.url = action.url.url;
+      newState.song = action.url.url;
       return newState;
     }
     case SET_STATUS: {
