@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./PlayBar.css";
 import WaveSurfer from "wavesurfer.js";
+import { setSongPause, setSongPlaying } from "../../store/playing";
 
 const PlayBar = ({ size = 0 }) => {
+  const dispatch = useDispatch();
   const wavesurfer = useRef(null);
   const selectedSong = useSelector((state) => state.playing.song?.song_path);
-  const [playing, setPlay] = useState(false);
+  const playing = useSelector((state) => state.playing?.status);
   const [volume, setVolume] = useState(0.1);
   const [muted, setMuted] = useState(false);
   const [duration, setDuration] = useState("0:00");
@@ -14,8 +16,6 @@ const PlayBar = ({ size = 0 }) => {
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
-    setPlay(false);
-
     wavesurfer.current = WaveSurfer.create({
       container: "#waveform",
       scrollParent: false,
@@ -36,7 +36,7 @@ const PlayBar = ({ size = 0 }) => {
       // https://wavesurfer-js.org/docs/methods.html
       wavesurfer.current.play();
       setDuration(toTime(Math.floor(wavesurfer.current.getDuration())));
-      setPlay(true);
+      // dispatch(setSongPlaying());
 
       setInterval(function () {
         setCurrentTime(toTime(Math.floor(wavesurfer.current.getCurrentTime())));
@@ -68,9 +68,17 @@ const PlayBar = ({ size = 0 }) => {
     wavesurfer.current.toggleMute();
   };
 
+  useEffect(() => {
+    if (
+      (wavesurfer.current.isPlaying() && !playing) ||
+      (!wavesurfer.current.isPlaying() && playing)
+    ) {
+      return wavesurfer.current.playPause();
+    }
+  }, [playing]);
   const handlePlayPause = () => {
-    setPlay(!playing);
-    wavesurfer.current.playPause();
+    if (!playing) dispatch(setSongPlaying());
+    if (playing) dispatch(setSongPause());
   };
 
   const onVolumeChange = (e) => {
