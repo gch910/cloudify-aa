@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import SignUpFormModal from "../SignUpFormModal";
 import { loginUser } from "../../store/session";

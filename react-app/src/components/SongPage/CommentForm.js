@@ -6,7 +6,6 @@ import { postUserComment, userLike } from "../../store/songs";
 const CommentForm = ({ userId, newComment, setNewComment }) => {
   const { songId } = useParams();
   const dispatch = useDispatch();
-  const likes = useSelector((state) => state.songs.likes);
   const [comment, setComment] = useState("");
   const [liked, setLiked] = useState(false);
   const history = useHistory();

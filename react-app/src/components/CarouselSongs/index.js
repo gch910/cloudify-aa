@@ -30,15 +30,7 @@ const CarouselSongs = ({ songs, title }) => {
           <Slider style={{ maxHeight: "100%", maxWidth: "100%" }} {...settings}>
             {songs.map((el, idx) => (
               <div key={idx}>
-                <Track
-                  key={idx}
-                  song_id={el.id}
-                  source={el.image_path}
-                  hyperlink={el.song_path}
-                  user_id={el.user_id}
-                  title={el.title}
-                  artist={el.user.username}
-                />
+                <Track key={idx} song={el} />
               </div>
             ))}
           </Slider>

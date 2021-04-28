@@ -38,7 +38,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
   useEffect(() => {
     // if (sessionUser) setIsLoaded(true);
     dispatch(getAllUsers()).then(() => setIsLoaded(true));
-  }, [sessionUser.user]);
+  }, [dispatch, sessionUser.user]);
 
   let allUsers;
   isLoaded ? (allUsers = Object.values(users)) : (allUsers = null);

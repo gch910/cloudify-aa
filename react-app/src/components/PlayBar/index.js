@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./PlayBar.css";
-import PlayButton from "../PlayButton";
 import WaveSurfer from "wavesurfer.js";
-import Minimap from "wavesurfer.js/dist/plugin/wavesurfer.minimap.js";
+import { setSongPause, setSongPlaying } from "../../store/playing";
 
 const PlayBar = ({ size = 0 }) => {
+  const dispatch = useDispatch();
   const wavesurfer = useRef(null);
-  const selectedSong = useSelector((state) => state.playing.url);
-  const [playing, setPlay] = useState(false);
+  const selectedSong = useSelector((state) => state.playing.song?.song_path);
+  const playing = useSelector((state) => state.playing?.status);
   const [volume, setVolume] = useState(0.1);
   const [muted, setMuted] = useState(false);
   const [duration, setDuration] = useState("0:00");
@@ -16,8 +16,6 @@ const PlayBar = ({ size = 0 }) => {
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
-    setPlay(false);
-
     wavesurfer.current = WaveSurfer.create({
       container: "#waveform",
       scrollParent: false,
@@ -37,17 +35,21 @@ const PlayBar = ({ size = 0 }) => {
     wavesurfer.current.on("ready", function () {
       // https://wavesurfer-js.org/docs/methods.html
       wavesurfer.current.play();
-      setDuration(toTime(Math.round(wavesurfer.current.getDuration())));
-      setPlay(true);
+      setDuration(toTime(Math.floor(wavesurfer.current.getDuration())));
+      // dispatch(setSongPlaying());
 
       setInterval(function () {
-        setCurrentTime(toTime(Math.round(wavesurfer.current.getCurrentTime())));
+        setCurrentTime(toTime(Math.floor(wavesurfer.current.getCurrentTime())));
       }, 1000);
+
+      wavesurfer.current.on("finish", function () {
+        wavesurfer.current.stop();
+        dispatch(setSongPause());
+      });
 
       // make sure object stillavailable when file loaded
       if (wavesurfer) {
         wavesurfer.current.setVolume(volume);
-        setVolume(volume);
       }
     });
 
@@ -70,9 +72,17 @@ const PlayBar = ({ size = 0 }) => {
     wavesurfer.current.toggleMute();
   };
 
+  useEffect(() => {
+    if (
+      (wavesurfer.current.isPlaying() && !playing) ||
+      (!wavesurfer.current.isPlaying() && playing)
+    ) {
+      return wavesurfer.current.playPause();
+    }
+  }, [playing]);
   const handlePlayPause = () => {
-    setPlay(!playing);
-    wavesurfer.current.playPause();
+    if (!playing) dispatch(setSongPlaying());
+    if (playing) dispatch(setSongPause());
   };
 
   const onVolumeChange = (e) => {
