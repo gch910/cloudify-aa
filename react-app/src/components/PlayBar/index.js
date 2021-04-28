@@ -42,6 +42,11 @@ const PlayBar = ({ size = 0 }) => {
         setCurrentTime(toTime(Math.floor(wavesurfer.current.getCurrentTime())));
       }, 1000);
 
+      wavesurfer.current.on("finish", function () {
+        wavesurfer.current.stop();
+        dispatch(setSongPause());
+      });
+
       // make sure object stillavailable when file loaded
       if (wavesurfer) {
         wavesurfer.current.setVolume(volume);
