@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSong } from "../../store/songs";
 import { getArtist } from "../../store/users";
@@ -14,7 +14,7 @@ const SongPage = () => {
   const sessionUser = useSelector((state) => state.user);
   const allLikes = useSelector((state) => state.songs.likes);
   const artist = useSelector((state) => state.users);
-  const song = useSelector((state) => state.songs.currentSong);
+  const song = useSelector((state) => state.songs?.currentSong);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const [deleteShown, setDeleteShown] = useState(false);
@@ -67,12 +67,14 @@ const SongPage = () => {
             <div id="song-image-div">
               <img id="song-image" src={song.image_path} alt="song" />
             </div>
-            <PlayButton song={song} />
+            <div id="button-wrapper">
+              <PlayButton url={song} />
+            </div>
             <div id="song-headers">
               <h1 id="song-title">{song.title}</h1>
-              <Link to={`/profile/${song.user.id}`}>
+              <NavLink to={`/profile/${song.user.id}`}>
                 <h3 id="song-username">{song.user.username}</h3>
-              </Link>
+              </NavLink>
             </div>
             <div id="song-genre-div">
               <h3 id="song-genre"># {song.genre.name}</h3>
@@ -90,9 +92,9 @@ const SongPage = () => {
               src="https://i.stack.imgur.com/l60Hf.png"
               alt="profile"
             />
-            <Link to={`/profile/${song.user.id}`}>
+            <NavLink to={`/profile/${song.user.id}`}>
               <h3 id="song-profile-image-h3">{song.user.username}</h3>
-            </Link>
+            </NavLink>
           </div>
           <div id="comments-div">
             {song.comments.map((comment) => (

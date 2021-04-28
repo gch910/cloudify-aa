@@ -6,7 +6,6 @@ import WaveSurfer from "wavesurfer.js";
 const PlayBar = ({ size = 0 }) => {
   const wavesurfer = useRef(null);
   const selectedSong = useSelector((state) => state.playing.song?.song_path);
-  console.log(selectedSong);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.1);
   const [muted, setMuted] = useState(false);
@@ -36,11 +35,11 @@ const PlayBar = ({ size = 0 }) => {
     wavesurfer.current.on("ready", function () {
       // https://wavesurfer-js.org/docs/methods.html
       wavesurfer.current.play();
-      setDuration(toTime(Math.round(wavesurfer.current.getDuration())));
+      setDuration(toTime(Math.floor(wavesurfer.current.getDuration())));
       setPlay(true);
 
       setInterval(function () {
-        setCurrentTime(toTime(Math.round(wavesurfer.current.getCurrentTime())));
+        setCurrentTime(toTime(Math.floor(wavesurfer.current.getCurrentTime())));
       }, 1000);
 
       // make sure object stillavailable when file loaded

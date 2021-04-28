@@ -11,18 +11,18 @@ const setStatus = (status) => ({
   status,
 });
 
-export const setCurrentSong = (url) => async (dispatch) => {
-  dispatch(setSong(url));
-};
-
 export const setSongPlaying = () => async (dispatch) => {
-  return dispatch(setStatus("playing"));
+  return dispatch(setStatus(true));
 };
 
 export const setSongPause = () => async (dispatch) => {
-  return dispatch(setStatus("paused"));
+  return dispatch(setStatus(false));
 };
 
+export const setCurrentSong = (url) => async (dispatch) => {
+  dispatch(setSong(url));
+  dispatch(setStatus(true));
+};
 let initialState = {};
 const playingReducer = (state = initialState, action) => {
   let newState;
