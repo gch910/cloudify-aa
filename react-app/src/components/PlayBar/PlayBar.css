@@ -68,6 +68,7 @@
 }
 
 .track-wrapper {
+  margin-left: 20px;
   margin-top: 6px;
   height: 50px;
   width: 50px;
@@ -79,11 +80,4 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-
-.info-wrapper {
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-  width: 200px;
 }
