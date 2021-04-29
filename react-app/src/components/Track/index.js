@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import "./index.css";
 
 const Track = ({ song, button = true }) => {
+  //using button switch variable to be able to use track again in the playbar.
+  //when button is false it only renders a clickable and scalable album cover
+  //that is being used in the playbar.
   return (
     <div className="outer-div">
       <NavLink className="album-div" to={`/song/${song.id}`}>
