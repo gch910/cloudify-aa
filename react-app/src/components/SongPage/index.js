@@ -7,12 +7,10 @@ import CommentForm from "./CommentForm";
 import "./SongPage.css";
 import PlayButton from "../PlayButton";
 
-const SongPage = () => {
+const SongPage = ({ forwardedRef }) => {
   const { songId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.user);
-  // const allLikes = useSelector((state) => state.songs.likes);
-  // const artist = useSelector((state) => state.users);
   const song = useSelector((state) => state.songs?.currentSong);
   const [isLoaded, setIsLoaded] = useState(false);
   const [deleteShown, setDeleteShown] = useState(false);
@@ -67,6 +65,7 @@ const SongPage = () => {
                 <h3 id="song-username">{song.user.username}</h3>
               </NavLink>
             </div>
+            <div id="wave-minimap"></div>
             <div id="song-genre-div">
               <h3 id="song-genre"># {song.genre.name}</h3>
             </div>

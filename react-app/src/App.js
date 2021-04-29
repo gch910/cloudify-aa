@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
@@ -17,6 +17,7 @@ import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
+  const wavesurfer = useRef(null);
   const sessionUser = useSelector((state) => state.user);
   const isPlaying = useSelector((state) => state.playing?.song);
   const [authenticated, setAuthenticated] = useState(false);
@@ -72,13 +73,13 @@ function App() {
           <Home />
         </Route>
         <Route path={"/profile/:userId"} exact={true}>
-          <ProfilePage />
+          <ProfilePage forwardedRef={wavesurfer} />
         </Route>
         <Route path="/artists">
-          <ArtistsPage />
+          <ArtistsPage forwardedRef={wavesurfer} />
         </Route>
         <Route path={"/song/:songId"}>
-          <SongPage />
+          <SongPage forwardedRef={wavesurfer} />
         </Route>
         <ProtectedRoute
           path="/upload/:userId"
@@ -89,7 +90,7 @@ function App() {
         </ProtectedRoute>
         <NotFoundPage />
       </Switch>
-      {isPlaying ? <PlayBar /> : ""}
+      {isPlaying ? <PlayBar forwardedRef={wavesurfer} /> : ""}
     </BrowserRouter>
   );
 }

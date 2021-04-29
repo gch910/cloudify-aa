@@ -1,22 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import "./PlayBar.css";
+import { NavLink } from "react-router-dom";
+import MinimapPlugin from "wavesurfer.js/dist/plugin/wavesurfer.minimap.min.js";
+import Track from "../Track";
 import WaveSurfer from "wavesurfer.js";
 import { setSongPause, setSongPlaying } from "../../store/playing";
+import "./PlayBar.css";
 
-const PlayBar = ({ size = 0 }) => {
+const PlayBar = ({ size = 0, forwardedRef }) => {
   const dispatch = useDispatch();
-  const wavesurfer = useRef(null);
+  // const wavesurfer = useRef(null);
+  const song = useSelector((state) => state.playing?.song);
   const selectedSong = useSelector((state) => state.playing.song?.song_path);
   const playing = useSelector((state) => state.playing?.status);
   const [volume, setVolume] = useState(0.1);
   const [muted, setMuted] = useState(false);
   const [duration, setDuration] = useState("0:00");
   const [currentTime, setCurrentTime] = useState("0:00");
+
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
-    wavesurfer.current = WaveSurfer.create({
+    forwardedRef.current = WaveSurfer.create({
       container: "#waveform",
       scrollParent: false,
       waveColor: "grey",
@@ -28,34 +33,47 @@ const PlayBar = ({ size = 0 }) => {
       hideScrollbar: true,
       fillParent: true,
       partialRender: true,
+      plugins: [
+        MinimapPlugin.create({
+          container: "#wave-minimap",
+          waveColor: "#777",
+          progressColor: "#222",
+          height: 100,
+          cursorWidth: 2,
+          barHeight: 1,
+          barGap: 1,
+          barWidth: 2,
+        }),
+      ],
     });
 
-    wavesurfer.current.load(selectedSong, null, true);
+    forwardedRef.current.load(selectedSong, null, true);
 
-    wavesurfer.current.on("ready", function () {
+    forwardedRef.current.on("ready", function () {
       // https://wavesurfer-js.org/docs/methods.html
-      wavesurfer.current.play();
-      setDuration(toTime(Math.floor(wavesurfer.current.getDuration())));
-      // dispatch(setSongPlaying());
+      forwardedRef.current.play();
+      setDuration(toTime(Math.floor(forwardedRef.current.getDuration())));
 
       setInterval(function () {
-        setCurrentTime(toTime(Math.floor(wavesurfer.current.getCurrentTime())));
+        setCurrentTime(
+          toTime(Math.floor(forwardedRef.current.getCurrentTime()))
+        );
       }, 1000);
 
-      wavesurfer.current.on("finish", function () {
-        wavesurfer.current.stop();
+      forwardedRef.current.on("finish", function () {
+        forwardedRef.current.stop();
         dispatch(setSongPause());
       });
 
       // make sure object stillavailable when file loaded
-      if (wavesurfer) {
-        wavesurfer.current.setVolume(volume);
+      if (forwardedRef) {
+        forwardedRef.current.setVolume(volume);
       }
     });
 
     // Removes events, elements and disconnects Web Audio nodes.
     // when component unmount
-    return () => wavesurfer.current.destroy();
+    return () => forwardedRef.current.destroy();
   }, [selectedSong]);
 
   const toTime = (time) => {
@@ -69,15 +87,15 @@ const PlayBar = ({ size = 0 }) => {
 
   const toggleMute = () => {
     setMuted(!muted);
-    wavesurfer.current.toggleMute();
+    forwardedRef.current.toggleMute();
   };
 
   useEffect(() => {
     if (
-      (wavesurfer.current.isPlaying() && !playing) ||
-      (!wavesurfer.current.isPlaying() && playing)
+      (forwardedRef.current.isPlaying() && !playing) ||
+      (!forwardedRef.current.isPlaying() && playing)
     ) {
-      return wavesurfer.current.playPause();
+      return forwardedRef.current.playPause();
     }
   }, [playing]);
   const handlePlayPause = () => {
@@ -94,7 +112,7 @@ const PlayBar = ({ size = 0 }) => {
 
     if (newVolume) {
       setVolume(newVolume);
-      wavesurfer.current.setVolume(newVolume || 1);
+      forwardedRef.current.setVolume(newVolume || 1);
     }
   };
 
@@ -147,6 +165,19 @@ const PlayBar = ({ size = 0 }) => {
                 onChange={onVolumeChange}
                 defaultValue={volume}
               />
+            </div>
+            <div className="track-wrapper">
+              <Track song={song} button={false} />
+            </div>
+            <div className="track-info">
+              <NavLink to={`/profile/${song.user_id}`}>
+                <div>
+                  <span className="">{song.title}</span>
+                </div>
+                <div>
+                  <span className="subtitle">{song.user.username}</span>
+                </div>
+              </NavLink>
             </div>
           </div>
         </div>
