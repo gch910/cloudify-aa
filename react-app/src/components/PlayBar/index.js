@@ -48,6 +48,8 @@ const PlayBar = ({ size = 0 }) => {
     // Removes events, elements and disconnects Web Audio nodes.
     // when component unmount
     return () => wavesurfer.current.destroy();
+
+
   }, [selectedSong]);
 
   const handlePlayPause = () => {
@@ -65,24 +67,41 @@ const PlayBar = ({ size = 0 }) => {
     }
   };
 
+  console.log(wavesurfer.current)
+
   return (
     <div className="playbar-div">
       <div className="playbar">
         <div className="player-div">
           <div className="controls">
             <div className="playBtn">
-              <i class="fas fa-step-backward"></i>
+              <i className="fas fa-step-backward"></i>
               <div onClick={handlePlayPause}>
                 {!playing ? (
-                  <i class="fas fa-play"></i>
+                  <i className="fas fa-play"></i>
                 ) : (
-                  <i class="fas fa-pause"></i>
+                  <i className="fas fa-pause"></i>
                 )}
               </div>
-              <i class="fas fa-step-forward"></i>
+              <i className="fas fa-step-forward"></i>
             </div>
           </div>
-          <div id="waveform"></div>
+          <div id="waveform">
+            <span>{wavesurfer.getCurrentTime() || '0:00'}</span>
+            {/* <input
+              className='Bar'
+              type='range'
+              step='0.01'
+              min='0'
+              defaultValue='0'
+              max={audio ? audio.duration : '0:00'}
+              value={progress}
+              max={audio.duration}
+              onInput={showProgress} 
+              /> */}
+            <span>{wavesurfer.getDuration()}</span>
+
+          </div>
           <div className="volume">
             <input
               type="range"
