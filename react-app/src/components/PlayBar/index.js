@@ -151,18 +151,18 @@ const PlayBar = ({ size = 0 }) => {
                 defaultValue={volume}
               />
             </div>
-            <div className="track-wrapper">
-              <Track song={song} button={false} />
-            </div>
-            <div className="track-info">
-              <NavLink to={`/profile/${song.user_id}`}>
-                <div>
-                  <span className="">{song.title}</span>
-                </div>
-                <div>
-                  <span className="subtitle">{song.user.username}</span>
-                </div>
-              </NavLink>
+            <div className="info-wrapper">
+              <div className="track-wrapper">
+                <Track song={song} button={false} />
+              </div>
+              <div className="track-info">
+                <NavLink to={`/profile/${song.user_id}`}>
+                  <div>{song.title}</div>
+                  <div>
+                    <span className="subtitle">{song.user.username}</span>
+                  </div>
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>
