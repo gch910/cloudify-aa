@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Track from "../Track";
+import { NavLink } from "react-router-dom";
 import "./PlayBar.css";
 import WaveSurfer from "wavesurfer.js";
 import { setSongPause, setSongPlaying } from "../../store/playing";
@@ -7,6 +9,7 @@ import { setSongPause, setSongPlaying } from "../../store/playing";
 const PlayBar = ({ size = 0 }) => {
   const dispatch = useDispatch();
   const wavesurfer = useRef(null);
+  const song = useSelector((state) => state.playing?.song);
   const selectedSong = useSelector((state) => state.playing.song?.song_path);
   const playing = useSelector((state) => state.playing?.status);
   const [volume, setVolume] = useState(0.1);
@@ -147,6 +150,19 @@ const PlayBar = ({ size = 0 }) => {
                 onChange={onVolumeChange}
                 defaultValue={volume}
               />
+            </div>
+            <div className="track-wrapper">
+              <Track song={song} button={false} />
+            </div>
+            <div className="track-info">
+              <NavLink to={`/profile/${song.user_id}`}>
+                <div>
+                  <span className="">{song.title}</span>
+                </div>
+                <div>
+                  <span className="subtitle">{song.user.username}</span>
+                </div>
+              </NavLink>
             </div>
           </div>
         </div>
