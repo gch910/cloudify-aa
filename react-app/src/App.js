@@ -92,7 +92,9 @@ function App() {
         >
           <UploadSongForm />
         </ProtectedRoute>
-        <NotFoundPage />
+        <Route path="/not-found">
+          <NotFoundPage />
+        </Route>
       </Switch>
       {isPlaying ? <PlayBar /> : ""}
     </BrowserRouter>
