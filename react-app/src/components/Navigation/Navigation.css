@@ -157,7 +157,7 @@ nav {
 
 #upload-link {
   grid-area: upload;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 #logout-button {
@@ -189,6 +189,7 @@ nav {
   text-decoration: underline;
   font-size: 20px;
   color: #ff5d00;
+  width: 100px;
 }
 
 .profile-li {

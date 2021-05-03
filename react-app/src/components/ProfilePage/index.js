@@ -39,7 +39,7 @@ const ProfilePage = () => {
       <div className="center">
         <div id="home-inner-div">
           <div id="profile-header">
-            {sessionUser?.id == userId ? (
+            {/* {sessionUser?.id == userId ? ( */}
               <img
                 id="profile-image"
                 src={artist?.img}
@@ -50,9 +50,9 @@ const ProfilePage = () => {
                   history.push(`/profile-image/upload/${artist?.id}`)
                 }
               />
-            ) : (
+            {/* ) : (
               <img id="profile-image" src={artist?.img} alt="profile" />
-            )}
+            )} */}
             <h1 id="profile-username">{artist.username}</h1>
           </div>
           <nav id="profile-nav">

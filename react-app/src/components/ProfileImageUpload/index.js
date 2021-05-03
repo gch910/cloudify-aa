@@ -31,7 +31,7 @@ const ProfileImageUpload = () => {
     if (res.ok) {
       setSucces(true);
       setTimeout(() => {
-        history.push(`/users/${sessionUser?.id}`);
+        history.push(`/profile/${sessionUser?.id}`);
       }, 1000);
     }
   };
@@ -47,7 +47,7 @@ const ProfileImageUpload = () => {
         onChange={updateImage}
       />
       <div id="upload-image-button-div">
-        <button variant="contained" id="upload-image-button" type="submit">
+        <button variant="contained" id="upload-image-button" className="no-outline" type="submit">
           {success ? "Success!" : "Upload"}
         </button>
       </div>
