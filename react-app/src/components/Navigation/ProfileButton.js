@@ -7,16 +7,21 @@ const ProfileButton = () => {
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((state) => state.user);
 
-  const openMenu = () => {
+  const openMenu = (e) => {
     if (showMenu) return;
+
+    
     setShowMenu(true);
+    e.target.classList.remove("fas")
+   
   };
 
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = () => {
+    const closeMenu = (e) => {
       setShowMenu(false);
+      // e.target.classList.add("fa-user-alt")
     };
 
     document.addEventListener("click", closeMenu);
@@ -31,7 +36,7 @@ const ProfileButton = () => {
 
   return (
     <>
-      <button id="profile-button" className="no-outline" onClick={openMenu}>
+      <button id="profile-button" className="no-outline" onClick={(e) => openMenu(e)}>
       <i className="fas fa-user-alt fa-x3"></i>
         {showMenu && (
           <div id="profile-dropdown-div">

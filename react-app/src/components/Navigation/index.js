@@ -6,6 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
 import ProfileButton from "./ProfileButton";
 import { getAllUsers } from "../../store/users";
+import CustomizedMenus from "./ProfileDropdown";
 import "./Navigation.css";
 
 const Navigation = ({ setAuthenticated, navId }) => {
@@ -94,9 +95,10 @@ const Navigation = ({ setAuthenticated, navId }) => {
           Upload
         </NavLink>
         <div>
-          <ProfileButton />
+          {/* <ProfileButton /> */}
+          <CustomizedMenus setAuthenticated={setAuthenticated}/>
         </div>
-        <LogoutButton setAuthenticated={setAuthenticated} />
+        {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
       </>
     );
   } else {
