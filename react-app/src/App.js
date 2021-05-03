@@ -13,6 +13,7 @@ import SongPage from "./components/SongPage";
 import ArtistsPage from "./components/ArtistsPage";
 import { restoreUser } from "./store/session";
 import UploadSongForm from "./components/UploadSongForm";
+import ProfileImageUpload from "./components/ProfileImageUpload";
 import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
@@ -79,6 +80,9 @@ function App() {
         </Route>
         <Route path={"/song/:songId"}>
           <SongPage />
+        </Route>
+        <Route path="/profile-image/upload/:userId">
+          <ProfileImageUpload />
         </Route>
         <ProtectedRoute
           path="/upload/:userId"

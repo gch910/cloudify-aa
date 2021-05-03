@@ -1,8 +1,8 @@
-"""database tables
+"""empty message
 
-Revision ID: a369435a2181
-Revises: ffdc0a98111c
-Create Date: 2021-03-19 15:54:38.873569
+Revision ID: 599a37970db0
+Revises: 
+Create Date: 2021-05-03 12:27:45.593066
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a369435a2181'
-down_revision = 'ffdc0a98111c'
+revision = '599a37970db0'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -22,6 +22,16 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=70), nullable=False),
     sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('users',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('username', sa.String(length=40), nullable=False),
+    sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('img', sa.String(length=2000), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('username')
     )
     op.create_table('songs',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -60,5 +70,6 @@ def downgrade():
     op.drop_table('likes')
     op.drop_table('comments')
     op.drop_table('songs')
+    op.drop_table('users')
     op.drop_table('genres')
     # ### end Alembic commands ###
