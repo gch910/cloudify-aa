@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Redirect, Link, useHistory } from "react-router-dom";
+import { Redirect, Link, useHistory, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
 import "./ProfileImageUpload.css";
 
 const ProfileImageUpload = () => {
+  const {userId} = useParams();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.user.user);
   const [image, setImage] = useState("");
@@ -22,7 +23,7 @@ const ProfileImageUpload = () => {
     const img = new FormData();
     img.append("image", image);
 
-    const res = await fetch(`/api/users/image/upload/${sessionUser?.id}`, {
+    const res = await fetch(`/api/users/image/upload/${userId}`, {
       method: "POST",
       body: img,
     });
@@ -31,7 +32,7 @@ const ProfileImageUpload = () => {
     if (res.ok) {
       setSucces(true);
       setTimeout(() => {
-        history.push(`/profile/${sessionUser?.id}`);
+        history.push(`/profile/${userId}`);
       }, 1000);
     }
   };

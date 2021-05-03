@@ -80,7 +80,7 @@ const SongPage = () => {
           <div id="song-profile-image-div">
             <img
               id="song-profile-image"
-              src="https://i.stack.imgur.com/l60Hf.png"
+              src={song?.user?.img}
               alt="profile"
             />
             <NavLink to={`/profile/${song.user.id}`}>

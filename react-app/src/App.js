@@ -88,6 +88,7 @@ function App() {
           path="/upload/:userId"
           exact={true}
           authenticated={authenticated}
+          user={sessionUser.user}
         >
           <UploadSongForm />
         </ProtectedRoute>
