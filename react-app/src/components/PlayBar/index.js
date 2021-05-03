@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from 'react-router-dom'
 import "./PlayBar.css";
 import WaveSurfer from "wavesurfer.js";
 import { setSongPause, setSongPlaying } from "../../store/playing";
@@ -155,8 +156,8 @@ const PlayBar = ({ size = 0 }) => {
               <div className='playbar-album-art'>
                 <img src={song.image_path}></img>
               </div>
-              <div className='playbar-title'>{song.title}</div>
-              <div className='playbar-artist'>{song.user.username}</div>
+              <div className='playbar-title'><Link to={`/song/${song.id}`}>{song.title}</Link></div>
+              <div className='playbar-artist'><Link to={`/profile/${song.user.id}`}>{song.user.username}</Link></div>
             </div>
           </div>
 
