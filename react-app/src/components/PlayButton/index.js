@@ -7,11 +7,11 @@ import {
 } from "../../store/playing";
 import "./PlayButton.css";
 
-const PlayButton = (url) => {
+const PlayButton = (song) => {
   const dispatch = useDispatch();
   let currentStatus = useSelector((state) => state.playing?.status);
   const currentSong = useSelector((state) => state.playing?.song?.id);
-  const onSong = currentSong === url.url.id;
+  const onSong = currentSong === song.url.id;
 
   const setSong = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const PlayButton = (url) => {
     } else if (!currentStatus && onSong) {
       return dispatch(setSongPlaying());
     }
-    return dispatch(setCurrentSong(url));
+    return dispatch(setCurrentSong(song));
   };
 
   return (
