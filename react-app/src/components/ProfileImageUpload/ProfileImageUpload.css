@@ -1,0 +1,19 @@
+#image-upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    
+}
+
+#upload-image-h1 {
+    color: #ff5d00;
+}
+
+#upload-image-button {
+    margin-left: 12px;
+    background-color: #ff5d00;
+    height: 30px;
+    color: white;
+    border: none;
+}

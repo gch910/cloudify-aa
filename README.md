@@ -2,8 +2,11 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][linkedin-url-gabriel]
+[![LinkedIn][linkedin-shield]][linkedin-url-josh]
+[![LinkedIn][linkedin-shield]][linkedin-url-jevon]
+[![GNU License][license-shield]][license-url]
+
 
 <br />
 <p align="center">
@@ -86,6 +89,15 @@ Cloudify is a web application inspired by SoundCloud built using Python / Flask 
 - CSS
 - [react-responsive-carousel](https://www.npmjs.com/package/react-responsive-carousel)
 
+## Overall Structure
+
+#### Back end
+The app was built using Python / Flask on the back end with a postgreSQL database. Back end structure is RESTful and all the data requests use AJAX and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.
+
+#### Front end
+The front end is built completely in React / JavaScript and utilizes Redux for global state management. React's virtual DOM allows for very fast rerendering without requiring new pages to be sent from the server. Even modals appear/disappear using React rather than toggling CSS display properties.
+
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
@@ -158,9 +170,29 @@ Installations
 
 ## Primary Components
 
-### User Authorization
 
-User authentication is handled in Python using
+#### User Authorization
+User authentication is handled in Flask using the flask_login package. The werkzeug.security package is used for password hashing. Passwords are not saved to the database, only password hashes. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials.
+
+![signin]
+
+#### Home Page
+
+The Cloudify homepage features sliding carousels of songs sorted by genre.  These carousels dynamically update to include music that has been recently uploaded to the platform.  All album images are active links that immediately play the song when clicked and take you to that artist's user page.  
+
+![homepage]
+
+#### Song Page
+
+On navigation to the song page, if the specified song is not already present in the redux store, a fetch request will be made to the backend which will respond with queried results of relevent song information.  This information, such as the song's artist, artist image, album art, genre, comments and likes will be rendered extremely quickly thanks to React's virtual DOM.  A logged in user can interact with the song page by liking it, unliking it and adding/deleting comments, with page updates happening instantly.  All of the updated song data is saved to the postgreSQL database where it can be retreived later on.
+
+![songpage]
+
+#### Artist Page
+
+Artist / User pages (they are synonymous in this app) function similarly to song pages.  The data is handled the same way, but the primary focus of this page is rendering all of the songs uploaded by this user. Album art and realease date are included for each song as well as a play button that updates the state of the global playbar when clicked.  The clicked song will become the new "playing" song and the playbar, which persists music playback and information through re-renders, will update to reflect the current audio.  The navigation bar utilizes React state to create seemless filtering of songs based on the active link.  
+
+![songpage]
 
 <!-- ROADMAP -->
 
@@ -184,15 +216,17 @@ Contributions are what make the open source community such an amazing place to b
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the GNU License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 
 ## Contact
 
-Your Name - gharris910@icloud.com
+Gabriel - gharris910@icloud.com \
 
-Project Link: [https://github.com/gch910/cloudify-aa](https://github.com/gch910/cloudify-aa)
+Josh - joshua.miller2289@gmail.com
+
+Project Link: [https://cloudify-aa.herokuapp.com/](https://cloudify-aa.herokuapp.com/)
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -203,6 +237,11 @@ Project Link: [https://github.com/gch910/cloudify-aa](https://github.com/gch910/
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
+[signin]: ./readme_images/cloudify-login.PNG
+[homepage]: ./readme_images/cloudify-homepage.PNG
+[songpage]: ./readme_images/cloudify-songpage.PNG
+[artistpage]: ./readme_images/cloudify-artistpage.PNG
+
 [contributors-shield]: https://img.shields.io/github/contributors/gch910/cloudify-aa.svg?style=for-the-badge
 [contributors-url]: https://github.com/gch910/cloudify-aa/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/gch910/cloudify-aa.svg?style=for-the-badge
@@ -211,8 +250,10 @@ Project Link: [https://github.com/gch910/cloudify-aa](https://github.com/gch910/
 [stars-url]: https://github.com/gch910/cloudify-aa/stargazers
 [issues-shield]: https://img.shields.io/github/issues/gch910/cloudify-aa.svg?style=for-the-badge
 [issues-url]: https://github.com/gch910/cloudify-aa/issues
-[license-shield]: https://img.shields.io/github/license/gch910/cloudify-aa.svg?style=for-the-badge
-[license-url]: https://github.com/gch910/cloudify-aa/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/badge/License-GPL%20v3-blue.svg
+[license-url]: https://github.com/gch910/cloudify-aa/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/gabriel-harris-249231208/
+[linkedin-url-gabriel]: https://www.linkedin.com/in/gabriel-harris-249231208/
+[linkedin-url-josh]: https://www.linkedin.com/in/joshua-miller-625685154/
+[linkedin-url-jevon]: https://www.linkedin.com/in/jevon-timmons/
 [product-screenshot]: images/screenshot.png

@@ -5,8 +5,8 @@
   grid-template-rows: 46px;
   grid-template-columns: 1fr 2fr 2fr 2fr 6fr 1fr 2fr 1fr;
   align-items: center;
-  margin-left: 17%;
-  margin-right: 17%;
+  margin-left: 14%;
+  margin-right: 14%;
   padding: 0;
   grid-template-areas: "logo home music artist search login signup upload";
 }
@@ -20,8 +20,8 @@ nav {
   grid-template-rows: 46px;
   grid-template-columns: 1fr 2fr 2fr 2fr 7fr 1fr 1fr;
   align-items: center;
-  margin-left: 17%;
-  margin-right: 17%;
+  margin-left: 14%;
+  margin-right: 14%;
   /* width: 100%; */
   padding: 0;
   grid-template-areas: "logo home music artist search upload profile logout";
@@ -155,6 +155,8 @@ nav {
   align-items: center;
 }
 
+
+
 #upload-link {
   grid-area: upload;
   margin-left: 20px;
@@ -189,6 +191,8 @@ nav {
   text-decoration: underline;
   font-size: 20px;
   color: #ff5d00;
+  width: 100px;
+  margin-top: 15px;
 }
 
 .profile-li {

@@ -43,7 +43,7 @@ const ProfileButton = () => {
               >
                 My Profile
               </Link>
-              <li className="profile-li">{user.user.email}</li>
+              {/* <li className="profile-li">{user.user.email}</li> */}
             </ul>
           </div>
         )}
