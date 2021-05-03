@@ -67,30 +67,17 @@
   flex-flow: row-reverse;
 }
 
-.playbar-artist-details {
-  display: grid;
-  width: 300px;
-  grid-template-columns: 60px 1fr;
-  grid-template-areas: 'album-art artist'
-                       'album-art title'
-  
-}
-
-.playbar-album-art {
-  grid-area: album-art;
+.track-wrapper {
+  margin-left: 20px;
+  margin-top: 6px;
   height: 50px;
   width: 50px;
-  justify-self: left;
 }
 
-.playbar-title {
-  grid-area: title;
-  justify-self: left;
+.track-info div {
+  width: 200px;
+  height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
-
-.playbar-artist {
-  grid-area: artist;
-  justify-self: left;
-}
-
-
