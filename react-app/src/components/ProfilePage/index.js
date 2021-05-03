@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import ProfileSongs from "./ProfileSongs";
+import PopularSongs from "./PopularSongs";
 import { getArtist } from "../../store/users";
 import "./ProfilePage.css";
 
@@ -74,7 +75,7 @@ const ProfilePage = () => {
               {songsClicked ? <ProfileSongs /> : ""}
             </div>
             <div id="profile-popular-div">
-              {popularClicked ? <h1>Popular</h1> : ""}
+              {popularClicked ? <PopularSongs /> : ""}
             </div>
           </div>
         </div>
