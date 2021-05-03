@@ -59,6 +59,11 @@
     grid-template-rows: 200px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: center;
+    /* justify-content: center; */
+}
+
+.artist-play-icon {
+    justify-self: center;
 }
 
 #profile-song-image {
@@ -68,13 +73,17 @@
 }
 
 #profile-song-link {
-    justify-self: center;
-    font-size: 24px;
+    /* justify-self: center; */
+    font-size: 28px;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* align-items: center; */
     text-decoration: underline;
     color: #FF5D00;
+    /* margin-left: 20px; */
     height: 40px;
+    text-align: center;
     padding: 0 10px;
 
 }

@@ -11,7 +11,7 @@ const PlayButton = (url) => {
   const dispatch = useDispatch();
   let currentStatus = useSelector((state) => state.playing?.status);
   const currentSong = useSelector((state) => state.playing?.song?.id);
-  const onSong = currentSong === url.url.id;
+  const onSong = currentSong === url?.url?.id;
 
   const setSong = (e) => {
     e.preventDefault();

@@ -28,8 +28,10 @@ const ProfilePage = () => {
 
   return (
     isLoaded && (
-      <div id="profile-page-container">
-        <div id="profile-page-contents">
+      // <div id="profile-page-container">
+        // <div id="profile-page-contents">
+      <div className="center">
+        <div id="home-inner-div">
           <div id="profile-header">
             <img
               id="profile-image"
