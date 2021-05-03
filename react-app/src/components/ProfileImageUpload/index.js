@@ -23,7 +23,7 @@ const ProfileImageUpload = () => {
     const img = new FormData();
     img.append("image", image);
 
-    const res = await fetch(`/api/users/image/upload/${userId}`, {
+    const res = await fetch(`/api/users/image/upload/${sessionUser?.id}`, {
       method: "POST",
       body: img,
     });
@@ -32,7 +32,7 @@ const ProfileImageUpload = () => {
     if (res.ok) {
       setSucces(true);
       setTimeout(() => {
-        history.push(`/profile/${userId}`);
+        history.push(`/profile/${sessionUser?.id}`);
       }, 1000);
     }
   };

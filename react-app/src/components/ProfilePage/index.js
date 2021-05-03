@@ -39,7 +39,7 @@ const ProfilePage = () => {
       <div className="center">
         <div id="home-inner-div">
           <div id="profile-header">
-            {/* {sessionUser?.id == userId ? ( */}
+            {sessionUser?.id == userId ? (
               <img
                 id="profile-image"
                 src={artist?.img}
@@ -47,12 +47,12 @@ const ProfilePage = () => {
                 onMouseEnter={(e) => changeImg(e)}
                 onMouseLeave={(e) => (e.target.src = artist?.img)}
                 onClick={(e) =>
-                  history.push(`/profile-image/upload/${artist?.id}`)
+                  history.push(`/profile-image/upload/${sessionUser?.id}`)
                 }
               />
-            {/* ) : (
+            ) : (
               <img id="profile-image" src={artist?.img} alt="profile" />
-            )} */}
+            )}
             <h1 id="profile-username">{artist.username}</h1>
           </div>
           <nav id="profile-nav">
