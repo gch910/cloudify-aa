@@ -13,9 +13,12 @@ const PlayBar = ({ size = 0 }) => {
   const [muted, setMuted] = useState(false);
   const [duration, setDuration] = useState("0:00");
   const [currentTime, setCurrentTime] = useState("0:00");
+  const song = useSelector((state) => state.playing.song)
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
+    console.log('SONG', song)
+
     wavesurfer.current = WaveSurfer.create({
       container: "#waveform",
       scrollParent: false,
@@ -148,7 +151,15 @@ const PlayBar = ({ size = 0 }) => {
                 defaultValue={volume}
               />
             </div>
+            <div className='playbar-artist-details'>
+              <div className='playbar-album-art'>
+                <img src={song.image_path}></img>
+              </div>
+              <div className='playbar-title'>{song.title}</div>
+              <div className='playbar-artist'>{song.user.username}</div>
+            </div>
           </div>
+
         </div>
       </div>
     )

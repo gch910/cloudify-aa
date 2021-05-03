@@ -66,3 +66,31 @@
 .duration {
   flex-flow: row-reverse;
 }
+
+.playbar-artist-details {
+  display: grid;
+  width: 300px;
+  grid-template-columns: 60px 1fr;
+  grid-template-areas: 'album-art artist'
+                       'album-art title'
+  
+}
+
+.playbar-album-art {
+  grid-area: album-art;
+  height: 50px;
+  width: 50px;
+  justify-self: left;
+}
+
+.playbar-title {
+  grid-area: title;
+  justify-self: left;
+}
+
+.playbar-artist {
+  grid-area: artist;
+  justify-self: left;
+}
+
+
