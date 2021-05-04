@@ -146,10 +146,14 @@
   height: 30px;
   width: 60px;
   margin-right: 20px;
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #ff5d00;
+  border: none;
+  color: white;
+  
 }
 
 #comment-form {
@@ -201,6 +205,10 @@
 
 #comment-submit-button {
   border-radius: 3px 3px 3px 3px;
+  border: none;
+  background-color: #ff5d00;
+  color: white;
+  height: 30px;
 }
 
 #button-wrapper {

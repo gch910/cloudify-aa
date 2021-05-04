@@ -73,6 +73,7 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
           onClick={newCommentSubmit}
           id="comment-submit-button"
           type="submit"
+          className="no-outline"
         >
           Submit
         </button>
