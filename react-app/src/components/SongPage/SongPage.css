@@ -111,11 +111,29 @@
   margin-left: 10px;
 }
 
+#image-username-comment {
+  display: flex;
+  align-items: center;
+}
+
+.active:hover {
+  cursor: pointer;
+  visibility: visible;
+  color: white;
+  
+}
+
+.button.inactive {
+  visibility: hidden;
+}
+
 .comment-div {
   display: flex;
   align-items: center;
   margin-bottom: 25px;
   margin-left: 180px;
+  font-size: 20px;
+  height: 100px;
 }
 
 #comment-form-div {
@@ -128,10 +146,14 @@
   height: 30px;
   width: 60px;
   margin-right: 20px;
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #ff5d00;
+  border: none;
+  color: white;
+  
 }
 
 #comment-form {
@@ -149,10 +171,15 @@
 }
 
 #user-comment-image {
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
-  margin-right: 5px;
+  margin-right: 10px;
+}
+
+#comment-username {
+  margin-right: 10px;
+  font-size: 18px;
 }
 
 #song-profile-image-div {
@@ -178,6 +205,10 @@
 
 #comment-submit-button {
   border-radius: 3px 3px 3px 3px;
+  border: none;
+  background-color: #ff5d00;
+  color: white;
+  height: 30px;
 }
 
 #button-wrapper {
@@ -188,8 +219,15 @@
 
 .delete-comment-button {
   position: absolute;
-  right: 500px;
+  margin-top: 100px;
+  margin-left: 5px;
+  /* left: 500px; */
+  border: none;
   border-radius: 4px, 4px, 4px, 4px;
+  background-color: #ff5d00;
+  border-radius: 3px 3px 3px 3px;
+  color: white;
+  /* width: 100%; */
 }
 
 /* #delete-comment-button-div {

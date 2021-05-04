@@ -30,5 +30,6 @@ class Song(db.Model):
             "genre_id": self.genre_id,
             "genre": self.genre.to_dict(),
             "user": self.users.to_dict(),
-            "comments": [comment.to_dict() for comment in self.comments]
+            "comments": [comment.to_dict() for comment in self.comments],
+            "likes": [like.to_dict() for like in self.likes]
         }

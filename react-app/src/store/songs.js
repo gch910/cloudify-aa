@@ -5,6 +5,8 @@ const POST_COMMENT = "/songs/postComment";
 const DELETE_COMMENT = "/songs/deleteComment";
 const LIKE = "/songs/like";
 const ALL_LIKES = "/songs/allLikes";
+const SONG_LIKED = "/songs/songLiked";
+const SEARCH_RESULTS = "videos/SEARCH_RESULTS";
 
 const allSongs = (songs) => {
   return {
@@ -53,12 +55,43 @@ const allLikes = (likes) => {
   };
 };
 
+const songLiked = (liked) => {
+  return {
+    type: SONG_LIKED,
+    liked,
+  };
+};
+
+const searchResults = (results) => {
+  return {
+    type: SEARCH_RESULTS,
+    results,
+  }
+}
+
 // const oneSong = (song) => {
 //   return {
 //     type: GET_SONG,
 //     song
 //   }
 // }
+
+export const getSearchResults = (search) => async (dispatch) => {
+  const res = await fetch(`/api/songs/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      search: search,
+    }),
+  });
+  const data = await res.json();
+  console.log("this is the search data", data);
+  dispatch(searchResults(data));
+
+  return data;
+};
 
 export const getAllSongs = () => async (dispatch) => {
   const res = await fetch("/api/songs/");
@@ -85,6 +118,14 @@ export const getSong = (songId) => async (dispatch) => {
   return data;
 };
 
+export const getSongLiked = (songId) => async (dispatch) => {
+  const res = await fetch(`/api/users/song_liked/${songId}`);
+
+  const data = await res.json();
+
+  dispatch(songLiked(data.song_liked));
+};
+
 export const postUserComment = (comment, songId) => async (dispatch) => {
   const { content, user_id } = comment;
   const res = await fetch(`/api/songs/${songId}/comment`, {
@@ -106,6 +147,7 @@ export const postUserComment = (comment, songId) => async (dispatch) => {
 };
 
 export const deleteUserComment = (commentId) => async (dispatch) => {
+  console.log("hello");
   const res = await fetch(`/api/songs/comment/${commentId}/delete`, {
     method: "DELETE",
     headers: {
@@ -113,6 +155,7 @@ export const deleteUserComment = (commentId) => async (dispatch) => {
     },
   });
   const data = await res.json();
+  console.log("comment delete data", data);
 
   dispatch(deleteComment());
 
@@ -133,7 +176,10 @@ export const getAllLikes = () => async (dispatch) => {
   return data;
 };
 
-const initialState = {};
+const initialState = {
+  currentSong: {},
+  search_results: {},
+};
 
 const songsReducer = (state = initialState, action) => {
   let newState;
@@ -161,6 +207,13 @@ const songsReducer = (state = initialState, action) => {
       newState.currentSong = song;
       return newState;
     }
+    case SONG_LIKED: {
+      newState = { ...state };
+      // const userSongs = newState.user_songs = {}
+      const song_liked = action.liked;
+      newState.currentSong.liked = song_liked;
+      return newState;
+    }
     case POST_COMMENT: {
       newState = { ...state };
       // const userSongs = newState.user_songs = {}
@@ -181,6 +234,12 @@ const songsReducer = (state = initialState, action) => {
       newState = { ...state };
       const like = action.like;
       newState.likes = { ...state.likes, like };
+      return newState;
+    }
+    case SEARCH_RESULTS: {
+      newState = { ...state };
+      const results = action.results;
+      newState.search_results = results;
       return newState;
     }
     default:

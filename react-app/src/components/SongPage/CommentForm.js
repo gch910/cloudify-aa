@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { postUserComment, userLike } from "../../store/songs";
+import { postUserComment, userLike, getSongLiked } from "../../store/songs";
+
 
 const CommentForm = ({ userId, newComment, setNewComment }) => {
   const { songId } = useParams();
@@ -10,6 +11,7 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
   const [liked, setLiked] = useState(false);
   const history = useHistory();
   const sessionUser = useSelector((state) => state.user);
+  const songLiked = useSelector((state) => state.songs?.currentSong?.liked)
 
   const likeSong = (e) => {
     e.preventDefault();
@@ -39,20 +41,22 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
     await dispatch(postUserComment(userComment, songId));
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     setComment("");
-  }, [newComment, liked]);
+    await dispatch(getSongLiked(songId)).then((res) => setLiked(res))
+  }, [newComment, liked, songLiked]);
 
   const newCommentSubmit = () => {
     return setTimeout(() => {
       setNewComment(true);
     }, 10);
   };
+  console.log("song is liked!", songLiked)
 
   return (
     <div id="comment-form-div">
       <div id="like-button-div">
-        {liked ? (
+        {liked || songLiked ? (
           <button onClick={likeSong} id="heart-button">
             Liked<i className="fas fa-heart"></i>
           </button>
@@ -73,6 +77,7 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
           onClick={newCommentSubmit}
           id="comment-submit-button"
           type="submit"
+          className="no-outline"
         >
           Submit
         </button>

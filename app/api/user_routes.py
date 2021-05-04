@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import db, User, Song
 from app.aws import (
     upload_file_to_s3, allowed_image_file, get_unique_filename)
@@ -27,6 +27,20 @@ def user_songs(id):
     songsDict = {"songs": [song.to_dict() for song in songs]}
 
     return songsDict
+
+
+@user_routes.route('/song_liked/<int:song_id>')
+def song_liked(song_id):
+    song = Song.query.get(song_id)
+    user_likes = {"user_likes": [like.to_dict() for like in current_user.likes]}
+
+    for like in user_likes["user_likes"]:
+        if like["user_id"] == current_user.id and like["song_id"] == song.id:
+            return {"song_liked": True}
+
+    return {"song_liked": False}
+    # if song.id in user_likes:
+    #     return {"is_liked": True}
 
 
 @user_routes.route('/image/upload/<int:user_id>', methods=['POST'])
