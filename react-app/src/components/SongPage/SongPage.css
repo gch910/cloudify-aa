@@ -116,6 +116,7 @@
   align-items: center;
   margin-bottom: 25px;
   margin-left: 180px;
+  font-size: 20px;
 }
 
 #comment-form-div {
@@ -149,10 +150,10 @@
 }
 
 #user-comment-image {
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 #song-profile-image-div {

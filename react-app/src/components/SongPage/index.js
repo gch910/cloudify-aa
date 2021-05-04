@@ -96,7 +96,7 @@ const SongPage = () => {
               >
                 <img
                   id="user-comment-image"
-                  src="https://i.stack.imgur.com/l60Hf.png"
+                  src={comment.user.img}
                   alt="profile"
                 />
                 <p>{comment.content}</p>
