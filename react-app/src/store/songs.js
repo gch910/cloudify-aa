@@ -106,6 +106,7 @@ export const postUserComment = (comment, songId) => async (dispatch) => {
 };
 
 export const deleteUserComment = (commentId) => async (dispatch) => {
+  console.log("hello")
   const res = await fetch(`/api/songs/comment/${commentId}/delete`, {
     method: "DELETE",
     headers: {
@@ -113,6 +114,7 @@ export const deleteUserComment = (commentId) => async (dispatch) => {
     },
   });
   const data = await res.json();
+  console.log("comment delete data", data)
 
   dispatch(deleteComment());
 

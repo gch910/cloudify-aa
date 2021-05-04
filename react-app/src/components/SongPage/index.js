@@ -17,10 +17,16 @@ const SongPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [deleteShown, setDeleteShown] = useState(false);
   const [newComment, setNewComment] = useState(false);
+  const [hoverIndex, setHoverIndex] = useState(null);
   const [deleted, setDeleted] = useState(false);
 
   let comments = song?.comments;
   let userId = sessionUser?.user?.id;
+
+  const buttonClassname = (index) => {
+    if (index === hoverIndex) return "active";
+    else return "button inactive";
+  };
 
   // const someFunction = () => {
 
@@ -34,7 +40,8 @@ const SongPage = () => {
   // };
 
   const deleteComment = (e) => {
-    if (userId === e.target.className.split(" ")[1]) {
+    console.log(userId, e.target.className.split(" ")[1]);
+    if (userId == e.target.className.split(" ")[1]) {
       dispatch(deleteUserComment(e.target.id));
       setDeleted(true);
       setTimeout(() => {
@@ -78,39 +85,38 @@ const SongPage = () => {
             sesssionUser={sessionUser}
           />
           <div id="song-profile-image-div">
-            <img
-              id="song-profile-image"
-              src={song?.user?.img}
-              alt="profile"
-            />
+            <img id="song-profile-image" src={song?.user?.img} alt="profile" />
             <NavLink to={`/profile/${song.user.id}`}>
               <h3 id="song-profile-image-h3">{song.user.username}</h3>
             </NavLink>
           </div>
           <div id="comments-div">
-            {comments.map((comment) => (
+            {comments.map((comment, idx) => (
               <div
                 className="comment-div"
-                onMouseEnter={() => setDeleteShown(true)}
-                onMouseLeave={() => setDeleteShown(false)}
+                onMouseEnter={() => (setDeleteShown(true), setHoverIndex(idx))}
+                onMouseLeave={() => (setDeleteShown(false), setHoverIndex(null))}
               >
-                <img
-                  id="user-comment-image"
-                  src={comment.user.img}
-                  alt="profile"
-                />
-                <p>{comment.content}</p>
+                <div id="image-username-comment">
+                  <img
+                    id="user-comment-image"
+                    src={comment.user.img}
+                    alt="profile"
+                  />
+                  <h3 id="comment-username">{comment.user.username}:</h3>
+                  <p>{comment.content}</p>
+                </div>
                 {deleteShown && userId === comment.user_id && (
-                  <div id="delete-comment-button-div">
+                  // <div id="delete-comment-button-div">
                     <button
-                      className={`delete-comment-button ${comment.user_id}`}
+                      className={`delete-comment-button ${comment.user_id} ${buttonClassname(idx)} no-outline`}
                       id={comment.id}
                       userId={comment.user_id}
                       onClick={deleteComment}
                     >
                       Delete
                     </button>
-                  </div>
+                  // </div>
                 )}
               </div>
             ))}
