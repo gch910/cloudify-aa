@@ -151,7 +151,10 @@ def like_song(song_id, user_id):
     liked_song = Like.query.filter_by(
         user_id=user_id).filter_by(song_id=song_id).first()
     if liked_song:
-        return {"liked": True}
+        print("hello")
+        db.session.delete(liked_song)
+        db.session.commit()
+        return {"liked": False}
     else:
         new_like = Like(
             user_id=user_id,
