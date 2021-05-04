@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { getSearchResults } from "../../store/songs";
 import LogoutButton from "../auth/LogoutButton";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
@@ -18,28 +19,25 @@ const Navigation = ({ setAuthenticated, navId }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [search, setSearch] = useState("");
 
-  const onSearchSubmit = (e) => {
-    e.preventDefault();
-    let found = false;
-    allSongs.forEach((song) => {
-      if (search === song?.title?.toLowerCase()) {
-        found = true;
-        return history.push(`/song/${song.id}`);
-      }
-    });
-    allUsers.forEach((user) => {
-      if (search === user?.username?.toLowerCase()) {
-        found = true;
-        return history.push(`/profile/${user.id}`);
-      }
-    });
-    if (found === false) history.push("/not-found");
-  };
-
   useEffect(() => {
     // if (sessionUser) setIsLoaded(true);
     dispatch(getAllUsers()).then(() => setIsLoaded(true));
   }, [dispatch, sessionUser.user]);
+
+  const onSearchSubmit = async (e) => {
+    e.preventDefault();
+
+    await dispatch(getSearchResults(search)).then((res) => {
+      console.log("results", res)
+      if (res?.artists?.length || res?.songs?.length) {
+        setSearch("");
+        return history.push("/search-results");
+      } else {
+        setSearch("");
+        return history.push("/not-found");
+      }
+    });
+  };
 
   let allUsers;
   isLoaded ? (allUsers = Object.values(users)) : (allUsers = null);
@@ -96,7 +94,7 @@ const Navigation = ({ setAuthenticated, navId }) => {
         </NavLink>
         <div>
           {/* <ProfileButton /> */}
-          <CustomizedMenus setAuthenticated={setAuthenticated}/>
+          <CustomizedMenus setAuthenticated={setAuthenticated} />
         </div>
         {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
       </>

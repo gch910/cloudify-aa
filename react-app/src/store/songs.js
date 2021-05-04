@@ -6,6 +6,7 @@ const DELETE_COMMENT = "/songs/deleteComment";
 const LIKE = "/songs/like";
 const ALL_LIKES = "/songs/allLikes";
 const SONG_LIKED = "/songs/songLiked";
+const SEARCH_RESULTS = "videos/SEARCH_RESULTS";
 
 const allSongs = (songs) => {
   return {
@@ -61,12 +62,36 @@ const songLiked = (liked) => {
   };
 };
 
+const searchResults = (results) => {
+  return {
+    type: SEARCH_RESULTS,
+    results,
+  }
+}
+
 // const oneSong = (song) => {
 //   return {
 //     type: GET_SONG,
 //     song
 //   }
 // }
+
+export const getSearchResults = (search) => async (dispatch) => {
+  const res = await fetch(`/api/songs/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      search: search,
+    }),
+  });
+  const data = await res.json();
+  console.log("this is the search data", data);
+  dispatch(searchResults(data));
+
+  return data;
+};
 
 export const getAllSongs = () => async (dispatch) => {
   const res = await fetch("/api/songs/");
@@ -153,6 +178,7 @@ export const getAllLikes = () => async (dispatch) => {
 
 const initialState = {
   currentSong: {},
+  search_results: {},
 };
 
 const songsReducer = (state = initialState, action) => {
@@ -208,6 +234,12 @@ const songsReducer = (state = initialState, action) => {
       newState = { ...state };
       const like = action.like;
       newState.likes = { ...state.likes, like };
+      return newState;
+    }
+    case SEARCH_RESULTS: {
+      newState = { ...state };
+      const results = action.results;
+      newState.search_results = results;
       return newState;
     }
     default:
