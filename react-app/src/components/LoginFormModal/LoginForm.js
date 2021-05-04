@@ -16,6 +16,7 @@ const LoginForm = ({ authenticated }) => {
   const loginDemo = async (e) => {
     e.preventDefault();
     await dispatch(loginUser("Alabama Shakes@cloudify.com", "password"));
+    return history.push("/");
   };
 
   const onLogin = async (e) => {
