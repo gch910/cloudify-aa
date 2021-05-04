@@ -33,4 +33,5 @@ class User(db.Model, UserMixin):
             "username": self.username,
             "email": self.email,
             "img": self.img,
+            "likes": [like.to_dict() for like in self.likes]
         }

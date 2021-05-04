@@ -5,6 +5,7 @@ const POST_COMMENT = "/songs/postComment";
 const DELETE_COMMENT = "/songs/deleteComment";
 const LIKE = "/songs/like";
 const ALL_LIKES = "/songs/allLikes";
+const SONG_LIKED = "/songs/songLiked";
 
 const allSongs = (songs) => {
   return {
@@ -53,6 +54,13 @@ const allLikes = (likes) => {
   };
 };
 
+const songLiked = (liked) => {
+  return {
+    type: SONG_LIKED,
+    liked,
+  };
+};
+
 // const oneSong = (song) => {
 //   return {
 //     type: GET_SONG,
@@ -85,6 +93,14 @@ export const getSong = (songId) => async (dispatch) => {
   return data;
 };
 
+export const getSongLiked = (songId) => async (dispatch) => {
+  const res = await fetch(`/api/users/song_liked/${songId}`);
+
+  const data = await res.json();
+
+  dispatch(songLiked(data.song_liked));
+};
+
 export const postUserComment = (comment, songId) => async (dispatch) => {
   const { content, user_id } = comment;
   const res = await fetch(`/api/songs/${songId}/comment`, {
@@ -106,7 +122,7 @@ export const postUserComment = (comment, songId) => async (dispatch) => {
 };
 
 export const deleteUserComment = (commentId) => async (dispatch) => {
-  console.log("hello")
+  console.log("hello");
   const res = await fetch(`/api/songs/comment/${commentId}/delete`, {
     method: "DELETE",
     headers: {
@@ -114,7 +130,7 @@ export const deleteUserComment = (commentId) => async (dispatch) => {
     },
   });
   const data = await res.json();
-  console.log("comment delete data", data)
+  console.log("comment delete data", data);
 
   dispatch(deleteComment());
 
@@ -135,7 +151,9 @@ export const getAllLikes = () => async (dispatch) => {
   return data;
 };
 
-const initialState = {};
+const initialState = {
+  currentSong: {},
+};
 
 const songsReducer = (state = initialState, action) => {
   let newState;
@@ -161,6 +179,13 @@ const songsReducer = (state = initialState, action) => {
       // const userSongs = newState.user_songs = {}
       const song = action.song;
       newState.currentSong = song;
+      return newState;
+    }
+    case SONG_LIKED: {
+      newState = { ...state };
+      // const userSongs = newState.user_songs = {}
+      const song_liked = action.liked;
+      newState.currentSong.liked = song_liked;
       return newState;
     }
     case POST_COMMENT: {
