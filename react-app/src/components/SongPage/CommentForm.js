@@ -44,7 +44,7 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
   useEffect(async () => {
     setComment("");
     await dispatch(getSongLiked(songId)).then((res) => setLiked(res))
-  }, [newComment, liked]);
+  }, [newComment, liked, songLiked]);
 
   const newCommentSubmit = () => {
     return setTimeout(() => {
