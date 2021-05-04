@@ -16,7 +16,6 @@ const PlayBar = ({ size = 0 }) => {
   const [muted, setMuted] = useState(false);
   const [duration, setDuration] = useState("0:00");
   const [currentTime, setCurrentTime] = useState("0:00");
-  const song = useSelector((state) => state.playing.song)
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
