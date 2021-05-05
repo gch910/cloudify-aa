@@ -191,7 +191,7 @@ On navigation to the song page, if the specified song is not already present in 
 
 #### Artist Page
 
-Artist / User pages (they are synonymous in this app) function similarly to song pages.  The data is handled the same way, but the primary focus of this page is rendering all of the songs uploaded by this user. Album art and realease date are included for each song as well as a play button that updates the state of the global playbar when clicked.  The clicked song will become the new "playing" song and the playbar, which persists music playback and information through re-renders, will update to reflect the current audio.  The navigation bar utilizes React state to create seemless filtering of songs based on the active link.  
+Artist / User pages (they are synonymous in this app) function similarly to song pages.  The data is handled the same way, but the primary focus of this page is rendering all of the songs uploaded by this user. Album art and realease date are included for each song as well as a play button that updates the state of the global playbar when clicked.  The clicked song will become the new "playing" song and the playbar, which persists music playback and information through re-renders, will update to reflect the current audio.  The navigation bar utilizes React state to create seemless filtering of songs based on the active link.  A logged in user may click on their profile picture (a default is provided on signup) to upload a new profile image. 
 
 ![songpage]
 
@@ -199,6 +199,11 @@ Artist / User pages (they are synonymous in this app) function similarly to song
 When a user enters something into the searchbar, a fetch request is sent to the backend where the data intensive task of querying for matching results is handled.  The backend responds with results for matching songs and artists, which is then rendered on the search results page with the appropriate images/navigation links. 
 
 ![search_results]
+
+#### Playbar
+The music player is built with wavesurfer.js, the package handles loading music and controls related to playing the music. The music is loaded through redux state and the playing/pause buttons are also tied to the redux state so play buttons throughout the website can also manage currently played songs and play/pause status. 
+
+![playbar]
 
 <!-- ROADMAP -->
 
@@ -248,6 +253,7 @@ Project Link: [https://cloudify-aa.herokuapp.com/](https://cloudify-aa.herokuapp
 [songpage]: ./readme_images/cloudify-songpage.PNG
 [artistpage]: ./readme_images/cloudify-artistpage.PNG
 [search_results]: ./readme_images/search_results.PNG
+[playbar]: ./readme_images/cloudify-playbar.PNG
 
 [contributors-shield]: https://img.shields.io/github/contributors/gch910/cloudify-aa.svg?style=for-the-badge
 [contributors-url]: https://github.com/gch910/cloudify-aa/graphs/contributors
