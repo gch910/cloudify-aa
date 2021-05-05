@@ -69,13 +69,6 @@ const searchResults = (results) => {
   }
 }
 
-// const oneSong = (song) => {
-//   return {
-//     type: GET_SONG,
-//     song
-//   }
-// }
-
 export const getSearchResults = (search) => async (dispatch) => {
   const res = await fetch(`/api/songs/search`, {
     method: "POST",
