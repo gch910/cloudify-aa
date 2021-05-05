@@ -11,6 +11,7 @@ import Navigation from "./components/Navigation";
 import ProfilePage from "./components/ProfilePage";
 import SongPage from "./components/SongPage";
 import ArtistsPage from "./components/ArtistsPage";
+import MusicPage from "./components/MusicPage";
 import { restoreUser } from "./store/session";
 import UploadSongForm from "./components/UploadSongForm";
 import ProfileImageUpload from "./components/ProfileImageUpload";
@@ -77,6 +78,9 @@ function App() {
         </Route>
         <Route path="/artists">
           <ArtistsPage />
+        </Route>
+        <Route path="/music">
+          <MusicPage />
         </Route>
         <Route path={"/song/:songId"}>
           <SongPage />

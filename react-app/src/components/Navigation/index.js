@@ -64,7 +64,8 @@ const Navigation = ({ setAuthenticated, navId }) => {
           <NavLink
             className="nav-link"
             id="music-link"
-            to={sessionUser.user ? `/music/${sessionUser.user.id}` : "/login"}
+            // to={sessionUser.user ? `/music/${sessionUser.user.id}` : "/login"}
+            to={'/music'}
           >
             Music
           </NavLink>

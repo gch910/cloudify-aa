@@ -1,0 +1,33 @@
+
+.MusicHeader {
+    font-size: 30px;
+    margin: 15px;
+}
+
+.MusicContainer {
+    display: grid;
+    /* justify-content: center; */
+    grid-gap: 0.2rem;
+    margin: 15px;
+}
+
+.Song {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
+
+.CoverArt {
+    height: 45px;
+    width: 45px;
+    padding-right: 10px;
+}
+
+li > span {
+    padding-right: 10px;
+}
+
+.Artist_MP {
+    padding-right: 5px;
+}
