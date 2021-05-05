@@ -26,8 +26,12 @@
 
 }
 
-#home-inner-div {
+.artist-inner-div {
     width: 90%;
+}
+
+.artist-div {
+    height: 92vh;
 }
 
 #profile-image {
