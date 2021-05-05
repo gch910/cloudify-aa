@@ -70,7 +70,7 @@ const searchResults = (results) => {
 }
 
 export const getSearchResults = (search) => async (dispatch) => {
-  const res = await fetch(`/api/songs/search`, {
+  const res = await fetch(`/api/songs/search/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -121,7 +121,7 @@ export const getSongLiked = (songId) => async (dispatch) => {
 
 export const postUserComment = (comment, songId) => async (dispatch) => {
   const { content, user_id } = comment;
-  const res = await fetch(`/api/songs/${songId}/comment`, {
+  const res = await fetch(`/api/songs/${songId}/comment/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -141,7 +141,7 @@ export const postUserComment = (comment, songId) => async (dispatch) => {
 
 export const deleteUserComment = (commentId) => async (dispatch) => {
   console.log("hello");
-  const res = await fetch(`/api/songs/comment/${commentId}/delete`, {
+  const res = await fetch(`/api/songs/comment/${commentId}/delete/`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -163,7 +163,7 @@ export const userLike = (songId, userId) => async (dispatch) => {
 };
 
 export const getAllLikes = () => async (dispatch) => {
-  const res = await fetch("/api/songs/likes");
+  const res = await fetch("/api/songs/likes/");
   const data = await res.json();
   dispatch(allLikes(data.likes));
   return data;
