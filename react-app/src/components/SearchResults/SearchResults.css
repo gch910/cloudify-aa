@@ -1,0 +1,17 @@
+#artist-results-h1 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.song-search-div {
+    min-height: 400px;
+}
+
+.artist-search-div {
+    margin-top: 30px !important;
+}
+
+#artist-search-outer {
+    margin-top: 50px;
+}

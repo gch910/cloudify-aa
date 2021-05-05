@@ -16,6 +16,7 @@ import { restoreUser } from "./store/session";
 import UploadSongForm from "./components/UploadSongForm";
 import ProfileImageUpload from "./components/ProfileImageUpload";
 import NotFoundPage from "./components/NotFoundPage";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   const dispatch = useDispatch();
@@ -98,6 +99,9 @@ function App() {
         </ProtectedRoute>
         <Route path="/not-found">
           <NotFoundPage />
+        </Route>
+        <Route path="/search-results">
+          <SearchResults />
         </Route>
       </Switch>
       {isPlaying ? <PlayBar /> : ""}
