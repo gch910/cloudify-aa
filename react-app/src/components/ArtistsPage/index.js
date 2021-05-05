@@ -21,6 +21,9 @@ const ArtistsPage = () => {
       <div id="artists-page-div">
         {allUsers.map((user, idx) => (
           <div key={idx} id="artist-div">
+            <Link to={`/profile/${user.id}`}>
+              <img id="artists-img" src={user.img} />
+            </Link>
             <div id="artist-username-div">
               <Link id="artist-username" to={`/profile/${user.id}`}>
                 {user.username}
