@@ -71,7 +71,7 @@ nav {
   margin-left: 10px;
   min-width: 100px;
   max-width: 600px;
-  width: 93%;
+  width: 95%;
 }
 
 .nav-link:hover {
@@ -178,7 +178,7 @@ nav {
   /* margin-left: 30px; */
   /*margin-right: 10px; */
   justify-self: center;
-  margin-left: 5px;
+  margin-left: 15px;
 }
 
 #logout-button {
