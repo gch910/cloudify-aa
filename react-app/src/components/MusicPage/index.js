@@ -29,11 +29,15 @@ const MusicPage = () => {
                         <div className='MusicContainer'>
                             {allSongs.map((song, idx) => (
                                 <li key={idx} className='Song'>
-                                    <img className='CoverArt' src={song.image_path}></img>
+                                    <img alt='CoverArt' className='CoverArt' src={song.image_path}></img>
                                     <span>{idx + 1}</span>
-                                    <div className='Artist_MP'>{song.user.username}</div>
+                                    <div className='Artist_MP'>
+                                        <Link to={`/profile/${song.user.id}`}>{song.user.username}</Link>
+                                    </div>
                                     <span>-</span>
-                                    <div className='Title_MP'>{song.title}</div>
+                                    <div className='Title_MP'>
+                                        <Link to={`/song/${song.id}`}>{song.title}</Link>
+                                    </div>
                                 </li>
                             ))}
                         </div>

@@ -31,3 +31,11 @@ li > span {
 .Artist_MP {
     padding-right: 5px;
 }
+
+.Artist_MP > a:hover {
+    color: #f70;
+}
+
+.Title_MP > a:hover {
+    color: #f70;
+}
