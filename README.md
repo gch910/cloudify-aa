@@ -176,6 +176,7 @@ User authentication is handled in Flask using the flask_login package. The werkz
 
 ![signin]
 
+
 #### Home Page
 
 The Cloudify homepage features sliding carousels of songs sorted by genre.  These carousels dynamically update to include music that has been recently uploaded to the platform.  All album images are active links that immediately play the song when clicked and take you to that artist's user page.  
@@ -184,15 +185,25 @@ The Cloudify homepage features sliding carousels of songs sorted by genre.  Thes
 
 #### Song Page
 
-On navigation to the song page, if the specified song is not already present in the redux store, a fetch request will be made to the backend which will respond with queried results of relevent song information.  This information, such as the song's artist, artist image, album art, genre, comments and likes will be rendered extremely quickly thanks to React's virtual DOM.  A logged in user can interact with the song page by liking it, unliking it and adding/deleting comments, with page updates happening instantly.  All of the updated song data is saved to the postgreSQL database where it can be retreived later on.
+On navigation to the song page, if the specified song is not already present in the redux store, a fetch request will be made to the backend which will respond with queried results of relevent song information.  This information, such as the song's artist, artist image, album art, genre, comments and likes will be rendered extremely quickly thanks to React's virtual DOM.  A logged in user can interact with the song page by liking it, unliking it, adding/deleting comments and of course playing/pausing the song, with page updates happening instantly.  All of the updated song data is saved to the postgreSQL database where it can be retreived later on.
 
 ![songpage]
 
 #### Artist Page
 
-Artist / User pages (they are synonymous in this app) function similarly to song pages.  The data is handled the same way, but the primary focus of this page is rendering all of the songs uploaded by this user. Album art and realease date are included for each song as well as a play button that updates the state of the global playbar when clicked.  The clicked song will become the new "playing" song and the playbar, which persists music playback and information through re-renders, will update to reflect the current audio.  The navigation bar utilizes React state to create seemless filtering of songs based on the active link.  
+Artist / User pages (they are synonymous in this app) function similarly to song pages.  The data is handled the same way, but the primary focus of this page is rendering all of the songs uploaded by this user. Album art and realease date are included for each song as well as a play button that updates the state of the global playbar when clicked.  The clicked song will become the new "playing" song and the playbar, which persists music playback and information through re-renders, will update to reflect the current audio.  The navigation bar utilizes React state to create seemless filtering of songs based on the active link.  A logged in user may click on their profile picture (a default is provided on signup) to upload a new profile image. 
 
 ![songpage]
+
+#### Search Results
+When a user enters something into the searchbar, a fetch request is sent to the backend where the data intensive task of querying for matching results is handled.  The backend responds with results for matching songs and artists, which is then rendered on the search results page with the appropriate images/navigation links. 
+
+![search_results]
+
+#### Playbar
+The music player is built with wavesurfer.js, the package handles loading music and controls related to playing the music. The music is loaded through redux state and the playing/pause buttons are also tied to the redux state so play buttons throughout the website can also manage currently played songs and play/pause status. 
+
+![playbar]
 
 <!-- ROADMAP -->
 
@@ -241,6 +252,8 @@ Project Link: [https://cloudify-aa.herokuapp.com/](https://cloudify-aa.herokuapp
 [homepage]: ./readme_images/cloudify-homepage.PNG
 [songpage]: ./readme_images/cloudify-songpage.PNG
 [artistpage]: ./readme_images/cloudify-artistpage.PNG
+[search_results]: ./readme_images/search_results.PNG
+[playbar]: ./readme_images/cloudify-playbar.PNG
 
 [contributors-shield]: https://img.shields.io/github/contributors/gch910/cloudify-aa.svg?style=for-the-badge
 [contributors-url]: https://github.com/gch910/cloudify-aa/graphs/contributors

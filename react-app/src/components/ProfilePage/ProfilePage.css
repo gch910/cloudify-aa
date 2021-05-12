@@ -24,8 +24,12 @@
   align-items: center;
 }
 
-#home-inner-div {
+.artist-inner-div {
   width: 90%;
+}
+
+.artist-div {
+  padding-bottom: 100px;
 }
 
 #profile-image {

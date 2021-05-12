@@ -37,8 +37,8 @@ const ProfilePage = () => {
     isLoaded && (
       // <div id="profile-page-container">
       // <div id="profile-page-contents">
-      <div className="center">
-        <div id="home-inner-div">
+      <div className="center artist-div">
+        <div id="home-inner-div" className="artist-inner-div">
           <div id="profile-header">
             {sessionUser?.id == userId ? (
               <img
