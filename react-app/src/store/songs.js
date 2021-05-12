@@ -66,8 +66,8 @@ const searchResults = (results) => {
   return {
     type: SEARCH_RESULTS,
     results,
-  }
-}
+  };
+};
 
 export const getSearchResults = (search) => async (dispatch) => {
   const res = await fetch(`/api/songs/search`, {
@@ -121,7 +121,7 @@ export const getSongLiked = (songId) => async (dispatch) => {
 
 export const postUserComment = (comment, songId) => async (dispatch) => {
   const { content, user_id } = comment;
-  const res = await fetch(`/api/songs/${songId}/comment/`, {
+  const res = await fetch(`/api/songs/${songId}/comment`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
