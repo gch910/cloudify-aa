@@ -4,7 +4,11 @@ import Track from "../Track";
 import { NavLink } from "react-router-dom";
 import "./PlayBar.css";
 import WaveSurfer from "wavesurfer.js";
-import { setSongPause, setSongPlaying } from "../../store/playing";
+import {
+  setSongPause,
+  setSongPlaying,
+  setCurrentSong,
+} from "../../store/playing";
 
 const PlayBar = ({ size = 0 }) => {
   const dispatch = useDispatch();
@@ -22,7 +26,6 @@ const PlayBar = ({ size = 0 }) => {
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
-    console.log(length);
     wavesurfer.current = WaveSurfer.create({
       container: "#waveform",
       scrollParent: false,
@@ -64,6 +67,20 @@ const PlayBar = ({ size = 0 }) => {
     // when component unmount
     return () => wavesurfer.current.destroy();
   }, [selectedSong]);
+
+  const next = async (e) => {
+    e.preventDefault();
+    if (length.length === selectedSong)
+      return await dispatch(setCurrentSong(1));
+    return await dispatch(setCurrentSong(selectedSong + 1));
+  };
+
+  const prev = async (e) => {
+    e.preventDefault();
+    if (selectedSong === 1)
+      return await dispatch(setCurrentSong(length.length));
+    return await dispatch(setCurrentSong(selectedSong - 1));
+  };
 
   const toTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -112,7 +129,7 @@ const PlayBar = ({ size = 0 }) => {
           <div className="player-div">
             <div className="controls">
               <div className="playBtn">
-                <div className="button">
+                <div onClick={prev} className="button">
                   <i className="fas fa-step-backward"></i>
                 </div>
                 <div className="button" onClick={handlePlayPause}>
@@ -122,7 +139,7 @@ const PlayBar = ({ size = 0 }) => {
                     <i className="fas fa-pause"></i>
                   )}
                 </div>
-                <div className="button">
+                <div onClick={next} className="button">
                   <i className="fas fa-step-forward"></i>
                 </div>
               </div>

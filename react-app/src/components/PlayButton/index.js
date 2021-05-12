@@ -11,7 +11,6 @@ const PlayButton = ({ song }) => {
   const dispatch = useDispatch();
   let currentStatus = useSelector((state) => state.playing?.status);
   const currentSong = useSelector((state) => state.playing?.song);
-  console.log(song, currentSong);
   const onSong = currentSong === song;
 
   const setSong = (e) => {
