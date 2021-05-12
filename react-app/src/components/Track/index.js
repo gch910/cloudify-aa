@@ -14,7 +14,7 @@ const Track = ({ song, button = true }) => {
         <img alt="Album cover" src={song.image_path} />
         {button ? (
           <div className="button-wrapper">
-            <PlayButton url={song} />
+            <PlayButton song={song.id} />
           </div>
         ) : (
           ""

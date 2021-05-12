@@ -7,13 +7,12 @@ import {
 } from "../../store/playing";
 import "./PlayButton.css";
 
-const PlayButton = (song) => {
+const PlayButton = ({ song }) => {
   const dispatch = useDispatch();
   let currentStatus = useSelector((state) => state.playing?.status);
-  const currentSong = useSelector((state) => state.playing?.song?.id);
-
-  const onSong = currentSong === song.url.id;
-
+  const currentSong = useSelector((state) => state.playing?.song);
+  console.log(song, currentSong);
+  const onSong = currentSong === song;
 
   const setSong = (e) => {
     e.preventDefault();

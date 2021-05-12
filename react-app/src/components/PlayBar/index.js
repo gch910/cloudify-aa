@@ -9,16 +9,20 @@ import { setSongPause, setSongPlaying } from "../../store/playing";
 const PlayBar = ({ size = 0 }) => {
   const dispatch = useDispatch();
   const wavesurfer = useRef(null);
-  const song = useSelector((state) => state.playing?.song);
-  const selectedSong = useSelector((state) => state.playing.song?.song_path);
+  const songs = useSelector((state) => state.songs);
+  const length = Object.values(songs);
+  const selectedSong = useSelector((state) => state.playing.song);
+  const song = songs[selectedSong];
   const playing = useSelector((state) => state.playing?.status);
   const [volume, setVolume] = useState(0.1);
   const [muted, setMuted] = useState(false);
   const [duration, setDuration] = useState("0:00");
   const [currentTime, setCurrentTime] = useState("0:00");
+
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
+    console.log(length);
     wavesurfer.current = WaveSurfer.create({
       container: "#waveform",
       scrollParent: false,
@@ -33,7 +37,7 @@ const PlayBar = ({ size = 0 }) => {
       partialRender: true,
     });
 
-    wavesurfer.current.load(selectedSong, null, true);
+    wavesurfer.current.load(song.song_path, null, true);
 
     wavesurfer.current.on("ready", function () {
       // https://wavesurfer-js.org/docs/methods.html
