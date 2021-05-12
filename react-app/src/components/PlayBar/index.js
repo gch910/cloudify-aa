@@ -19,8 +19,6 @@ const PlayBar = ({ size = 0 }) => {
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
-    console.log('SONG', song)
-
     wavesurfer.current = WaveSurfer.create({
       container: "#waveform",
       scrollParent: false,
@@ -64,7 +62,7 @@ const PlayBar = ({ size = 0 }) => {
   }, [selectedSong]);
 
   const toTime = (time) => {
-    const minutes = Math.round(time / 60);
+    const minutes = Math.floor(time / 60);
     const seconds = Math.round(time % 60);
     if (seconds < 10)
       return minutes.toString() + ":" + "0" + seconds.toString();
@@ -167,7 +165,6 @@ const PlayBar = ({ size = 0 }) => {
               </NavLink>
             </div>
           </div>
-
         </div>
       </div>
     )

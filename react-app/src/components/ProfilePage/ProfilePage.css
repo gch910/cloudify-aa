@@ -1,114 +1,111 @@
 #profile-page-container {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    margin-left: 50px;
-    margin-right: 50px;
-    background-color: #F2F2F2
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #f2f2f2;
 }
 
 #profile-page-contents {
-    width: 1200px;
-    height: 100vh;
-    padding-top: 0px;
-    background-color: white;
-    
+  width: 1200px;
+  height: 100vh;
+  padding-top: 0px;
+  background-color: white;
 }
 
 #profile-header {
-    background-color: #a2b8af;
-    width: 100%;
-    height: 260px;
-    /* padding: 0px; */
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-
+  background-color: #a2b8af;
+  width: 100%;
+  height: 260px;
+  /* padding: 0px; */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
 #home-inner-div {
-    width: 90%;
+  width: 90%;
 }
 
 #profile-image {
-    width: 180px;
-    height: 180px;
-    border-radius: 60%;
-    margin-left: 25px;
+  width: 180px;
+  height: 180px;
+  border-radius: 60%;
+  margin-left: 25px;
 }
 
 #profile-username {
-    margin-left: 30px;
-    color: white;
-    background-color: #333333;
-    padding: 5px;
-    margin-bottom: 170px;
+  margin-left: 30px;
+  color: white;
+  background-color: #333333;
+  padding: 5px;
+  margin-bottom: 170px;
 }
 
 #profile-nav {
-    display: grid;
-    grid-template-rows: 40px;
-    grid-template-columns: 1fr 1fr 6fr;
-    align-items: center;
-    border-bottom: 1px solid rgb(128, 128, 128, 0.2);
-    background-color: white;
+  display: grid;
+  grid-template-rows: 40px;
+  grid-template-columns: 1fr 1fr 6fr;
+  align-items: center;
+  border-bottom: 1px solid rgb(128, 128, 128, 0.2);
+  background-color: white;
 }
 
 #profile-song-info {
-    /* display: flex;
+  /* display: flex;
     align-items: center;
     justify-content: space-around;
     height: 200px;
     border-bottom: 1px solid rgb(128, 128, 128, 0.2); */
-    display: grid;
-    grid-template-rows: 200px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    align-items: center;
-    /* justify-content: center; */
+  display: grid;
+  grid-template-rows: 200px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  /* justify-content: center; */
 }
 
 .artist-play-icon {
-    justify-self: center;
+  justify-self: center;
 }
 
 #profile-song-image {
-    justify-self: center;
-    width: 150px;
-    height: 150px;
+  justify-self: center;
+  width: 150px;
+  height: 150px;
 }
 
 #profile-song-link {
-    /* justify-self: center; */
-    font-size: 28px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    /* align-items: center; */
-    text-decoration: underline;
-    color: #FF5D00;
-    /* margin-left: 20px; */
-    height: 40px;
-    text-align: center;
-    padding: 0 10px;
-
+  /* justify-self: center; */
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* align-items: center; */
+  text-decoration: underline;
+  color: #ff5d00;
+  /* margin-left: 20px; */
+  height: 40px;
+  text-align: center;
+  padding: 0 10px;
 }
 
 .profile-nav-link {
-    box-sizing: border-box;
-    border: none;
-    border-bottom: 1px solid #FF5D00;
-    width: 100px;
-    height: 40px;
-    cursor: pointer;
-    /* padding-bottom: 20px; */
-    color: #FF5D00;
-    background-color: white;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ff5d00;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  /* padding-bottom: 20px; */
+  color: #ff5d00;
+  background-color: white;
 }
 
 #profile-display {
-    background-color: white;
+  background-color: white;
 }
 
 .no-outline:focus {
-    outline: none;
-  }
+  outline: none;
+}
