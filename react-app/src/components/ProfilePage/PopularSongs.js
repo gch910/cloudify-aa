@@ -27,10 +27,10 @@ const PopularSongs = () => {
         {userSongsValues.slice(1).map((song, idx) => (
           //    <div>{song.title}</div>
           <>
-            <ProfileSongInfo song={song} />
+            <ProfileSongInfo songId={song.id} />
             {/* <Track key={idx} song={song} /> */}
             {/* <div id="button-wrapper">
-              <PlayButton url={song.song_path} />
+              <PlayButton songId={song.song_path} />
             </div> */}
           </>
         ))}

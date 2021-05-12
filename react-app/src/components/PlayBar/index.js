@@ -4,18 +4,25 @@ import Track from "../Track";
 import { NavLink } from "react-router-dom";
 import "./PlayBar.css";
 import WaveSurfer from "wavesurfer.js";
-import { setSongPause, setSongPlaying } from "../../store/playing";
+import {
+  setSongPause,
+  setSongPlaying,
+  setCurrentSong,
+} from "../../store/playing";
 
 const PlayBar = ({ size = 0 }) => {
   const dispatch = useDispatch();
   const wavesurfer = useRef(null);
-  const song = useSelector((state) => state.playing?.song);
-  const selectedSong = useSelector((state) => state.playing.song?.song_path);
+  const songs = useSelector((state) => state.songs);
+  const length = Object.values(songs);
+  const selectedSong = useSelector((state) => state.playing.song);
+  const song = songs[selectedSong];
   const playing = useSelector((state) => state.playing?.status);
   const [volume, setVolume] = useState(0.1);
   const [muted, setMuted] = useState(false);
   const [duration, setDuration] = useState("0:00");
   const [currentTime, setCurrentTime] = useState("0:00");
+
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
@@ -33,7 +40,7 @@ const PlayBar = ({ size = 0 }) => {
       partialRender: true,
     });
 
-    wavesurfer.current.load(selectedSong, null, true);
+    wavesurfer.current.load(song.song_path, null, true);
 
     wavesurfer.current.on("ready", function () {
       // https://wavesurfer-js.org/docs/methods.html
@@ -60,6 +67,20 @@ const PlayBar = ({ size = 0 }) => {
     // when component unmount
     return () => wavesurfer.current.destroy();
   }, [selectedSong]);
+
+  const next = async (e) => {
+    e.preventDefault();
+    if (length.length === selectedSong)
+      return await dispatch(setCurrentSong(1));
+    return await dispatch(setCurrentSong(selectedSong + 1));
+  };
+
+  const prev = async (e) => {
+    e.preventDefault();
+    if (selectedSong === 1)
+      return await dispatch(setCurrentSong(length.length));
+    return await dispatch(setCurrentSong(selectedSong - 1));
+  };
 
   const toTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -108,7 +129,7 @@ const PlayBar = ({ size = 0 }) => {
           <div className="player-div">
             <div className="controls">
               <div className="playBtn">
-                <div className="button">
+                <div onClick={prev} className="button">
                   <i className="fas fa-step-backward"></i>
                 </div>
                 <div className="button" onClick={handlePlayPause}>
@@ -118,7 +139,7 @@ const PlayBar = ({ size = 0 }) => {
                     <i className="fas fa-pause"></i>
                   )}
                 </div>
-                <div className="button">
+                <div onClick={next} className="button">
                   <i className="fas fa-step-forward"></i>
                 </div>
               </div>

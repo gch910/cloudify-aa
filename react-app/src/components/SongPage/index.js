@@ -66,7 +66,7 @@ const SongPage = () => {
               <img id="song-image" src={song.image_path} alt="song" />
             </div>
             <div id="button-wrapper">
-              <PlayButton url={song} />
+              <PlayButton songId={songId} />
             </div>
             <div id="song-headers">
               <h1 id="song-title">{song.title}</h1>
@@ -95,7 +95,9 @@ const SongPage = () => {
               <div
                 className="comment-div"
                 onMouseEnter={() => (setDeleteShown(true), setHoverIndex(idx))}
-                onMouseLeave={() => (setDeleteShown(false), setHoverIndex(null))}
+                onMouseLeave={() => (
+                  setDeleteShown(false), setHoverIndex(null)
+                )}
               >
                 <div id="image-username-comment">
                   <img
@@ -108,14 +110,16 @@ const SongPage = () => {
                 </div>
                 {deleteShown && userId === comment.user_id && (
                   // <div id="delete-comment-button-div">
-                    <button
-                      className={`delete-comment-button ${comment.user_id} ${buttonClassname(idx)} no-outline`}
-                      id={comment.id}
-                      userId={comment.user_id}
-                      onClick={deleteComment}
-                    >
-                      Delete
-                    </button>
+                  <button
+                    className={`delete-comment-button ${
+                      comment.user_id
+                    } ${buttonClassname(idx)} no-outline`}
+                    id={comment.id}
+                    userId={comment.user_id}
+                    onClick={deleteComment}
+                  >
+                    Delete
+                  </button>
                   // </div>
                 )}
               </div>

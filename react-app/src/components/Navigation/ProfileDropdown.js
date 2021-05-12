@@ -42,7 +42,7 @@ const StyledMenuItem = withStyles((theme) => ({
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: theme.palette.common.white,
       },
-      textAlign: "center"
+      textAlign: "center",
     },
   },
 }))(MenuItem);
@@ -83,10 +83,10 @@ export default function CustomizedMenus({ setAuthenticated }) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <Link  to={`/profile/${user.user.id}`}>
+        <Link to={`/profile/${user.user.id}`}>
           <StyledMenuItem>
             <ListItemIcon>
-              <PermIdentityTwoToneIcon fontSize="medium" />
+              <PermIdentityTwoToneIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText primary="My Profile" />
           </StyledMenuItem>
