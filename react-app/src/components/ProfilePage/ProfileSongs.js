@@ -30,7 +30,7 @@ const ProfileSongs = () => {
             <ProfileSongInfo song={song} />
             {/* <Track key={idx} song={song} /> */}
             {/* <div id="button-wrapper">
-              <PlayButton url={song.song_path} />
+              <PlayButton songId={song.id} />
             </div> */}
           </>
         ))}
