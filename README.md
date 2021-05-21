@@ -22,7 +22,7 @@
     <a href="https://github.com/gch910/cloudify-aa"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/gch910/cloudify-aa">View Demo</a>
+    <a href="https://cloudify-aa.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/gch910/cloudify-aa/issues">Report a Bug</a>
     ·
